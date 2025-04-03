@@ -41,6 +41,7 @@
                 </div>
             </div>
             <div class="cardapio pedidos">
+                <h3> Cardápio</h3>
                 <div class="semanal">
                     <h5>Semanal</h5>
                     <hr>
@@ -48,37 +49,37 @@
                         <div class="diaSemana">
                             <h4 class="nome">Segunda-Feira</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
-                            <div class="Editar"><button type="button">Editar</button></div>
+                            <button type="button">Editar</button>
                         </div>
                         <div class="diaSemana">
                             <h4 class="nome">Terça-Feira</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
-                            <div class="Editar"><button type="button">Editar</button></div>
+                          <button type="button">Editar</button>
                         </div>
                         <div class="diaSemana">
                             <h4 class="nome">Quarta-Feira</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
-                            <div class="Editar"><button type="button">Editar</button></div>
+                            <button type="button">Editar</button>
                         </div>
-                        <div class="diaSemana">
+                        <div  class="diaSemana">
                             <h4 class="nome">Quinta-Feira</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
-                            <div class="Editar"><button type="button">Editar</button></div>
+                            <button type="button">Editar</button>
                         </div>
-                        <div class="diaSemana">
+                        <div  class="diaSemana">
                             <h4 class="nome">Sexta-Feira</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
-                            <div class="Editar"><button type="button">Editar</button></div>
+                            <button type="button">Editar</button>
                         </div>
-                        <div class="diaSemana">
+                        <div  class="diaSemana">
                             <h4 class="nome">Sabádo</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
-                            <div class="Editar"><button type="button">Editar</button></div>
+                            <button type="button">Editar</button>
                         </div>
                         <div class="diaSemana">
                             <h4 class="nome">Domingo</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
-                            <div class="Editar"><button type="button">Editar</button></div>
+                            <button type="button">Editar</button>
                         </div>
                     </div>
                 </div>
@@ -108,7 +109,9 @@
             <div class="vendas">
                 <?php
                     $vendas = 0;
-                    echo "<h4>Vendidas: {$vendas} </h4> <button type='button'>Ver mais</button>";
+                    echo "<h4>Vendidas</h4>";
+                    echo "<h4>{$vendas}</h4>";
+                    echo "<button type='button'>Ver mais</button>";
                 ?>
             </div>
         </div>
