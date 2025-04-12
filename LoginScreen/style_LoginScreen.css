@@ -10,9 +10,6 @@ body{
     flex-direction: row; /* alinhamento em linha*/
     flex-wrap: nowrap; /* ativando a flexibilidade dos itens dentro do body e colocando da direita para esquerda os itens-filhos*/
     font-family: Inter, sans-serif; /* ativando a fonte Inter para todo a página*/
-
-    /* height: 100dvh;
-    position: relative; */
 }
 
 .logo {
@@ -21,13 +18,6 @@ body{
     align-items: center; /* alinhamento vertical (dependendo do "flex-direction") para os itens-filhos*/
     justify-content: center; /* alinhamento horizontal (dependendo do "flex-direction") para os itens-filhos*/
     background: rgb(224, 224, 224); /* cor do fundo*/
-
-    /* 
-    text-align: center;
-    line-height: 60dvh;
-    font-size: 1000%;
-    font-weight: 400; 
-    */
 }
 .logo p {margin: 0px; font-size: 10vw;} /* edições do texto "LOGO"*/
 
@@ -39,17 +29,6 @@ body{
     justify-content: center; /* alinhamento horizontal (dependendo do "flex-direction") para os itens-filhos*/
     flex-direction: column; /*itens colocados em coluna*/
     font-size: 110%; /* tamanho da fonte*/
-
-    /*
-     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    margin-left: 20%;
-    margin-right: 20%;
-    line-height: 350%;
-    font-size: 115%;
-    font-weight: 450; 
-    */
 } 
 
 .user, .password {
