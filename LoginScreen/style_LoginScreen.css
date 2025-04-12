@@ -1,0 +1,90 @@
+html{
+    margin: 0%;
+    height: 100%;
+} /* colocando o tamanho da página sempre em 100% da tela, tanto para mobile quanto para desktop, isso sem dar a possibilidade de scrollar*/
+
+body{
+    margin: 0px;
+    min-height: 100vh; /* colocando o corpo também a 100% da tela, para mobile e descktop, sem a possibilidade de scrollar*/
+    display: flex; /* ativa a flexybilidade dos iten dentro dele*/
+    flex-direction: row; /* alinhamento em linha*/
+    flex-wrap: nowrap; /* ativando a flexibilidade dos itens dentro do body e colocando da direita para esquerda os itens-filhos*/
+    font-family: Inter, sans-serif; /* ativando a fonte Inter para todo a página*/
+
+    /* height: 100dvh;
+    position: relative; */
+}
+
+.logo {
+    flex-grow: 5; /* quantidade de espaço ocupado com a página dividida em 6*/
+    display: flex; /* ativa a flexybilidade dos iten dentro dele*/
+    align-items: center; /* alinhamento vertical (dependendo do "flex-direction") para os itens-filhos*/
+    justify-content: center; /* alinhamento horizontal (dependendo do "flex-direction") para os itens-filhos*/
+    background: rgb(224, 224, 224); /* cor do fundo*/
+
+    /* 
+    text-align: center;
+    line-height: 60dvh;
+    font-size: 1000%;
+    font-weight: 400; 
+    */
+}
+.logo p {margin: 0px; font-size: 10vw;} /* edições do texto "LOGO"*/
+
+
+.form_login {
+    flex-grow: 1; /* quantidade de espaço ocupado com a página dividida em 6*/
+    display: flex; /*ativa a flexybilidade dos iten dentro dele*/
+ 
+    justify-content: center; /* alinhamento horizontal (dependendo do "flex-direction") para os itens-filhos*/
+    flex-direction: column; /*itens colocados em coluna*/
+    font-size: 110%; /* tamanho da fonte*/
+
+    /*
+     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
+    line-height: 350%;
+    font-size: 115%;
+    font-weight: 450; 
+    */
+} 
+
+.user, .password {
+    display: flex; /* ativa a flexybilidade dos iten dentro dele*/
+    flex-direction: column; /*itens colocados em coluna*/
+    font-size: 1vw;  /* A fonte será 1% da largura da janela */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.user label, .password label {
+    margin-bottom: 1%;
+}
+
+.user input, .password input {
+    background: rgb(224, 224, 224); /* cor do fundo*/
+    border: 0px;
+    padding: 0px;
+    line-height: 2.5vh; /* determina a altura do bloco*/
+    border-radius: 10px; /* chanfra as bordas*/
+    font-size: 0.8vw;  /* A fonte será 1% da largura da janela */
+    text-align: center; /* alinhamento do texto dentro do input*/
+}
+
+.button_submit {
+    display: flex;
+    justify-content: center; /* alinhamento horizontal (dependendo do "flex-direction") para os itens-filhos*/
+}
+    
+.button_submit input {
+    padding: 0.8%;
+    width: 18%;
+    font-size: 0.8vw;  /* A fonte será 1% da largura da janela */
+    background: rgb(224, 224, 224); /* cor do fundo*/
+    border-radius: 10px; /* chanfra as bordas*/
+}
