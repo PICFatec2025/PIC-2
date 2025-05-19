@@ -13,5 +13,8 @@ class Vendas extends Model
         'pedido',
         'preco'
     ];
-
+    function preco_convertido(): string
+    {
+        return "R$: " . number_format($this->preco, 2, ",",".");
+    }
 }

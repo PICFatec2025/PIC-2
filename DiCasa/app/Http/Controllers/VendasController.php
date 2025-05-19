@@ -10,6 +10,7 @@ class VendasController extends Controller
     public function index()
     {
         $vendas = Vendas::paginate(20);
-        return view('vendas.index',compact('vendas'));
+        $contagem = Vendas::count();
+        return view('vendas.index',compact('vendas','contagem'));
     }
 }

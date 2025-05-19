@@ -19,7 +19,7 @@ class VendasFactory extends Factory
         return [
             'nome' => fake()->name(),
             'pedido' => fake()->name(),
-            'preco' => fake()->numberBetween([0],[1000])
+            'preco' => fake()->randomFloat(2,0,1000)
         ];
     }
 }
