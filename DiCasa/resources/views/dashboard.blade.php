@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Di Casa</title>
-    <link rel="stylesheet" href="style_index.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 </head>
 <body>
     <div class="main">
@@ -23,19 +24,25 @@
                     <button type="button">Adicionar pedido</button>
                 </div>
                 <div class="lista">
-                    <?php
-                        for($i = 0; $i < 3; $i++){
-                            ?>
                                 <div class="item">
                                     <p class="nome">Nome</p>
                                     <p class="pedido">Pedido......</p>
                                     <div class="horario">00:00</div>
                                     <div class="btnAceitar"><button type="button">Aceitar</button></div>
                                 </div>
-                            <?php
-                        } 
-                    ?>
-                </div>
+                                                            <div class="item">
+                                    <p class="nome">Nome</p>
+                                    <p class="pedido">Pedido......</p>
+                                    <div class="horario">00:00</div>
+                                    <div class="btnAceitar"><button type="button">Aceitar</button></div>
+                                </div>
+                                                            <div class="item">
+                                    <p class="nome">Nome</p>
+                                    <p class="pedido">Pedido......</p>
+                                    <div class="horario">00:00</div>
+                                    <div class="btnAceitar"><button type="button">Aceitar</button></div>
+                                </div>
+                                            </div>
                 <div class="btnVerMais">
                     <button type="button">Ver mais</button>
                 </div>
@@ -87,18 +94,12 @@
                     <h5>Especial</h5>
                     <hr>
                     <div class="listaEspecial">
-                        <?php
-                            for($i = 0; $i < 1; $i++){
-                                ?>
-                                   <div class="item">
+                                                           <div class="item">
                                         <h4 class="nome">Festa Junina</h4>
                                         <p>Comida boa 1, macarrão, etc.</p>
                                         <div class="Editar"><button type="button">Editar</button></div>
                                     </div>
-                                <?php
-                            } 
-                        ?>
-                    </div>
+                                                    </div>
                     <div class="addEspecial">
                         <button type="button">Adicionar</button>
                     </div>
@@ -107,12 +108,7 @@
         </div>
         <div class="rodape">
             <div class="vendas">
-                <?php
-                    $vendas = 0;
-                    echo "<h4>Vendidas</h4>";
-                    echo "<h4>{$vendas}</h4>";
-                    echo "<button type='button'>Ver mais</button>";
-                ?>
+                <h4>Vendidas</h4><h4>0</h4><button type='button'>Ver mais</button>          
             </div>
         </div>
     </div>
