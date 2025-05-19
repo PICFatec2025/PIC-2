@@ -1,15 +1,9 @@
-
-<?php
-echo "Olá, Mundo!";
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <title>Pedido</title>
-  <link rel="stylesheet" href="cadastro_pedidoss.css">
+  <link rel="stylesheet" href="{{ asset('css\cadastro_pedidos.css') }}">
 
 
  
@@ -152,4 +146,3 @@ echo "Olá, Mundo!";
     
     </body>
     </html>
-    
