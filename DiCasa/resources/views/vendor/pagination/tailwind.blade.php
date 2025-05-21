@@ -35,12 +35,12 @@
                     @endif
                     {!! __('num total de') !!}
                     <span class="font-medium">{{ $paginator->total() }}</span>
-                    {!! __('vendas') !!}
+                    {!! __('vendas      ') !!}
                 </p>
             </div>
 
             <div>
-                <span class="relative z-0 inline-flex rtl:flex-row-reverse shadow-sm rounded-md">
+                <span class="relative z-0 inline-flex rtl:flex-row-reverse shadow-sm rounded-md mx-8">
                     {{-- Previous Page Link --}}
                     @if ($paginator->onFirstPage())
                         <span aria-disabled="true" aria-label="{{ __('pagination.previous') }}">

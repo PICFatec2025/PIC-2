@@ -41,6 +41,7 @@ body {
 .titulo-texto{
     text-align: center;
     margin-bottom: 30px;
+    font-size: 48px;
 }
 .caixa-principal {
     max-width: 1000px;
@@ -79,27 +80,52 @@ body {
     transition: background 0.3s;
     font-weight: 500;
 }
+/* Estilo base para todos os botões */
+.vendas-mensal-botao,
+.vendas-diarias-botao,
+.buscar-por-data-enviar {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;             /* leve arredondamento */
+  background-color: transparent;  /* mesma cor do fundo/ambiente */
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  font-size: 14px;
+}
+
+/* Efeito ao passar o mouse */
+.vendas-mensal-botao:hover,
+.vendas-diarias-botao:hover,
+.buscar-por-data-enviar:hover {
+  background-color: #f0f0f0;  /* leve contraste ao hover */
+  border-color: #999;
+}
+.buscar-por-data input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;             /* leve arredondamento */
+    background-color: transparent;  /* segue o fundo do ambiente */
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+  }
+  
+  .buscar-por-data input[type="date"]:focus {
+    outline: none;
+    border-color: #999;             /* realce ao foco */
+  }
 .caixa-inferior{
     max-height: 400px;
     overflow-y: auto;
 }
-/*.caixa-inferior::-webkit-scrollbar {*/
-/*    width: 8px;*/
-/*}*/
-
-/*.caixa-inferior::-webkit-scrollbar-track {*/
-/*    background: #f1f1f1;*/
-/*    border-radius: 4px;*/
-/*}*/
-
-/*.caixa-inferior::-webkit-scrollbar-thumb {*/
-/*    background: #888;*/
-/*    border-radius: 4px;*/
-/*}*/
-
-/*.caixa-inferior::-webkit-scrollbar-thumb:hover {*/
-/*    background: #555;*/
-/*}*/
+.tabela-topo{
+    background-color: #f7fafc; /* bg-gray-100 */
+    position: sticky;          /* sticky */
+    top: 0; 
+}
+.tabela-scroll {
+    overflow: auto;
+    max-height: 24rem; /* 96 * 0.25rem = 24rem = 384px */
+  }
 .tabela-vendas{
     width: 100%;
     max-height: 80px;
@@ -109,52 +135,15 @@ body {
 .item-venda {
     border-bottom: 1px solid #eee;
 }
-.item-venda td{
-    padding: 15px 10px;
+.textos-tabela {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: left;
 }
-.caixa-vendas-marmitas{
-    max-width: 500px;
-    text-align: center;
-    border: 50px auto 0;
-    margin: 50px auto 0;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0, 0, 0.1);
-    position: relative;
-    z-index: 1;
-}
-.total-vendas-marmitas{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-.vendas-marmitas-texto {
-    color: #333;
-    font-weight: 600;
-    font-size: 1.5rem;
-    margin: 0;
-}
-.vendas-marmitas-contador {
-    color: black;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 1.5rem;
-}
-.ver-mais-botao{
-    background-color: #e0e0e0;
-    color: #333;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.ver-mais-botao:hover{
-    background-color: #d0d0d0;
-    transform: translateY(-2px);
-}
+.tabela-paginacao {
+    margin-top: 1.5rem;         /* mt-6 => 6 * 0.25rem = 1.5rem */
+    display: flex;              /* flex */
+    justify-content: center;    /* justify-center */
+  }
