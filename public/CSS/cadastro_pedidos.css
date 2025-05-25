@@ -1,213 +1,120 @@
 body {
-    /*Autoexplicativo*/
-    background-color: #f5f5f5;
-    /*Autoexplicativo*/
-    font-family: 'Inter', sans-serif;
-        /*Melhorar o alinhamento/centralização */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 40px;
-  }
-  
-  
-  .sair {
-    /*Auto-explicativo*/
-    position: absolute;
-    top: 20px;
-    right: 20px;
-     /*Espaçamento do botão?*/
-    padding: 6px 12px;
-    font-size: 12px;
-    background-color: rgb(161, 161, 161);
-    border: 1px solid black;
-     /*aRRedondar os botões*/
-    border-radius: 5px;
-  }
-  
-  form.div1 {
-    background-color: rgb(236, 236, 236);
-    width: 90%;
-    max-width: 500px; /* era 360px */
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  img {
-    width: 100px;
-    margin-bottom: 30px;
-  }
-  
-  
-  .div2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  
-  .fechar {
-    padding: 6px 12px;
-    font-size: 12px;
-    background-color: rgb(161, 161, 161);
-    border: 1px solid black;
-    border-radius: 5px;
-  }
-    /*Tirar margens, deixar mais baixinho*/
-  h1, h2, h3, h6 {
-    font-weight: normal;
-    margin: 5px 0;
-  }
-  
-  
-  input, select {
-      /*Os botãozin*/
-    width: 100%;
-    padding: 5px;
-    margin: 5px 0;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-      /*Tamanho do campo do preenchimento não aumenta*/
-    box-sizing: border-box;
-  }
-  
-  
-  button {
-    /*Os boãozin de aceitar e ver mais do marmitas*/
-    padding: 8px 15px;
-    font-size: 14px;
-    margin-top: 10px;
-    border: none;
-    background-color: rgb(161, 161, 161);
-    color: black;
-    border-radius: 8px;
-  }
-  
-  
-  .caixa {
-      /*Para as divs mães*/
-    background-color: rgb(236, 236, 236);
-    padding: 10px;
-    margin: 10px auto;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-  }
-  
-  
-  .tell_data {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: nowwrap;
-  }
-  
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f8b439;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
-  .div9caixa {
-    background-color: rgb(236, 236, 236);
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-    
-  }
-  
-  .div10 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    /*aLINHAR EM TELAS MENORES*/
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
-  
-  .div11 select[name="comida"] {
-    flex: 2;
-    min-width: 350px;
-  }
-  .div11 {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  
-  /*Para os botaozin de quantia e tamanho*/
-  .select-pequeno {
-    width: 50px;
-    border-radius: 0;
-  
-  
-  }
-  
-  .botao-aceitar {
-    width: 100%;
-    background-color: #ccc;
-    color: black;
-    margin-top: 15px;
-  }
-  
-  .marmitas-vendidas {
-    background-color: #e0e0e0;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    width: 90%;
-    max-width: 360px;
-    text-align: center;
-  }
+.container {
+  background-color: #fff;
+  padding: 10px 20px;  /* reduzido */
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 50%;          /* mais largo */
+  max-width: 600px;
+  height: auto;
+  overflow: visible;
+}
 
-  .adicionar-prato-toggle {
-    display: block;
-    margin-top: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    color: black;
-  }
-  
-  .adicionar-prato-toggle input {
-    display: none;
-  }
-  
-  /* Ocultar os blocos inicialmente */
-  #prato-2,
-  #prato-3 {
-    display: none;
-  }
-  
-  /* Mostrar bloco 2 se checkbox 1 estiver marcado */
-  #adicionar-prato-toggle input#mostrar-prato-2:checked ~ #prato-2 {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  /* Mostrar bloco 3 se checkbox 2 estiver marcado */
-  #adicionar-prato-toggle input#mostrar-prato-3:checked ~ #prato-3 {
-    display: flex;
-    flex-wrap: wrap;
-  }
-   
-   /*Se adaptar a telas a*/
-  @media (max-width: 400px) {
-    .tell_data {
-      flex-direction: column;
-    }
-  
-  }
 
-  .div5{
+h1, h2, h3 {
+  margin: 5px 0;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+
+input, select {
+  width: 100%;
+  padding: 4px;
+  margin-top: 3px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.itens {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.itens select {
+  flex: 1;
+}
+
+.botao {
+  background: #f8b439;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 20px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.botao:hover {
+  background: #e09f32;
+}
+
+.aceitar {
+  margin-top: 10px;
+}
+
+.resumo {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.resumo .linha,
+.entrega .linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.total {
+  justify-content: flex-end;
+  font-weight: bold;
+}
+
+.entrega {
   display: none;
-  } 
-  
+  margin-top: 15px;
+  background: #ffe5b4;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.cliente {
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.remover-cliente {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}

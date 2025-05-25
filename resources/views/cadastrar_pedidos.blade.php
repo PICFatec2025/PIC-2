@@ -1,150 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Pedido</title>
-  <link rel="stylesheet" href="{{ asset('css\cadastro_pedidos.css') }}">
- 
-
-
+  
+     <link rel="stylesheet" href="{{ asset('css\cadastro_pedidos.css') }}">
 </head>
 <body>
+  <div class="container">
+    <h1>Pedido</h1>
 
+    <div id="clientes-container">
+      <div class="cliente">
+        <h2>Cliente</h2>
+        <label>Nome</label>
+        <input type="text" placeholder="Digite o nome" />
 
-  <img src="https://img.freepik.com/vetores-premium/conceito-de-design-de-logotipo-de-garfo-e-colher_761413-8075.jpg?semt=ais_hybrid"
-        width="100" height="100">
-    
-    
-  <button class="sair">Sair</button>
-    
-    
-                      <!--Essa aqui é a primeira div, a que vai cobrir tudo-->
-  <form class="div1">
+        <label>Itens</label>
+        <div class="itens">
+          <select><option>Comida 1</option><option>Comida 2</option></select>
+          <select><option>P</option><option>M</option><option>G</option></select>
+          <select><option>1</option><option>2</option><option>3</option></select>
+        </div>
 
-
-        <!-- Essa é a div 2, onde fica pedido e fechae (verde)-->
-    <div class="div2">
-      <h1>Pedido</h1>
-      <button class="fechar">Fechar</button>
-    </div>
-
-
-    <!-- Div3 Onde fica nome, endereço, data, telefone e data/hora; (amarela) -->
-    <div class="div3">
-          <!-- Div4 A div para nome (     Laranja amarronzado)-->
-      <div class="caixa div4">
-          <h3>Nome</h3>
-          <input type="text">
+        <label>Obs</label>
+        <input type="text" placeholder="Observações" />
       </div>
+    </div>
 
+    <button class="botao" onclick="adicionarPessoa()">+ cliente</button>
 
-    <hr>
-    
-    <button class="botao">Entrega</button>
-    
-
-  
-
-    
-                    
-    <!-- Div5: Essa é a div pra endereço, telefone, data e hora (Vermelho) -->
-    <div class="caixa div5">
-
-
-          <!-- Div6 Pra endereço (  Azul ciano)-->
-      <div class="caixa div6">
-        <h3>Endereço</h3>
-        <input type="text">
+    <div class="resumo">
+      <h3>Resumo</h3>
+      <div class="linha">
+        <span>Nome</span><span>Pedido</span><span>00,00 R$</span>
       </div>
-
-
-          <div class="tell_data">
-
-              <!-- Div7 a do telefone ( Roxo) -->
-              <div class="caixa div7">
-              <h3>Telefone</h3>
-              <input type="tell">
-              </div>
-
-                <!-- Div8 a de data (    Rosa)-->
-                <div class="caixa div8">
-                <h3>Data/Hora</h3>
-                <input type="datetime-local">
-                </div>
-
-
+      <div class="total"><strong>Total:</strong> <span>00,00 R$</span></div>
     </div>
+
+    <button class="botao" id="btnEntrega">Entrega <img src="" alt=""> </button>
+
+    <div class="entrega" id="infoEntrega">
+      <input type="text" placeholder="Endereço" />
+      <div class="linha">
+        <input type="tel" placeholder="Telefone" />
+        <input type="datetime-local" />
+      </div>
     </div>
-</>
 
-<!-- Adicionar prato -->
-<label class="adicionar-prato-toggle">
-<input type="checkbox" id="mostrar-prato-2">
-+ Adicionar mais um prato
-</label>
-
-<!-- Segundo prato -->
-<div class="div10 mostrar-prato" id="prato-2">
-<div class="div11">
-<select name="comida">
-<option value="1">Strogonoff, arroz, feijão</option>
-<option value="2">Macarrão, salada</option>
-</select>
-<select class="select-pequeno">
-<option>P</option>
-<option>M</option>
-<option>G</option>
-</select>
-<select class="select-pequeno">
-<option>1</option><option>2</option><option>3</option>
-<option>4</option><option>5</option><option>6</option>
-<option>7</option><option>8</option><option>9</option><option>10</option>
-</select>
-</div>
-</div>
-
-<!-- Terceiro prato -->
-<label class="adicionar-prato-toggle">
-<input type="checkbox" id="mostrar-prato-3">
-+ Adicionar mais um prato
-</label>
-
-<div class="div10 mostrar-prato" id="prato-3">
-<div class="div11">
-<select name="comida">
-<option value="1">Strogonoff, arroz, feijão</option>
-<option value="2">Macarrão, salada</option>
-</select>
-<select class="select-pequeno">
-<option>P</option>
-<option>M</option>
-<option>G</option>
-</select>
-<select class="select-pequeno">
-<option>1</option><option>2</option><option>3</option>
-<option>4</option><option>5</option><option>6</option>
-<option>7</option><option>8</option><option>9</option><option>10</option>
-</select>
-</div>
-</div>
-
-<hr>
-<h6>+</h6>
-<h6>Total R$</h6>
-
-<button class="botao-aceitar" type="submit">Aceitar</button>
-                                                        </div>
-  </form>
-    
-
+    <button class="botao aceitar">Aceitar</button>
+  </div>
 
   <script>
+    function adicionarPessoa() {
+      const container = document.getElementById("clientes-container");
+      const pessoaOriginal = container.querySelector(".cliente");
+      const novaPessoa = pessoaOriginal.cloneNode(true);
+      const total = container.querySelectorAll(".cliente").length + 1;
 
-    document.querySelector('.botao').addEventListener('click', function() {
-      var div = document.querySelector('.div5');
-      div.style.display='block';
+      novaPessoa.querySelector("h2").textContent = `cliente ${total}`;
+      novaPessoa.querySelectorAll("input").forEach(i => i.value = "");
+      novaPessoa.querySelectorAll("select").forEach(s => s.selectedIndex = 0);
+
+      const remover = document.createElement("button");
+      remover.className = "remover-cliente";
+      remover.textContent = "×";
+      remover.onclick = () => novaPessoa.remove();
+      novaPessoa.style.position = "relative";
+      novaPessoa.appendChild(remover);
+
+      container.appendChild(novaPessoa);
+    }
+
+    document.getElementById("btnEntrega").addEventListener("click", () => {
+      const entrega = document.getElementById("infoEntrega");
+      entrega.style.display = entrega.style.display === "block" ? "none" : "block";
     });
-
   </script>
-    </body>
-    </html>
+</body>
+</html>
+
+
