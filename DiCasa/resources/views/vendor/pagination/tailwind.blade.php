@@ -40,7 +40,7 @@
             </div>
 
             <div>
-                <span class="relative z-0 inline-flex rtl:flex-row-reverse shadow-sm rounded-md mx-8 bg-gradient-to-l from-[#FFD580] to-[#FFB347]">
+                <span class="relative z-0 inline-flex rtl:flex-row-reverse shadow-sm rounded-md mx-8 bg-gradient-to-l from-[#FFCE71] to-[#FFD891]">
                     {{-- Previous Page Link --}}
                     @if ($paginator->onFirstPage())
                         <span aria-disabled="true" aria-label="{{ __('pagination.previous') }}">

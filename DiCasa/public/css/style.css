@@ -34,7 +34,7 @@
 }
 
 body {
-    background: linear-gradient(to left, #FFD580, #FFB347);
+    background: linear-gradient(90deg,rgba(254, 183,51,1)100%,rgba(255, 204, 109, 1) 0%);
     padding: 20px;
     position: relative;
     min-height: 100px;
@@ -74,11 +74,11 @@ body {
 .vendas-mensal-botao,
 .vendas-diarias-botao,
 .buscar-por-data-enviar {
-    color: #eeeeee;
+    color: black;
     padding: 8px 16px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    background-image: linear-gradient(to left, #FFD580, #FFB347);
+    background-image: linear-gradient(90deg,rgba(254, 183,51,1)100%,rgba(255, 204, 109, 1) 0%);
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease;
     font-size: 14px;
@@ -111,7 +111,7 @@ body {
 }
 
 .tabela-topo {
-    background-image: linear-gradient(to left, #FFD580, #FFB347);
+    background-image: linear-gradient(90deg,#FFCE71 100%,#FFD891 0%);
     position: sticky; /* sticky */
     top: 0;
 }
