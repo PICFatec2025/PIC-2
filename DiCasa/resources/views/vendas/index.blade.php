@@ -4,7 +4,6 @@
 <div class="caixa-principal">
     <div class="caixa-topo">
         <h1 class="titulo-texto">Vendas</h1>
-        <button class="botao-sair">Fechar</button>
     </div>
     <!-- espaco dos botoes -->
     <div class="caixa-botao-vendas">
@@ -40,6 +39,7 @@
                 <tr class="item-venda">
                     <th class="textos-tabela">Nome</th>
                     <th class="textos-tabela">Pedido</th>
+                    <th class="textos-tabela">Hora/data</th>
                     <th class="textos-tabela">Preço</th>
                 </tr>
             </thead>
@@ -48,6 +48,7 @@
                 <tr class="item-venda">
                     <td class="textos-tabela">{{ $venda->nome }}</td>
                     <td class="textos-tabela">{{ $venda->pedido }}</td>
+                    <td class="textos-tabela">{{$venda->created_at->format('H:i d/m')}}</td>
                     <td class="textos-tabela">{{ $venda->preco_convertido() }}</td>
                 </tr>
                 @endforeach
