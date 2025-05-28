@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Di Casa</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     <div class="main">
         <div class="cabecalho">
-            <div class="logo">
-                <h1>LOGO</h1>
-            </div>
-            <div class="btnSair">
-                <button type="button">Sair</button>
-            </div>
+       
+            @include('layouts.navigation')
+
         </div>
         <div class="corpo">
             <div class="pedidos">

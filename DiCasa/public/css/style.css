@@ -14,8 +14,19 @@ body{
     flex-wrap: nowrap; /* ativando a flexibilidade dos itens dentro do body e colocando da direita para esquerda os itens-filhos*/
     font-family: Inter, sans-serif; /* ativando a fonte Inter para todo a página*/
     align-items: center;
-    background-color: #f5f5f5;
+    background: linear-gradient(90deg,rgba(255, 204, 109, 1) 0%, rgba(254, 183, 51, 1) 100%);
     min-height: 20vh;
+}
+.route-telaprincipal{
+    background: linear-gradient(90deg,rgba(255, 204, 109, 1) 0%, rgba(254, 183, 51, 1) 100%);
+}
+.route-profile{
+    background: linear-gradient(90deg,rgba(255, 204, 109, 1) 0%, rgba(254, 183, 51, 1) 100%);
+}
+.nav-link-dicasa{
+    width: 8vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 button{
     background-color: #D9D9D9;
@@ -98,13 +109,14 @@ html{
 /*MAIN*/
 
 .main{
-    width: 97vw;
-    height: 97vh;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
 }
+
 .cabecalho{
     display: flex;
     flex-direction: row;
@@ -112,8 +124,12 @@ html{
     align-items: center;
     height: 10vh;
     width: 100%;
-    margin-bottom: -1vw;
+    margin-bottom: 4vw;
 
+}
+
+.full{
+    width:100vw !important;
 }
 .cabecalho h1{
     align-self: center;
@@ -798,4 +814,3 @@ input, select {
 }
 
 }
-  
