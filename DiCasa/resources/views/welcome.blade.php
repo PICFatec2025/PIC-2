@@ -60,24 +60,11 @@
         <!-- Coluna Direita (30%) -->
         <div style="width: 40%; height: 100%; display: flex; justify-content: center; align-items: center;">
             <div style="text-align: center;">
-                @if (Route::has('login'))
-                    <nav style="display: flex; justify-content: center; align-items: center;">
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="btn-action">
-                                ACESSAR PERFIL
-                            </a>
-                        @else
-                            <a href="{{ route('login') }}" class="btn-action">
-                                ENTRAR
-                            </a>
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="btn-action">
-                                    CADASTRAR
-                                </a>
-                            @endif
-                        @endauth
-                    </nav>
-                @endif
+                <nav style="display: flex; justify-content: center; align-items: center;">
+                    <a href="{{ route('login') }}" class="btn-action" style="padding: 15px 30px; font-size: 1.3em;">
+                        ENTRAR
+                    </a>
+                </nav>
             </div>
         </div>
     </body>
