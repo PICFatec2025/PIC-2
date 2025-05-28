@@ -1,4 +1,5 @@
 <x-guest-layout>
+
     <div class="mb-4 text-sm text-black">
         {{ __('Esqueceu sua senha? Sem problemas. Basta nos informar seu endereço de e-mail e enviaremos um link para redefinição de senha que permitirá que você escolha uma nova.') }}
     </div>
@@ -12,7 +13,9 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
+
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus style="background-color: #d9d9d9;" />
+
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
