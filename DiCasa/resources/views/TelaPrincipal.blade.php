@@ -21,25 +21,57 @@
                     <button type="button">Adicionar pedido</button>
                 </div>
                 <div class="lista">
-                                <div class="item">
-                                    <p class="nome">Nome</p>
-                                    <p class="pedido">Pedido......</p>
-                                    <div class="horario">00:00</div>
-                                    <div class="btnAceitar"><button type="button">Aceitar</button></div>
-                                </div>
-                                                            <div class="item">
-                                    <p class="nome">Nome</p>
-                                    <p class="pedido">Pedido......</p>
-                                    <div class="horario">00:00</div>
-                                    <div class="btnAceitar"><button type="button">Aceitar</button></div>
-                                </div>
-                                                            <div class="item">
-                                    <p class="nome">Nome</p>
-                                    <p class="pedido">Pedido......</p>
-                                    <div class="horario">00:00</div>
-                                    <div class="btnAceitar"><button type="button">Aceitar</button></div>
-                                </div>
-                                            </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                </div>
                 <div class="btnVerMais">
                     <button type="button">Ver mais</button>
                 </div>
@@ -105,7 +137,7 @@
         </div>
         <div class="rodape">
             <div class="vendas">
-                <h4>Vendidas</h4><h4>0</h4><button type='button'>Ver mais</button>          
+                <h4>Marmitas vendidas:</h4><h4>0</h4><button type='button'>Ver mais</button>          
             </div>
         </div>
     </div>
