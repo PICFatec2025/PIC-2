@@ -80,7 +80,7 @@
                 <h3> Cardápio</h3>
                 <div class="semanal">
                     <h5>Semanal</h5>
-                    <hr>
+                    <hr class="hr">
                     <div class="listaSemanal">
                         <div class="diaSemana">
                             <h4 class="nome">Segunda-Feira</h4>
@@ -121,12 +121,12 @@
                 </div>
                 <div class="especial">
                     <h5>Especial</h5>
-                    <hr>
+                    <hr class="hr">
                     <div class="listaEspecial">
                                                            <div class="item">
                                         <h4 class="nome">Festa Junina</h4>
                                         <p>Comida boa 1, macarrão, etc.</p>
-                                        <div class="Editar"><button type="button">Editar</button></div>
+                                        <button type="button">Editar</button>
                                     </div>
                                                     </div>
                     <div class="addEspecial">
