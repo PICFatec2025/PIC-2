@@ -1,7 +1,12 @@
+:root{
+  --btn: linear-gradient(90deg,rgba(255, 204, 109, 1) 0%, rgba(254, 183, 51, 1) 99%);
+}
+
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #f8b439;
+  background: var(--btn);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,12 +22,12 @@ body {
   max-width: 600px;
   height: auto;
   overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column  ;
 }
 
-
-h1, h2, h3 {
-  margin: 5px 0;
-}
 
 label {
   font-weight: bold;
@@ -117,4 +122,106 @@ input, select {
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.linha1{
+  display: flex;
+  justify-content:flex-start ;
+  width: 100%;
+  margin-bottom: 2vh;
+}
+.linha1 input{
+  width: 85%;
+  margin-left: 2vw;
+}
+.corpo{
+  margin-top: 2vh;
+  width: 90%;
+}
+.linha2{
+  display: flex;
+  margin-bottom: 2vh;
+  width: 100%;
+  justify-content: flex-start;
+}
+.linha2 .itens{
+   margin-left: 2.5vw;
+   width: 18vw; 
+}
+.linha2 select{
+  margin-left: 1vw;
+  width: 2.5vw; 
+}
+.linha2 .quantidade{
+   width: 2vw;
+    margin-left: 1vw; 
+}
+.linha2 .adicionarPrato{
+  width: 5vw;
+  background: var(--btn);
+  border-radius: 5px;
+  border: none;
+}
+.linha3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.linha3 .pedidos {
+  width: 100%;
+}
+.linha3 .pedidos table{
+   border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+}
+
+.linha3 .pedidos th {
+      background: #f5a623; /* Laranja */
+      color: #000;
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+table{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+thead{
+  display: flex;
+  width: 100%;
+}
+thead tr{
+  width: 100%;
+  display: flex;
+}
+thead tr th{
+  width: 30%;
+}
+td{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+tbody tr{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.qtdT{
+  width: 2vw;
+  border-right: 1px solid #000;
+}
+.pratoT{
+  width: 20vw;
+  border-right: 1px solid #000;
+}
+.tamanhoT{
+  width: 4vw;
 }
