@@ -1,7 +1,10 @@
 :root{
   --btn: linear-gradient(90deg,rgba(255, 204, 109, 1) 0%, rgba(254, 183, 51, 1) 99%);
 }
-
+*{
+  padding: 0;
+  margin: 0;
+}
 
 body {
  margin: 0;
@@ -76,13 +79,6 @@ input, select {
   margin-top: 20px;
 }
 
-.resumo .linha,
-.entrega .linha {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 10px;
-}
 
 .total {
   justify-content: flex-end;
@@ -90,11 +86,44 @@ input, select {
 }
 
 .entrega {
-  display: none;
-  margin-top: 15px;
-  background: #ffe5b4;
-  padding: 10px;
-  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(-10px);
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+}
+
+.entrega.mostrar {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 100vh; /* o suficiente para caber o conteúdo */
+  margin-bottom: 2vh;
+}
+.entrega .endereco{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+.entrega .endereco label{
+  margin-right: 1vw;
+}
+
+ #dt{
+  margin-right: 0.5vw;
+  margin-left: 3.5vw;
+}
+.entrega .endereco input{
+  width: 80%;
+  height: 4vh;
+}
+.entrega .linha input{
+  height: 4vh;
+  width: 10vw;
+}
+.entrega .linha input[type="datetime-local"]{
+  width: 12vw;
 }
 
 .cliente {
@@ -117,10 +146,10 @@ input, select {
 }
 
 .linha1{
-  display: flex;
-  justify-content:flex-start ;
-  width: 100%;
-  margin-bottom: 2vh;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2vh;
 }
 .linha1 input{
   width: 85%;
@@ -138,7 +167,7 @@ input, select {
   justify-content: flex-start;
 }
 .linha2 .itens{
-   margin-left: 3vw;
+   margin-left: 3.5vw;
    width: 18vw; 
 }
 .linha2 select{
@@ -151,13 +180,14 @@ input, select {
     margin-left: 2vw; 
 }
 .linha2 .adicionarPrato{
-  width: 5vw;
-  background: var(--btn);
-  border-radius: 5px;
-  border: none;
-  margin-left: 1.5vw; 
-  cursor: pointer;
-  font-size: 0.9vw;
+    width: 5vw;
+    background: var(--btn);
+    border-radius: 5px;
+    border: none;
+    margin-left: 2.5vw;
+    cursor: pointer;
+    font-size: 0.9vw;
+
 }
 .linha3{
   display: flex;
@@ -246,7 +276,7 @@ tbody{
   width: 5vw;
 }
 .linha4{
-  width: 88%;
+  width: 90%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -298,6 +328,9 @@ hr{
   
   font-size: 1vw;
 }
+.entrega .linha label{
+  margin-right: 3vw;
+}
 .linha5 .CEntrega{
   display: flex;
   justify-content: flex-start;
@@ -317,6 +350,7 @@ hr{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1vh;
 }
 .btnEntrega hr{
   margin: 0;
