@@ -56,22 +56,6 @@
                             <td class="pratoT2">Macarrão sem molho</td>
                             <td class="tamanhoT2">Média</td>
                         </tr>
-                        <tr>
-                            <td class="qtdT2">2x</td>
-                            <td class="pratoT2">Macarrão sem molho</td>
-                            <td class="tamanhoT2">Média</td>
-                        </tr>
-                        <tr>
-                            <td class="qtdT2">2x</td>
-                            <td class="pratoT2">Macarrão sem molho</td>
-                            <td class="tamanhoT2">Média</td>
-                        </tr>
-                        <tr>
-                            <td class="qtdT2">2x</td>
-                            <td class="pratoT2">Macarrão sem molho</td>
-                            <td class="tamanhoT2">Média</td>
-                        </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -129,7 +113,7 @@
         const entrega = document.querySelector(".entrega");
         const imagem = document.querySelector(".setaImg");
 
-        entrega.classList.toggle("mostrar"); // ← Agora funciona
+        entrega.classList.toggle("mostrar"); 
 
         if (alternar == 0) {
             imagem.src = "{{ asset('imgs/setaBaixo.png') }}";
@@ -139,6 +123,20 @@
             alternar = 0;
         }
     });
+    function ajustarAlturaTbody() {
+      const tbody = document.querySelector('tbody');
+      const linhas = tbody.querySelectorAll('tr').length;
+
+      if (linhas === 1) {
+        tbody.style.height = '6vh';
+      } else if (linhas === 2) {
+        tbody.style.height = '10vh';
+      } else {
+        tbody.style.height = '18vh';
+      }
+    }
+
+    ajustarAlturaTbody();
 
 </script>
 
