@@ -30,39 +30,77 @@
         <input type="number" name="quantidade" value="1" class="quantidade">
         <button class="adicionarPrato">Adicionar</button>
       </div>
-      <div class="linha3">
-        <div class="pedidos">
-           <table>
-            <thead>
-              <tr>
-                <th class="qtdT">Qtd</th>
-                <th class="pratoT">Prato</th>
-                <th class="tamanhoT">Tamanho</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>2x</td> 
-                <td>Macarrão sem molho</td>
-                <td>Média</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      
+    </div>
+   
+    <div class="linha4">
+      <label for="obs">Observações</label>
+      <textarea name="obs" class="observacoes"></textarea>
+    </div>
+    <hr>
+    <h3>Total Pedidos</h3>
+    <div class="linha3">
+      <div class="pedidos">
+        <table>
+          <thead>
+            <tr>
+              <th class="qtdT">Qtd</th>
+              <th class="pratoT">Prato</th>
+              <th class="tamanhoT">Tamanho</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="qtdT2">2x</td> 
+              <td class="pratoT2">Macarrão sem molho</td>
+              <td class="tamanhoT2">Média</td>
+            </tr>
+            <tr>
+              <td class="qtdT2">2x</td> 
+              <td class="pratoT2">Macarrão sem molho</td>
+              <td class="tamanhoT2">Média</td>
+            </tr>
+            <tr>
+              <td class="qtdT2">2x</td> 
+              <td class="pratoT2">Macarrão sem molho</td>
+              <td class="tamanhoT2">Média</td>
+            </tr>
+            <tr>
+              <td class="qtdT2">2x</td> 
+              <td class="pratoT2">Macarrão sem molho</td>
+              <td class="tamanhoT2">Média</td>
+            </tr>
+        
+          </tbody>
+        </table>
+      </div>   
     </div>
 
-    <div class="resumo">
-      <h3>Resumo</h3>
-      <div class="linha">
-        <span>Nome</span><span>Pedido</span><span>00,00 R$</span>
+    <div class="linha5">
+      <div class="CPagamento">
+        <label for="formPag" class="formPag">Forma de pagamento</label>
+        <select name="formPag" class="itens">
+          <option value="PIX">PIX</option>
+          <option value="CartaoDebito">Cartão débito</option>
+          <option value="CartaoCredito">Cartão crédito</option>
+          <option value="Dinheiro">Dinheiro</option>
+        </select>
       </div>
-      <div class="total"><strong>Total:</strong> <span>00,00 R$</span></div>
+      <div class="CEntrega">
+        <label for="tEntrega" class="taxaEntrega">Taxa de entrega</label>
+        <select name="tEntrega" class="itens">
+          <option value="Perto">Perto</option>
+          <option value="Proximo">Próximo</option>
+          <option value="Longe">Longe</option>
+          <option value="Rural">Rural</option>
+        </select>
+      </div>
+       
     </div>
-
-    <button class="botao" id="btnEntrega">Entrega <img src="" alt=""> </button>
-
+    <div class="btnEntrega">
+        <button class="botaoEntrega">Entrega <img class="setaImg" src="{{ asset('imgs/setaBaixo.png') }}" alt=""></button>
+      <hr>
+    </div>
+    
     <div class="entrega" id="infoEntrega">
       <input type="text" placeholder="Endereço" />
       <div class="linha">
@@ -71,32 +109,21 @@
       </div>
     </div>
 
-    <button class="botao aceitar">Aceitar</button>
+    <button class="botaoAceitar">Aceitar</button>
   </div>
 
   <script>
-    function adicionarPessoa() {
-      const container = document.getElementById("clientes-container");
-      const pessoaOriginal = container.querySelector(".cliente");
-      const novaPessoa = pessoaOriginal.cloneNode(true);
-      const total = container.querySelectorAll(".cliente").length + 1;
-
-      novaPessoa.querySelector("h2").textContent = `cliente ${total}`;
-      novaPessoa.querySelectorAll("input").forEach(i => i.value = "");
-      novaPessoa.querySelectorAll("select").forEach(s => s.selectedIndex = 0);
-
-      const remover = document.createElement("button");
-      remover.className = "remover-cliente";
-      remover.textContent = "×";
-      remover.onclick = () => novaPessoa.remove();
-      novaPessoa.style.position = "relative";
-      novaPessoa.appendChild(remover);
-
-      container.appendChild(novaPessoa);
-    }
-
-    document.getElementById("btnEntrega").addEventListener("click", () => {
-      const entrega = document.getElementById("infoEntrega");
+    var alternar = 1;
+    document.querySelector(".btnEntrega").addEventListener("click", () => {
+      const entrega = document.querySelector(".entrega");
+      const imagem = document.querySelector(".setaImg");
+      if (alternar == 0){
+        imagem.src ="{{ asset('imgs/setaBaixo.png') }}";
+        alternar = 1;
+      }else{
+         imagem.src = "{{ asset('imgs/setaCima.png') }}";
+         alternar = 0;
+      }
       entrega.style.display = entrega.style.display === "block" ? "none" : "block";
     });
   </script>

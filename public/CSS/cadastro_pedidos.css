@@ -4,42 +4,35 @@
 
 
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--btn);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+ margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--btn);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    align-content: flex-start;
 }
 
 .container {
-  background-color: #fff;
-  padding: 10px 20px;  /* reduzido */
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 50%;          /* mais largo */
-  max-width: 600px;
-  height: auto;
-  overflow: visible;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column  ;
-}
-
-
-label {
-  font-weight: bold;
-  margin-top: 10px;
-  display: block;
+ background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    max-width: 600px;
+    height: auto;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3vh;
 }
 
 
 input, select {
   width: 100%;
-  padding: 4px;
-  margin-top: 3px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
@@ -49,7 +42,6 @@ input, select {
 .itens {
   display: flex;
   gap: 5px;
-  margin-top: 5px;
 }
 
 .itens select {
@@ -133,6 +125,7 @@ input, select {
 .linha1 input{
   width: 85%;
   margin-left: 2vw;
+  height: 4vh;
 }
 .corpo{
   margin-top: 2vh;
@@ -145,22 +138,26 @@ input, select {
   justify-content: flex-start;
 }
 .linha2 .itens{
-   margin-left: 2.5vw;
+   margin-left: 3vw;
    width: 18vw; 
 }
 .linha2 select{
-  margin-left: 1vw;
-  width: 2.5vw; 
+  margin-left: 2vw;
+  width: 3vw; 
+   height: 4vh;
 }
 .linha2 .quantidade{
-   width: 2vw;
-    margin-left: 1vw; 
+   width: 3vw;
+    margin-left: 2vw; 
 }
 .linha2 .adicionarPrato{
   width: 5vw;
   background: var(--btn);
   border-radius: 5px;
   border: none;
+  margin-left: 1.5vw; 
+  cursor: pointer;
+  font-size: 0.9vw;
 }
 .linha3{
   display: flex;
@@ -169,7 +166,7 @@ input, select {
   width: 100%;
 }
 .linha3 .pedidos {
-  width: 100%;
+  width: 90%;
 }
 .linha3 .pedidos table{
    border-collapse: separate;
@@ -183,11 +180,13 @@ input, select {
 .linha3 .pedidos th {
       background: #f5a623; /* Laranja */
       color: #000;
-      padding: 12px;
+      padding: 1vh 12px;
       text-align: center;
       font-weight: bold;
     }
-
+.linha4  label{
+  margin: 0;
+}
 table{
   width: 100%;
   display: flex;
@@ -196,13 +195,18 @@ table{
 thead{
   display: flex;
   width: 100%;
+
 }
 thead tr{
   width: 100%;
   display: flex;
+  background: #f5a623;
+ 
 }
 thead tr th{
   width: 30%;
+     padding: 1vh ;
+  
 }
 td{
   display: flex;
@@ -211,17 +215,125 @@ td{
 }
 tbody tr{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  border-bottom: solid black 1px;
+  padding: 0.5vw;
+}
+tbody{
+ overflow-y:scroll;
+ height: 18vh;
 }
 .qtdT{
-  width: 2vw;
-  border-right: 1px solid #000;
+  width: 3vw;
 }
 .pratoT{
-  width: 20vw;
-  border-right: 1px solid #000;
+  width: 26vw;
 }
 .tamanhoT{
+  width: 6vw;
+  display: flex;
+  justify-content: flex-end;
+}
+.qtdT2{
   width: 4vw;
+
+}
+.pratoT2{
+  width: 29vw;
+}
+.tamanhoT2{
+  width: 5vw;
+}
+.linha4{
+  width: 88%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.linha4 label{
+  align-self: flex-start;
+}
+.linha4 textarea{
+  border-radius: 5px;
+  resize: none;
+  height: 7vh;
+  margin-top: 1vh;
+  width: 100%;
+  border: #ccc solid 1px;
+}
+.container h3{
+  margin: 0 0 1vh 0 ;
+}
+.container h1{
+   margin: 1vh;
+}
+hr{
+    color: #ccc;
+    width: 90%;
+    margin-top: 3vh;
+}
+.linha5{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 90%;
+  margin: 2vh 0;
+}
+.linha5 .CPagamento{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+   width: 60%;
+}
+.linha5 .CPagamento label{
+  margin-right: 1vw;
+}
+.linha5 .CPagamento select{
+  width: 9vw;
+}
+.linha5 label{
+  
+  font-size: 1vw;
+}
+.linha5 .CEntrega{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+   width: 60%;
+   margin-right: -5vw;
+}
+.linha5 .CEntrega label{
+  margin-right: 1vw;
+}
+.linha5 .CEntrega select{
+  width: 9vw;
+}
+.btnEntrega{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btnEntrega hr{
+  margin: 0;
+  width: 20vw;
+}
+.botaoEntrega{
+  border: none;
+  cursor: pointer;
+  background-color: #00000000;
+}
+.botaoAceitar{
+  margin:3vh 0 1vh 0;
+  padding: 1vh 2vw  ;
+  background: var(--btn);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1vw;
+  font-weight: 500;
 }
