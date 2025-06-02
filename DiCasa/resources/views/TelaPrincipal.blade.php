@@ -13,6 +13,7 @@
        
             @include('layouts.navigation')
 
+            
         </div>
         <div class="corpo">
             <div class="pedidos">
