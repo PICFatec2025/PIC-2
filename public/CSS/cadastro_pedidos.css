@@ -23,7 +23,6 @@ body {
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 50%;
-    max-width: 600px;
     height: auto;
     overflow: visible;
     display: flex;
@@ -93,12 +92,12 @@ input, select {
 }
 .entrega .endereco{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 2vh;
 }
 .entrega .endereco label{
-  margin-right: 1vw;
+  margin-right: 50px;
 }
 
  #dt{
@@ -155,7 +154,7 @@ input, select {
   display: flex;
   margin-bottom: 2vh;
   width: 100%;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 .linha2 .itens{
    margin-left: 3.5vw;
@@ -320,7 +319,7 @@ hr{
   font-size: 1vw;
 }
 .entrega .linha label{
-  margin-right: 3vw;
+  margin-right: 50px;
 }
 .linha5 .CEntrega{
   display: flex;
