@@ -44,24 +44,7 @@ html{
     height: 100%;
 } /* colocando o tamanho da página sempre em 100% da tela, tanto para mobile quanto para desktop, isso sem dar a possibilidade de scrollar*/
 
-/*LOGIN*/
 
-.login{
-    display: flex;
-    width: 100%;
-}
-.login .logo {
-    flex-grow: 5; /* quantidade de espaço ocupado com a página dividida em 6*/
-    display: flex; /* ativa a flexibilidade dos iten dentro dele*/
-    align-items: center; /* alinhamento vertical (dependendo do "flex-direction") para os itens-filhos*/
-    justify-content: center; /* alinhamento horizontal (dependendo do "flex-direction") para os itens-filhos*/
-    background: rgb(224, 224, 224); /* cor do fundo*/
-    height: 100vh;
-}
-
-.login .logo p {
-    margin: 0px; font-size: 10vw;
-} /* edições do texto "LOGO"*/
 
 
 .form_login {
