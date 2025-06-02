@@ -63,15 +63,6 @@ input, select {
   cursor: pointer;
   transition: background 0.3s;
 }
-
-.botao:hover {
-  background: #e09f32;
-}
-
-.aceitar {
-  margin-top: 10px;
-}
-
 .resumo {
   background: #f4f4f4;
   padding: 10px;
@@ -97,7 +88,7 @@ input, select {
   display: block;
   opacity: 1;
   transform: translateY(0);
-  max-height: 100vh; /* o suficiente para caber o conteúdo */
+  max-height: 100vh;
   margin-bottom: 2vh;
 }
 .entrega .endereco{
