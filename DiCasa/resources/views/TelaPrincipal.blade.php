@@ -19,7 +19,7 @@
             <div class="pedidos">
                 <h3>Pedidos</h3>
                 <div class="addPedido">
-                    <button type="button">Adicionar pedido</button>
+                    <button type="button" :href="{{route('cadastrarpedidos')}}">Adicionar pedido</button>
                 </div>
                 <div class="lista">
                     <div class="item">
@@ -131,7 +131,7 @@
                                     </div>
                                                     </div>
                     <div class="addEspecial">
-                        <button type="button">Adicionar</button>
+                        <button type="button" >Adicionar</button>
                     </div>
                 </div>
             </div>
