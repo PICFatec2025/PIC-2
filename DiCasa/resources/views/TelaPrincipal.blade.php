@@ -22,25 +22,57 @@
                     <button type="button">Adicionar pedido</button>
                 </div>
                 <div class="lista">
-                                <div class="item">
-                                    <p class="nome">Nome</p>
-                                    <p class="pedido">Pedido......</p>
-                                    <div class="horario">00:00</div>
-                                    <div class="btnAceitar"><button type="button">Aceitar</button></div>
-                                </div>
-                                                            <div class="item">
-                                    <p class="nome">Nome</p>
-                                    <p class="pedido">Pedido......</p>
-                                    <div class="horario">00:00</div>
-                                    <div class="btnAceitar"><button type="button">Aceitar</button></div>
-                                </div>
-                                                            <div class="item">
-                                    <p class="nome">Nome</p>
-                                    <p class="pedido">Pedido......</p>
-                                    <div class="horario">00:00</div>
-                                    <div class="btnAceitar"><button type="button">Aceitar</button></div>
-                                </div>
-                                            </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                    <div class="item">
+                        <p class="nome">Nome</p>
+                        <p class="pedido">Pedido......</p>
+                        <div class="horario">00:00</div>
+                    </div>
+                </div>
                 <div class="btnVerMais">
                     <button type="button">Ver mais</button>
                 </div>
@@ -49,7 +81,7 @@
                 <h3> Cardápio</h3>
                 <div class="semanal">
                     <h5>Semanal</h5>
-                    <hr>
+                    <hr class="hr">
                     <div class="listaSemanal">
                         <div class="diaSemana">
                             <h4 class="nome">Segunda-Feira</h4>
@@ -90,12 +122,12 @@
                 </div>
                 <div class="especial">
                     <h5>Especial</h5>
-                    <hr>
+                    <hr class="hr">
                     <div class="listaEspecial">
                                                            <div class="item">
                                         <h4 class="nome">Festa Junina</h4>
                                         <p>Comida boa 1, macarrão, etc.</p>
-                                        <div class="Editar"><button type="button">Editar</button></div>
+                                        <button type="button">Editar</button>
                                     </div>
                                                     </div>
                     <div class="addEspecial">
@@ -106,7 +138,7 @@
         </div>
         <div class="rodape">
             <div class="vendas">
-                <h4>Vendidas</h4><h4>0</h4><button type='button'>Ver mais</button>          
+                <h4>Marmitas vendidas:</h4><h4>0</h4><button type='button'>Ver mais</button>          
             </div>
         </div>
     </div>
