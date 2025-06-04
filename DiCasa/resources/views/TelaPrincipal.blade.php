@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Di Casa</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
 </head>
 <body>
     <div class="main">
         <div class="cabecalho">
        
             @include('layouts.navigation')
-
-            
+      
         </div>
         <div class="corpo">
             <div class="pedidos">
                 <h3>Pedidos</h3>
                 <div class="addPedido">
-                    <button type="button" :href="{{route('cadastrarpedidos')}}">Adicionar pedido</button>
+                    <button type="button" onclick="window.location.href='{{ route('cadastrarpedidos') }}'">Adicionar pedido</button>
                 </div>
                 <div class="lista">
                     <div class="item">
@@ -74,7 +73,7 @@
                     </div>
                 </div>
                 <div class="btnVerMais">
-                    <button type="button">Ver mais</button>
+                    <button type="button" onclick="window.location.href='{{ route('consultarpedidos') }}'">Ver mais</button>
                 </div>
             </div>
             <div class="cardapio pedidos">

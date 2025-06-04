@@ -31,6 +31,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function clientes(){
+        return $this->hasMany(Cliente::class);
+    }
+    public function pratos(){
+        return $this->hasMany(Prato::class);
+    }
 
     /**
      * Get the attributes that should be cast.

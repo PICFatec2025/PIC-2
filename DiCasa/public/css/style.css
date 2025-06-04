@@ -312,7 +312,7 @@ html{
 }
 .corpo .cardapio .especial{
     width: 90%;
-    margin-top: -8vh;
+    margin-top: -7vh;
 }
 .corpo .cardapio .especial .listaEspecial{
     margin-left: 2vw;
@@ -358,6 +358,7 @@ html{
 .corpo .cardapio .especial .addEspecial button{
     padding: 0.8vh 1.5vw; 
     background: var(--btn);
+    font-size: 1vw;
 }
 
 .main .rodape{
