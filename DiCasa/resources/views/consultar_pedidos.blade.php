@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Di Casa</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body>
     <div class="main">
         <div class="cabecalho">
-       
+
             @include('layouts.navigation')
-      
+
         </div>
         <div class="corpo">
             <div class="pedidos">
                 <h3>Pedidos</h3>
                 <div class="addPedido">
-                    <button type="button" onclick="window.location.href='{{ route('cadastrarpedidos') }}'">Adicionar pedido</button>
-           
+                    <button type="button" :href="{{route('cadastrarpedidos')}}">Adicionar pedido</button>
                 </div>
                 <div class="lista">
                     <div class="item">
@@ -91,24 +92,24 @@
                         <div class="diaSemana">
                             <h4 class="nome">Terça-Feira</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
-                          <button type="button">Editar</button>
+                            <button type="button">Editar</button>
                         </div>
                         <div class="diaSemana">
                             <h4 class="nome">Quarta-Feira</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
                             <button type="button">Editar</button>
                         </div>
-                        <div  class="diaSemana">
+                        <div class="diaSemana">
                             <h4 class="nome">Quinta-Feira</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
                             <button type="button">Editar</button>
                         </div>
-                        <div  class="diaSemana">
+                        <div class="diaSemana">
                             <h4 class="nome">Sexta-Feira</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
                             <button type="button">Editar</button>
                         </div>
-                        <div  class="diaSemana">
+                        <div class="diaSemana">
                             <h4 class="nome">Sabádo</h4>
                             <p>Comida boa 1, macarrão, etc.</p>
                             <button type="button">Editar</button>
@@ -124,23 +125,25 @@
                     <h5>Especial</h5>
                     <hr class="hr">
                     <div class="listaEspecial">
-                                                           <div class="item">
-                                        <h4 class="nome">Festa Junina</h4>
-                                        <p>Comida boa 1, macarrão, etc.</p>
-                                        <button type="button">Editar</button>
-                                    </div>
-                                                    </div>
+                        <div class="item">
+                            <h4 class="nome">Festa Junina</h4>
+                            <p>Comida boa 1, macarrão, etc.</p>
+                            <button type="button">Editar</button>
+                        </div>
+                    </div>
                     <div class="addEspecial">
-                        <button type="button" >Adicionar</button>
+                        <button type="button">Adicionar</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="rodape">
             <div class="vendas">
-                <h4>Marmitas vendidas:</h4><h4>0</h4><button type='button'>Ver mais</button>          
+                <h4>Marmitas vendidas:</h4>
+                <h4>0</h4><button type='button'>Ver mais</button>
             </div>
         </div>
     </div>
 </body>
+
 </html>

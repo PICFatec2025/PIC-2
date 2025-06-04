@@ -6,9 +6,13 @@
     <title>Pedido</title>
 
     <link rel="stylesheet" href="{{ asset('css\cadastro_pedidos.css') }}">
+
 </head>
 
-<body>
+<body style="flex-direction: column;">
+<div class="cabecalho" >@include('layouts.navigation')</div>
+<div class="main" >
+
     <div class="container">
         <h1>Pedido</h1>
 
@@ -56,7 +60,9 @@
                             <td class="pratoT2">Macarrão sem molho</td>
                             <td class="tamanhoT2">Média</td>
                         </tr>
+                        
                     </tbody>
+                    
                 </table>
             </div>
         </div>
@@ -83,10 +89,11 @@
 
         </div>
         <div class="btnEntrega">
-            <button class="botaoEntrega" onClick="mostraEntrega()" >Entrega <img class="setaImg" src="{{ asset('imgs/setaBaixo.png') }}"alt=""></button>
-            <hr>
+            <button class="botaoEntrega" onClick="mostraEntrega()">Entrega </button>
+            <img class="setaImg" src="{{ asset('imgs/setaBaixo.png') }}" alt="">
+            
         </div>
-
+        <hr>        
         <div class="entrega">
             <div class="endereco">
                 <label for="endereco">Endereço</label>
@@ -101,44 +108,44 @@
             </div>
         </div>
         <div class="total">
-          <h3>Total: 00,00 R$</h3>
+            <h3>Total: 00,00 R$</h3>
         </div>
         <button class="botaoAceitar">Aceitar</button>
     </div>
+</div>
+    <script>
+        var alternar = 1;
 
-   <script>
-    var alternar = 1;
+        document.querySelector(".btnEntrega").addEventListener("click", () => {
+            const entrega = document.querySelector(".entrega");
+            const imagem = document.querySelector(".setaImg");
 
-   document.querySelector(".btnEntrega").addEventListener("click", () => {
-        const entrega = document.querySelector(".entrega");
-        const imagem = document.querySelector(".setaImg");
+            entrega.classList.toggle("mostrar");
 
-        entrega.classList.toggle("mostrar"); 
+            if (alternar == 0) {
+                imagem.src = "{{ asset('imgs/setaBaixo.png') }}";
+                alternar = 1;
+            } else {
+                imagem.src = "{{ asset('imgs/setaCima.png') }}";
+                alternar = 0;
+            }
+        });
+        function ajustarAlturaTbody() {
+            const tbody = document.querySelector('tbody');
+            const linhas = tbody.querySelectorAll('tr').length;
 
-        if (alternar == 0) {
-            imagem.src = "{{ asset('imgs/setaBaixo.png') }}";
-            alternar = 1;
-        } else {
-            imagem.src = "{{ asset('imgs/setaCima.png') }}";
-            alternar = 0;
+            if (linhas === 1) {
+                tbody.style.height = '6vh';
+            } else if (linhas === 2) {
+                tbody.style.height = '10vh';
+            } else {
+                tbody.style.height = '18vh';
+            }
         }
-    });
-    function ajustarAlturaTbody() {
-      const tbody = document.querySelector('tbody');
-      const linhas = tbody.querySelectorAll('tr').length;
 
-      if (linhas === 1) {
-        tbody.style.height = '6vh';
-      } else if (linhas === 2) {
-        tbody.style.height = '10vh';
-      } else {
-        tbody.style.height = '18vh';
-      }
-    }
+        ajustarAlturaTbody();
 
-    ajustarAlturaTbody();
-
-</script>
+    </script>
 
 </body>
 

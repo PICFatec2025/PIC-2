@@ -14,9 +14,18 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
     align-content: flex-start;
 }
-
+.cabecalho{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 6.5vh;
+    margin-bottom: 3vw;
+    
+}
 .container {
  background-color: #fff;
     padding: 10px 20px;
@@ -32,7 +41,9 @@ body {
     margin-top: 3vh;
 }
 
-
+input{
+  border-radius: 6px;
+}
 input, select {
   width: 100%;
   border: 1px solid #ccc;
@@ -44,10 +55,13 @@ input, select {
 .itens {
   display: flex;
   gap: 5px;
+  padding: 0 0 0 0.5vw;
+  border-radius: 6px;
 }
 
 .itens select {
   flex: 1;
+  
 }
 
 .botao {
@@ -145,6 +159,7 @@ input, select {
   width: 85%;
   margin-left: 2vw;
   height: 4vh;
+  border-radius: 6px;
 }
 .corpo{
   margin-top: 2vh;
@@ -155,6 +170,7 @@ input, select {
   margin-bottom: 2vh;
   width: 100%;
   justify-content: space-between;
+  border-radius: 6px;
 }
 .linha2 .itens{
    margin-left: 3.5vw;
@@ -164,13 +180,16 @@ input, select {
   margin-left: 2vw;
   width: 3vw; 
    height: 4vh;
+   border-radius: 6px;
 }
 .linha2 .quantidade{
    width: 3vw;
     margin-left: 2vw; 
+    padding: 0 0 0 0.5vw;
+    border-radius: 5px;
 }
 .linha2 .adicionarPrato{
-    width: 5vw;
+    width: 8vw;
     background: var(--btn);
     border-radius: 5px;
     border: none;
@@ -206,6 +225,9 @@ input, select {
     }
 .linha4  label{
   margin: 0;
+}
+.linha4{
+      margin-bottom: 1vh;
 }
 table{
   width: 100%;
@@ -250,11 +272,7 @@ tbody{
 .pratoT{
   width: 26vw;
 }
-.tamanhoT{
-  width: 6vw;
-  display: flex;
-  justify-content: flex-end;
-}
+
 .qtdT2{
   width: 4vw;
 
@@ -304,7 +322,7 @@ hr{
 .linha5 .CPagamento{
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: row;
    width: 60%;
 }
@@ -324,7 +342,7 @@ hr{
 .linha5 .CEntrega{
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: row;
    width: 60%;
    margin-right: -5vw;
@@ -337,7 +355,7 @@ hr{
 }
 .btnEntrega{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   margin-bottom: 1vh;
