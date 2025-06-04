@@ -29,11 +29,13 @@ return new class extends Migration {
             $table->id();
             $table->string('nome', 50);
             $table->foreignIdFor(User::class)->constrained();
+            $table->timestamps();
         });
         Schema::create('telefones', function (Blueprint $table) {
             $table->id();
             $table->string('telefone', 14);
             $table->foreignIdFor(Cliente::class)->constrained();
+            $table->timestamps();
         });
         Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
@@ -41,6 +43,7 @@ return new class extends Migration {
             $table->string('bairro', 50)->nullable();
             $table->string('complemento', 30)->nullable();
             $table->foreignIdFor(Cliente::class)->constrained();
+            $table->timestamps();
         });
         Schema::create('pratos', function (Blueprint $table) {
             $table->id();
@@ -50,14 +53,16 @@ return new class extends Migration {
             $table->decimal('preco_m', 5, 2);
             $table->decimal('preco_g', 5, 2);
             $table->foreignIdFor(User::class)->constrained();
+            $table->timestamps();
         });
-        Schema::create('pedidos_pratos', function (Blueprint $table) {
+        Schema::create('pedido_pratos', function (Blueprint $table) {
             $table->foreignIdFor(Prato::class)->constrained();
             $table->foreignIdFor(Pedido::class)->constrained();
             $table->enum('tamanho', ['P', 'M', 'G']);
             $table->decimal('preco', 6, 2);
             $table->integer('quantidade');
             $table->primary(['prato_id', 'pedido_id', 'tamanho']);
+            $table->timestamps();
         });
     }
 

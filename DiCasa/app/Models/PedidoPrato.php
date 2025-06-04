@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PedidoPrato extends Model
-{
+{   
+    use HasFactory;
     protected $fillable = [
         'prato_id',
         'pedido_id',
