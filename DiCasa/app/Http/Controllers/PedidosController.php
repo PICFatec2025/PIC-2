@@ -12,6 +12,10 @@ class PedidosController extends Controller
         $pedidos = Pedido::orderBy('created_at', 'desc')->get();
         return view('consultar_pedidos', compact('pedidos'));
     }
+    public function consultarVendas(){
+        //$vendas = Pedido::orderBy('created_at', 'desc')->where('foi_entregue',1)->get();
+        return view('consultar_vendas');
+    }
 
     public function destroy($id)
     {
