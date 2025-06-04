@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PedidosController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', action: function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -22,10 +23,14 @@ Route::get('/ConsultarPedidos', function () {
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/ConsultarPedidos', [PedidosController::class, 'index'])->name('consultarpedidos');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
- 
+    
+    
+    Route::delete('/pedidos/{id}', [PedidosController::class, 'destroy'])->name('pedidos.destroy');
+    Route::patch('/pedidos/{id}/status', [PedidosController::class, 'updateStatus'])->name('pedidos.updateStatus');
 });
 
 require __DIR__.'/auth.php';
