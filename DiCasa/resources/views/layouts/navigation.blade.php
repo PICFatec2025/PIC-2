@@ -4,13 +4,6 @@
         <div class="flex justify-between h-16">
             <div class="flex">
 
-                <!-- Logo EDITAAAAAAAAAAAAAAAAR 
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
-                -->
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -36,20 +29,26 @@
                     </x-slot>
 
                     <x-slot name="content">
+
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Perfil') }}
+                            {{ __('Meu Perfil') }}
                         </x-dropdown-link>
 
-                        <!-- Authentication -->
+                        @can('acesso-adm')
+                        <x-dropdown-link :href="route('register')">
+                            {{ __('Registrar Usuário') }}
+                        </x-dropdown-link>
+                        @endcan
+
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Sair') }}
                             </x-dropdown-link>
                         </form>
+                        
                     </x-slot>
                 </x-dropdown>
             </div>

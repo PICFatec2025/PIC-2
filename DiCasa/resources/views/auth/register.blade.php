@@ -2,6 +2,16 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+        @if(session('success'))
+        <div x-data="{ show: true }" 
+            x-show="show"
+            x-transition
+            x-init="setTimeout(() => show = false, 3000)"
+            class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+            {{ session('success') }}
+        </div>
+        @endif
+
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Nome')" />
@@ -29,7 +39,7 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Confirm Password -->
+
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirmar senha')" />
 
@@ -41,15 +51,11 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Já possui cadastro?') }}
-            </a>
-
 
             <x-primary-button class="ms-4">
                 {{ __('Cadastrar') }}
             </x-primary-button>
+
         </div>
     </form>
 </x-guest-layout>
