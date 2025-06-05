@@ -18,7 +18,7 @@ class PratoFactory extends Factory
     public function definition(): array
     {
         return [
-            "nome_prato"=> $this->faker->realTextBetween(1,48),
+            "nome_prato"=> $this->faker->randomElement(['frango assado','linguiça','feijoada', 'carne de panela']),
             "descricao"=> $this->faker->realTextBetween(1,200),
             "preco_p"=> $this->faker->randomFloat(2,10,100),
             "preco_m"=> $this->faker->randomFloat(2,10,100),

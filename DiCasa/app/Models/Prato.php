@@ -19,4 +19,16 @@ class Prato extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+       function preco_convertido_p(): string
+    {
+        return "R$: " . number_format($this->preco_p, 2, ",",".");
+    }
+         function preco_convertido_m(): string
+    {
+        return "R$: " . number_format($this->preco_m, 2, ",",".");
+    }
+         function preco_convertido_g(): string
+    {
+        return "R$: " . number_format($this->preco_g, 2, ",",".");
+    }
 }

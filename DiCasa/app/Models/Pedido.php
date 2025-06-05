@@ -20,5 +20,12 @@ class Pedido extends Model
     public function cliente(){
         return $this->belongsTo(Cliente::class);
     }
+    public function pedidoPrato(){
+        return $this->hasMany(PedidoPrato::class);
+    }
+       function preco_convertido(): string
+    {
+        return "R$: " . number_format($this->total_preco, 2, ",",".");
+    }
 }
 

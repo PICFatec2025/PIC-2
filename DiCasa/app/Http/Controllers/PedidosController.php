@@ -13,8 +13,11 @@ class PedidosController extends Controller
         return view('consultar_pedidos', compact('pedidos'));
     }
     public function consultarVendas(){
-        $vendas = Pedido::orderBy('created_at', 'desc')->where('foi_entregue',1)->get();
-        return view('consultar_vendas');
+        $vendas = Pedido::with('pedidoPrato.prato')
+        ->orderBy('created_at', 'desc')
+        ->where('foi_entregue', 1)
+        ->paginate(15);
+        return view('consultar_vendas',compact('vendas'));
     }
 
     public function destroy($id)
