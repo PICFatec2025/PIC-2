@@ -19,6 +19,9 @@ class Prato extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+     public function pedidoPrato(){
+        return $this->hasMany(PedidoPrato::class);
+    }
        function preco_convertido_p(): string
     {
         return "R$: " . number_format($this->preco_p, 2, ",",".");
