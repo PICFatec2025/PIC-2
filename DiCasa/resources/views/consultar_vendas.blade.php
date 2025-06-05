@@ -4,6 +4,8 @@
     <div class="caixa-principal">
         <div class="caixa-topo">
             <h1 class="titulo-texto">Vendas</h1>
+            {{-- botao de fechar volta para a tela anterior --}}
+            <button class="botao-fechar" onclick="window.location.href='{{ route('telaprincipal') }}'">sair</button>
         </div>
         <!-- espaco dos botoes -->
         <div class="caixa-botao-vendas">
@@ -38,8 +40,8 @@
                 <thead class="tabela-topo">
                     <tr class="item-venda">
                         <th class="textos-tabela">Nome</th>
-                        <th class="textos-tabela">Pedido</th>
-                        <th class="textos-tabela">Hora/data</th>
+                        <th class="texto-tabela-pedido">Pedido</th>
+                        <th class="textos-tabela">Data/Hora</th>
                         <th class="textos-tabela">Preço</th>
                     </tr>
                 </thead>
@@ -47,8 +49,9 @@
                     @foreach($vendas as $venda)
                         <tr class="item-venda">
                             <td class="textos-tabela">{{$venda->cliente->nome}}</td>
-                            <td class="textos-tabela">{{ $venda->pedidoPrato->pluck('prato.nome_prato')->filter()->join(', ') ?? 'sem prato' }}</td>
-                            <td class="textos-tabela">{{$venda->created_at}}</td>
+                            {{-- busca todas os pratos daquele pedido, coleta os nomes dos pratos e faz a juncao --}}
+                            <td class="textos-tabela texto-tabela-pedido">{{ $venda->pedidoPrato->pluck('prato.nome_prato')->filter()->join(' - ') ?? 'sem prato' }}</td>
+                            <td class="textos-tabela">{{$venda->created_at->format('d/m H:i')}}</td>
                             <td class="textos-tabela">{{$venda->preco_convertido()}}</td>
                         </tr>
                         @endforeach

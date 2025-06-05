@@ -103,7 +103,21 @@ body {
     border-bottom: 1px solid #eee;
 }
 
-.textos-tabela {
+.textos-tabela{
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: left;
+}
+/* ajustes para o campo do pedido não ficar enorme */
+.texto-tabela-pedido{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;  /* limita o texto em 2 linhas */
+    -webkit-box-orient: vertical; 
+    overflow: hidden; /* o texto eh escondido*/
+    text-overflow: ellipsis; /* o texto eh escondido com ...*/
+    max-width: 300px; 
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 8px;
@@ -115,4 +129,15 @@ body {
     margin-top: 1.5rem; /* mt-6 => 6 * 0.25rem = 1.5rem */
     display: flex; /* flex */
     justify-content: center; /* justify-center */
+}
+.botao-fechar {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
 }

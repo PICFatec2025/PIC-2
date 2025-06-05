@@ -17,31 +17,33 @@ class PedidosController extends Controller
     
 public function consultarVendas(Request $request)
 {
+    // Buscar o Pedido que ja foi entregue e virou venda
+    //with para facilitat a busca dos pratos
     $query = Pedido::with('pedidoPrato.prato')
         ->where('foi_entregue', 1);
-
+    //a partir da url da pagina
     if ($request->vendas === 'mensal') {
-        // Vendas do mês atual
+        // faz a busca de vendas mensal
         $query->whereMonth('created_at', now()->month)
               ->whereYear('created_at', now()->year);
 
     } elseif ($request->vendas === 'diarias') {
-        // Vendas do dia atual
+        // faz a busca das venda de hoje
         $query->whereDate('created_at', now());
 
     } elseif ($request->has(['data_inicio', 'data_fim'])) {
-        // Vendas entre datas personalizadas
+        // faz as buscas das venddas endas entre datas personalizadas
         $query->whereBetween('created_at', [
             Carbon::parse($request->data_inicio)->startOfDay(),
             Carbon::parse($request->data_fim)->endOfDay()
         ]);
     }
-
+    //junta a busca com a query e coloca o paginate
     $vendas = $query
         ->orderBy('created_at', 'desc')
         ->paginate(15)
         ->appends($request->query()); 
-
+    //retorna a tela com as venads
     return view('consultar_vendas', compact('vendas'));
 }
 

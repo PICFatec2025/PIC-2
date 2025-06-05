@@ -18,7 +18,7 @@
                                 {{ __('Inicio') }}
                             </x-nav-link>
                 
-                            <x-nav-link href="{{ route('telaprincipal') }}" :active="request()->routeIs('telaprincipal')">
+                            <x-nav-link href="{{ route('consultarvendas') }}" :active="request()->routeIs('consultarvendas')">
                                 {{ __('Vendas') }}
                             </x-nav-link>
 

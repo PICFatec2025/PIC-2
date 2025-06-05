@@ -137,7 +137,7 @@
         </div>
         <div class="rodape">
             <div class="vendas">
-                <h4>Marmitas vendidas:</h4><h4>0</h4><button type='button'>Ver mais</button>          
+                <h4>Marmitas vendidas:</h4><h4>0</h4><button type='button' onclick="window.location.href='{{ route('consultarvendas') }}'">Ver mais</button>          
             </div>
         </div>
     </div>
