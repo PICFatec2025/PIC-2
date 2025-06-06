@@ -23,8 +23,4 @@ class PedidoPrato extends Model
         return $this->belongsTo(Pedido::class);
     }
 
-   function preco_convertido(): string
-    {
-        return "R$: " . number_format($this->preco, 2, ",",".");
-    }
 }

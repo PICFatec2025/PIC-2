@@ -65,7 +65,7 @@
     <div style="width: 40%; height: 100%; display: flex; justify-content: center; align-items: center;">
         <div style="text-align: center;">
             <nav style="display: flex; justify-content: center; align-items: center;">
-                <a href="{{ route('login') }}" class="btn-action" style="padding: 15px 30px; font-size: 1.3em;">
+                <a href="{{ route('telaprincipal') }}" class="btn-action" style="padding: 15px 30px; font-size: 1.3em;">
                     ENTRAR
                 </a>
             </nav>

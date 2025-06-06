@@ -5,9 +5,19 @@
     /*font-family: 'Inter',sans-serif;*/
 }
 
+.barra_navegador{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 6.5vh;
+    width: 100%;
+    margin-bottom: 3vw;
+
+}
+
 body {
     background: linear-gradient(90deg,rgba(254, 183,51,1)100%,rgba(255, 204, 109, 1) 0%);
-    padding: 20px;
     position: relative;
     min-height: 100px;
 }

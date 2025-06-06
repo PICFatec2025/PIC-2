@@ -23,9 +23,5 @@ class Pedido extends Model
     public function pedidoPrato(){
         return $this->hasMany(PedidoPrato::class);
     }
-       function preco_convertido(): string
-    {
-        return "R$: " . number_format($this->total_preco, 2, ",",".");
-    }
 }
 

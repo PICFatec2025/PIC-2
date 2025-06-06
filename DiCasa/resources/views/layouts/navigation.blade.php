@@ -2,7 +2,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <nav x-data="{ open: false }" class="bg-white text-black ">
         <!-- Primary Navigation Menu -->
-        <div class=" mx-auto px-4 sm:px-6 lg:px-8 full" style="width:98.8vw; padding:0;">
+        {{-- fiz uma alteracao na margem, alterei o width no style de 98vw para 100vw, para que ele ocupe a tela toda --}}
+        <div class=" mx-auto px-4 sm:px-6 lg:px-8 full" style="width:100vw; padding:0;">
+        
             <div class="flex justify-between h-16">
                 <div class="shrink-0 flex items-center">
                         <a href="{{ route('telaprincipal') }}">

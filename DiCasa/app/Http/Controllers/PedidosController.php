@@ -17,6 +17,7 @@ class PedidosController extends Controller
     
 public function consultarVendas(Request $request)
 {
+    // dd(precoConvertidoEmReais(1234.56));
     // Buscar o Pedido que ja foi entregue e virou venda
     //with para facilitat a busca dos pratos
     $query = Pedido::with('pedidoPrato.prato')

@@ -1,6 +1,9 @@
 @extends('layouts.consultar_vendas')
 @section('titulo', 'Vendas')
 @section('conteudo')
+    <div class="barra_navegador">
+        @include('layouts.navigation')
+    </div>
     <div class="caixa-principal">
         <div class="caixa-topo">
             <h1 class="titulo-texto">Vendas</h1>
@@ -50,11 +53,13 @@
                         <tr class="item-venda">
                             <td class="textos-tabela">{{$venda->cliente->nome}}</td>
                             {{-- busca todas os pratos daquele pedido, coleta os nomes dos pratos e faz a juncao --}}
-                            <td class="textos-tabela texto-tabela-pedido">{{ $venda->pedidoPrato->pluck('prato.nome_prato')->filter()->join(' - ') ?? 'sem prato' }}</td>
+                            <td class="textos-tabela texto-tabela-pedido">
+                                {{ $venda->pedidoPrato->pluck('prato.nome_prato')->filter()->join(' - ') ?? 'sem prato' }}</td>
                             <td class="textos-tabela">{{$venda->created_at->format('d/m H:i')}}</td>
-                            <td class="textos-tabela">{{$venda->preco_convertido()}}</td>
+                            {{-- a funcao de conversao de preco esta no arquivo app/helpers.php --}}
+                            <td class="textos-tabela">{{ precoConvertidoEmReais($venda->total_preco) }}</td>
                         </tr>
-                        @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>

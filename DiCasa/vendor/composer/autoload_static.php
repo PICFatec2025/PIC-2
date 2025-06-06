@@ -41,6 +41,7 @@ class ComposerStaticInitd5603a3f1e490d9cee01a046cba5bc83
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
+        'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -561,6 +562,7 @@ class ComposerStaticInitd5603a3f1e490d9cee01a046cba5bc83
         'App\\Http\\Requests\\ProfileUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfileUpdateRequest.php',
         'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/Models/Cliente.php',
         'App\\Models\\Endereco' => __DIR__ . '/../..' . '/app/Models/Endereco.php',
+        'App\\Models\\Pedido' => __DIR__ . '/../..' . '/app/Models/Pedido.php',
         'App\\Models\\PedidoPrato' => __DIR__ . '/../..' . '/app/Models/PedidoPrato.php',
         'App\\Models\\Prato' => __DIR__ . '/../..' . '/app/Models/Prato.php',
         'App\\Models\\Telefone' => __DIR__ . '/../..' . '/app/Models/Telefone.php',
@@ -685,6 +687,12 @@ class ComposerStaticInitd5603a3f1e490d9cee01a046cba5bc83
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Database\\Factories\\ClienteFactory' => __DIR__ . '/../..' . '/database/factories/ClienteFactory.php',
+        'Database\\Factories\\EnderecoFactory' => __DIR__ . '/../..' . '/database/factories/EnderecoFactory.php',
+        'Database\\Factories\\PedidoFactory' => __DIR__ . '/../..' . '/database/factories/PedidoFactory.php',
+        'Database\\Factories\\PedidoPratoFactory' => __DIR__ . '/../..' . '/database/factories/PedidoPratoFactory.php',
+        'Database\\Factories\\PratoFactory' => __DIR__ . '/../..' . '/database/factories/PratoFactory.php',
+        'Database\\Factories\\TelefoneFactory' => __DIR__ . '/../..' . '/database/factories/TelefoneFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',

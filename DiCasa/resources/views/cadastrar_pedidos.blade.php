@@ -9,7 +9,6 @@
 
 </head>
 
-<body style="flex-direction: column;">
 <div class="cabecalho" >@include('layouts.navigation')</div>
 <div class="main" >
 
