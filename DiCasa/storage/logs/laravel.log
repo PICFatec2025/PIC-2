@@ -8678,3 +8678,7 @@
 #47 C:\\Users\\codeBuddy\\Desktop\\Nova pasta\\PIC-2\\DiCasa\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\codeBu...')
 #48 {main}
 "} 
+[2025-06-07 22:41:06] local.ERROR: Cannot redeclare class Database\Factories\Esta_DisponivelFactory (previously declared in D:\Murilo\PI\DiCaza\main\PIC-2\DiCasa\database\factories\EstaDisponivelFactory.php:11) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare class Database\\Factories\\Esta_DisponivelFactory (previously declared in D:\\Murilo\\PI\\DiCaza\\main\\PIC-2\\DiCasa\\database\\factories\\EstaDisponivelFactory.php:11) at D:\\Murilo\\PI\\DiCaza\\main\\PIC-2\\DiCasa\\database\\factories\\EstaDisponivelFactory.php:11)
+[stacktrace]
+#0 {main}
+"} 

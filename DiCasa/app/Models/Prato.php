@@ -22,4 +22,7 @@ class Prato extends Model
      public function pedidoPrato(){
         return $this->hasMany(PedidoPrato::class);
     }
+    public function estaDisponivel(){
+        return $this->hasOne(Esta_Disponivel::class);
+    }
 }
