@@ -1,9 +1,9 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <nav x-data="{ open: false }" class="bg-white text-black ">
+    <nav x-data="{ open: false }" class="bg-white text-black tm-barra">
         <!-- Primary Navigation Menu -->
         {{-- fiz uma alteracao na margem, alterei o width no style de 98vw para 100vw, para que ele ocupe a tela toda --}}
-        <div class=" mx-auto px-4 sm:px-6 lg:px-8 full" style="width:100vw; padding:0;">
+        <div class=" mx-auto px-4 sm:px-6 lg:px-8 " style=" padding:0;">
         
             <div class="flex justify-between h-16">
                 <div class="shrink-0 flex items-center">

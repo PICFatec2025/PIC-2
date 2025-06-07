@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PedidosController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PratoController;
+
+Route::post('/pratos', [PratoController::class, 'store'])->name('pratos.store');
 
 Route::get('/', function () {
     return view('welcome');

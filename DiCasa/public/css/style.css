@@ -1,114 +1,116 @@
 :root {
   --btn: linear-gradient(90deg,rgba(255, 204, 109, 1) 0%, rgba(254, 183, 51, 1) 100%);
   --white: #ffffff;
+  --gray-border: #9ca3af;
+  --gray-light: #878787;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-*{
+
+* {
     padding: 0;
     margin: 0;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
-body{
+
+body {
     margin: 0px;
-    min-height: 100vh; /* colocando o corpo também a 100% da tela, para mobile e descktop, sem a possibilidade de scrollar*/
-    display: flex; /* ativa a flexybilidade dos iten dentro dele*/
-    flex-direction: row; /* alinhamento em linha*/
-    flex-wrap: nowrap; /* ativando a flexibilidade dos itens dentro do body e colocando da direita para esquerda os itens-filhos*/
-    font-family: Inter, sans-serif; /* ativando a fonte Inter para todo a página*/
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-family: Inter, sans-serif;
     align-items: center;
     background: var(--btn);
     min-height: 20vh;
 }
-.route-telaprincipal{
+
+/* Novas classes para substituir o Tailwind */
+.btn-adicionar {
+    background: var(--btn);
+    color: black;
+    padding: 0.5vh 0.8vw;
+    border-radius: 3px;
+    font-size: 0.8vw;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-adicionar:hover {
+    opacity: 0.9;
+}
+
+.btn-confirmar {
+    padding: 0.5vh 1vw;
+    border-radius: 3px;
+    font-size: 0.8vw;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-confirmar:hover {
+    opacity: 0.9;
+}
+
+.input-padrao {
+    border: 1px solid var(--gray-border);
+    padding: 0.5vh 0.8vw;
+    border-radius: 3px;
+    font-size: 0.8vw;
+    outline: none;
+}
+#inputPrato-segunda, #inputPrato-terca, #inputPrato-quarta, 
+#inputPrato-quinta, #inputPrato-sexta, #inputPrato-sabado, 
+#inputPrato-domingo{
+    height: 4vh;
+    width: 32%;
+    font-size: 0.8vw;
+    margin-left: 1vw;
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+}
+#inputPrato-segunda, #inputPrato-terca, #inputPrato-quarta, 
+#inputPrato-quinta, #inputPrato-sexta, #inputPrato-sabado, 
+#inputPrato-domingo  p{
+        width: 40%;
+}
+
+.input-padrao:focus {
+    outline: none;
+}
+
+.input-padrao:focus {
+    border-color: var(--btn);
+}
+
+/* Restante do seu CSS existente permanece igual */
+.route-telaprincipal {
     background: var(--btn);
 }
-.route-profile{
+.route-profile {
     background: var(--btn);
 }
-.nav-link-dicasa{
+.nav-link-dicasa {
     width: 8vw !important;
     margin: 0 !important;
     padding: 0 !important;
 }
-button{
-    background-color: #D9D9D9;
+button {
     border-radius: 3px;
-    color:#595959;
     font-weight: 300;
     border: none;
     cursor: pointer;
 }
-html{
+html {
     height: 100%;
-
 } 
-.login{
-    display: flex;
-    width: 100%;
-}
-.login .logo {
-    flex-grow: 5; 
-    display: flex; 
-    align-items: center; /* alinhamento vertical (dependendo do "flex-direction") para os itens-filhos*/
-    justify-content: center; /* alinhamento horizontal (dependendo do "flex-direction") para os itens-filhos*/
-    background: rgb(224, 224, 224); /* cor do fundo*/
-    height: 100vh;
-}
-
-
-
-
-.form_login {
-    flex-grow: 1; /* quantidade de espaço ocupado com a página dividida em 6*/
-    display: flex; /*ativa a flexybilidade dos iten dentro dele*/
- 
-    justify-content: center; /* alinhamento horizontal (dependendo do "flex-direction") para os itens-filhos*/
-    flex-direction: column; /*itens colocados em coluna*/
-    font-size: 110%; /* tamanho da fonte*/
-} 
-
-.user, .password {
-    display: flex; /* ativa a flexybilidade dos iten dentro dele*/
-    flex-direction: column; /*itens colocados em coluna*/
-    font-size: 1vw;  /* A fonte será 1% da largura da janela */
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-.user label, .password label {
-    margin-bottom: 1%;
-}
-
-.user input, .password input {
-    background: rgb(224, 224, 224); /* cor do fundo*/
-    border: 0px;
-    padding: 0px;
-    line-height: 2.5vh; /* determina a altura do bloco*/
-    border-radius: 10px; /* chanfra as bordas*/
-    font-size: 0.8vw;  /* A fonte será 1% da largura da janela */
-    text-align: center; /* alinhamento do texto dentro do input*/
-}
-
-.button_submit {
-    display: flex;
-    justify-content: center; /* alinhamento horizontal (dependendo do "flex-direction") para os itens-filhos*/
-}
-    
-.button_submit input {
-    padding: 0.8%;
-    width: 18%;
-    font-size: 0.8vw;  /* A fonte será 1% da largura da janela */
-    background: rgb(224, 224, 224); /* cor do fundo*/
-    border-radius: 10px; /* chanfra as bordas*/
-}
 
 /*MAIN*/
-
-.main{
+.main {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -116,37 +118,42 @@ html{
     flex-direction: column;
 }
 
-.cabecalho{
+.cabecalho {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     height: 6.5vh;
     width: 100%;
-    margin-bottom: 3vw;
-
+    margin-bottom: 2vw;
+}
+.selecionadoBtn{
+    background:none !important;
+    border: solid 0.5px var(--gray-border);
+    margin-left: -0.1vw;
+    border-radius: 0 5px 5px 0 ;
 }
 
-.full{
+.full {
     width:100vw !important;
 }
-.cabecalho h1{
+.cabecalho h1 {
     align-self: center;
 }
-.cabecalho .logo{
+.cabecalho .logo {
     display: flex;
     justify-content: center;
     width: 80%;
     margin-left: 10vw;
 }
-.cabecalho .logo h1{
+.cabecalho .logo h1 {
     font-size: 4.5vw;
 }
-.cabecalho .btnSair{
+.cabecalho .btnSair {
     justify-self: flex-end;
     margin-left: -10vw;
 }
-.cabecalho .btnSair button{
+.cabecalho .btnSair button {
     color: var(--btn);
     padding: 1vh 1vw;
     cursor: pointer;
@@ -154,33 +161,32 @@ html{
     font-size: 1vw;
 }
 
-.corpo{
+.corpo {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
 }
-.corpo .pedidos{
+.corpo .pedidos {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     border: solid 0.5px #8E8E8E;
     border-radius: 29px;
     width: 45vw;
-    height: 70vh;
     background-color: #ffffff;
-    /* padding: 1vh 0 1vw 0; */
+    padding: 1vh 0 1vw 0; 
 }
-.corpo .pedidos .btnVerMais{
+.corpo .pedidos .btnVerMais {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-bottom: 1vh;
+    margin: 2vh 0;
 }
-.corpo .pedidos .btnVerMais button{
+.corpo .pedidos .btnVerMais button {
     padding: 0.4vh 1vw;
     cursor: pointer;
     font-size: 1vw;
@@ -191,8 +197,9 @@ html{
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 1vh;
 }
-.corpo .pedidos .addPedido button{
+.corpo .pedidos .addPedido button {
     padding: 0.5vh 1vw;
     border-radius: 5px;
     cursor: pointer;
@@ -200,25 +207,25 @@ html{
     background: var(--btn);
     margin-right: 2vw;
 }
-.corpo .pedidos h3{
-    font-size: 2rem;
+.corpo .pedidos h3 {
+    font-size: 1.5rem;
     font-weight: 400;
-    margin-top: 3vh;
+    margin: 2vh 0;
 }
-.corpo .pedidos .lista{
+.corpo .pedidos .lista {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: 90%;
-    height: 60%;
+    height: 50vh;
     border: 1px solid #707070;
     padding: 1vh;
     border-radius: 5px;
     background: linear-gradient(180deg,#ffffff 0%, #f5f5f5 100%);
     overflow-y: scroll;
 }
-.corpo .pedidos .lista .item{
+.corpo .pedidos .lista .item {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -229,23 +236,23 @@ html{
     margin: 0.3vh 0vw;
     background-color: #fff;
 }
-.corpo .pedidos .lista .item .pedido{
+.corpo .pedidos .lista .item .pedido {
     font-size: 0.8vw;
     width: 46%;
 }
-.corpo .pedidos .lista .item .nome{
+.corpo .pedidos .lista .item .nome {
     font-size: 1vw;
     width:20%;
     margin-left: 3vw;   
 }
-.corpo .pedidos .lista .item .horario{
+.corpo .pedidos .lista .item .horario {
     width: 18%;
     color:#7E7E7E;
     font-weight: 300;
     display: flex;
     justify-content: flex-end;
 }
-.corpo .pedidos .lista .item .btnAceitar button{
+.corpo .pedidos .lista .item .btnAceitar button {
     background-color: #D9D9D9;
     border-radius: 3px;
     color:#595959;
@@ -255,70 +262,155 @@ html{
     cursor: pointer;
     border: none;
 }
-
-.corpo .cardapio .semanal{
-    margin-top: -10vh;
+.cardapio {
+    display: flex;
+}
+.cardapio .container {
+    display: flex;
+    justify-content: center;
+  
+}
+.corpo .cardapio .semanal {
+    margin-top: -1vh;
     width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.corpo  h5{
-    font-weight: 400;
-    margin-left: 1vh;
-    color: #5F5F5F;
-    font-size: 1vw;
-
+.corpo  h5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
 }
-.corpo .cardapio h3{
-    margin-top: 0.5vh;
+.corpo .cardapio h3 {
+    margin: 2vh 0;
 }
-.corpo .cardapio .semanal .listaSemanal{
+.corpo .cardapio .semanal .listaSemanal {
     margin-left: 2vw;
     font-size: 0.8vw;
     margin-top: 1vh;
+    width: 85%;
 }
-.corpo .cardapio .semanal .listaSemanal .diaSemana{
+#edit-segunda, #edit-terca, #edit-quarta, 
+#edit-quinta, #edit-sexta, #edit-sabado, 
+#edit-domingo {
+    transition: all 0.3s ease;
+    padding: 0.5vw;
+    display: none;
+}
+
+.corpo .cardapio .semanal .listaSemanal .diaSemana {
     display: flex;
     flex-direction: row;
-    border-bottom: 0.5px solid #878787;
-    padding: 0.8vh;
+    border: 0.5px solid #878787;
     justify-content: space-around;
     align-items: center;
     margin-bottom: 0.5vh;
-    border: solid 1px rgb(143, 143, 143);
     border-radius: 7px;
     background: linear-gradient(90deg,rgba(255, 255, 255, 1) 50%, rgba(245, 245, 245, 1) 100%);
+    transition: all 1s ease;
 }
-.corpo .cardapio .semanal .listaSemanal .diaSemana .nome{
+.diaDaSemana {
+    opacity: 1;
+    height: auto;
+    transform: translateY(0);
+    transition: all 1s ease;
+    padding: 0.8vh;
+}
+.oculto {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 1s ease;
+    transform: translateY(-10px);
+}
+.tm-barra {
+    width: 100%;
+    padding: 0 1vw;
+    padding-top: 1vh;
+}
+.cadPadrao {
+    display: flex;
+}
+.corpo .cardapio .semanal .listaSemanal .diaSemana .nome {
     font-weight: 500;
     width: 6vw;
     display: flex;
     justify-content: flex-start;
+    margin: 0;
 }
-.hr{
+.listaPratos {
+    height: 4vh;
+    border: 1px gray solid;
+    width: 50%;
+    margin-left: 1vw;
+    border-radius: 5px;
+}
+#inputPrato {
+    width: 30%;
+    height: 4vh;
+    margin-left: 1.5vh;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 0.8vw;
+}
+#btnAddPrato {
+    height: 4vh;
+    border-radius: 0 5px 5px 0;
+    margin: 0;
+    border: 0.5px solid gray;
+}
+#btnOk-segunda, #btnOk-terca, #btnOk-quarta, 
+#btnOk-quinta, #btnOk-sexta, #btnOk-sabado, 
+#btnOk-domingo  {
+    display: inline-block;
+    height: 4vh;
+    margin-left: 1vw;
+    width: 2.5vw;
+}
+#edit {
+    display: flex;
+    flex-direction: column !important; 
+}
+
+   
+.container {
+    display: flex;
+    flex-direction: row;
+}
+.hr {
+    width: 100%;
     height: 0.32vh;
     background-color: #cbc5c5;
 }
-.corpo .cardapio .semanal .listaSemanal .diaSemana p{
-    margin-left: -5vh;
+.corpo .cardapio .semanal .listaSemanal .diaSemana h4 {
+    margin-bottom: 1vh;
+}
+.corpo .cardapio .semanal .listaSemanal .diaSemana p {
     font-weight: 400;
     font-size: 0.8vw;
-    width: 22vw;
+    width: 15vw;
+    padding: 1vh 1vw;
 }
-.corpo .cardapio .semanal .listaSemanal .diaSemana button{
+.corpo .cardapio .semanal .listaSemanal .diaSemana button {
     padding: 0.2vh 0.5vw;
     font-size: 0.8vw;
     margin-bottom: 0.2vh;
     background: var(--btn);
+    color: black;
 }
-.corpo .cardapio .especial{
+.corpo .cardapio .especial {
     width: 90%;
-    margin-top: -7vh;
+    margin-top: 1vh;
 }
-.corpo .cardapio .especial .listaEspecial{
+.corpo .cardapio .especial .listaEspecial {
     margin-left: 2vw;
     font-size: 0.8vw;
 }
-.corpo .cardapio .especial .listaEspecial .item{
+.corpo .cardapio .especial .listaEspecial .item {
     display: flex;
     flex-direction: row;
     border: 0.5px solid #878787;
@@ -328,47 +420,47 @@ html{
     border-radius: 5px;
     /* margin-bottom: 1vh; */
 }
-.especial hr{
-        margin-bottom: 1vh;
+.especial hr {
+    margin-bottom: 1vh;
 }
-.corpo .cardapio .especial .listaEspecial .item .nome{
+.corpo .cardapio .especial .listaEspecial .item .nome {
     font-weight: 500;
     width: 6vw;
     display: flex;
     justify-content: flex-start;
 }
-.corpo .cardapio .especial .listaEspecial .item p{
+.corpo .cardapio .especial .listaEspecial .item p {
     margin-left: -5vh;
     font-weight: 400;
     font-size: 0.8vw;
     width: 22vw;
 }
-.corpo .cardapio .especial .listaEspecial .item button{
+.corpo .cardapio .especial .listaEspecial .item button {
     padding: 0.2vh 0.5vw;
     font-size: 0.9vw;
     background: var(--btn);;
 }
-.corpo .cardapio .especial .addEspecial{
+.addEspecial {
     width: 100%;
     margin-top: 2vh;
     display: flex;
     justify-content: center;
     height: 4vh;
 }
-.corpo .cardapio .especial .addEspecial button{
+.addEspecial button {
     padding: 0.8vh 1.5vw; 
     background: var(--btn);
     font-size: 1vw;
 }
 
-.main .rodape{
+.main .rodape {
     width: 100%;
     display: flex;
     justify-content: center;
     height: 15vh;
     align-items: center;
 }
-.main .rodape .vendas{
+.main .rodape .vendas {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -380,429 +472,9 @@ html{
     font-size: 1.2vw;
     background-color: #f5f5f5;
 }
-.main .rodape .vendas button{
+.main .rodape .vendas button {
     padding: 0.3vh 1vw;
     font-size: 1vw;
     background: var(--btn);
     border-radius: 5px;
-}
-
-/*CONSULTAR VENDAS*/
-
-.fechar button{
-    background-color: #D9D9D9;
-    border-radius: 3px;
-    color:#595959;
-    font-weight: 300;
-    border: none;
-    cursor: pointer;
-}
-
-
-.titulo-texto{
-    /* text-align: center; */
-    /* margin-bottom: 30px; */
-    margin-right: 21vw;
-    font-size: 2.5vw;
-}
-.caixa-principal {
-    max-width: 1000px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0, 0, 0.1);
-    position: relative;
-    z-index: 1;
-    width: 100%;
-}
-.caixa-topo {
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    margin: 0vh 0vh 5vh;
-    align-content: center;
-    flex-wrap: wrap;
-    width: 95%;
-}
-.botao-sair {
-    /* position: absolute; */
-    right: 0;
-    color: white;
-    background: #ff4444;
-    border: none;
-    width: 80px;
-    height: 30px;
-    border-radius: 10px;
-    font-size: 1vw;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s;
-    font-weight: 500;
-}
-.caixa-inferior{
-    max-height: 400px;
-    overflow-y: auto;
-}
-.caixa-inferior::-webkit-scrollbar {
-    width: 8px;
-}
-
-.caixa-inferior::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-}
-
-.caixa-inferior::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-
-.caixa-inferior::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-.tabela-vendas{
-    width: 100%;
-    max-height: 80px;
-    border-collapse: collapse;
-}
-
-.item-venda {
-    border-bottom: 1px solid #eee;
-    font-size: 1vw;
-    text-align: center;
-}
-.item-venda .nome-venda{
-    font-size: 1.1vw;
-}
-.item-venda .pedido-venda{
-    font-size: 0.9vw;
-}
-.item-venda .valor_total{
-    font-size: 0.9vw;
-}
-.item-venda td{
-    padding: 15px 10px;
-}
-
-
-.header {
-    display: flex;
-    justify-content: center; /* Centraliza os itens */
-    position: relative; /* Para posicionar o botão absolutamente */
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    color: #333;
-    font-weight: 600;
-    text-align: center;
-    margin: 0; /* Remove margens padrão */
-    font-size: 2vw;
-}
-
-
-.titles, .orders {
-    display: contents;
-    font-size: 1vw;
-}
-
-.titles > div {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px;
-    font-weight: 600;
-    text-align: center;
-}
-
-.orders > div {
-    background-color: white;
-    padding: 12px;
-    font-size: 1vw;
-}
- 
-
-.orders > div:nth-child(2) {
-    text-align: left;
-}
-
-/* Checkboxes */
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    padding: 12px;
-}
-
-.checkbox-container input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-    accent-color: #4CAF50;
-}
-
-.orders > .checkbox-container:not(:last-child) {
-    border-right: 1px solid #eee;
-}
-
-.cancel-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
-}
-
-.modal-content {
-    position: relative;
-    z-index: 1001;
-    background-color: white;
-    margin: 15% auto;
-    padding: 25px;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.modal button {
-    margin: 15px 10px 0;
-    padding: 10px 20px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-
-.modal button:first-of-type {
-    background-color:  #3bf10d;
-    color: white;
-}
-
-.modal button:last-of-type {
-    background-color: #ff4444;
-}
-
-.modal button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-body.modal-open {
-    overflow: hidden;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-    .order-table {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .titles > div:nth-child(n+4),
-    .orders > div:nth-child(n+4) {
-        display: none;
-    }
-    
-    .modal-content {
-        margin: 30% auto;
-        padding: 15px;
-    }
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-    .vendas {
-        padding: 15px;
-    }
-    
-    .vendas h2 {
-        font-size: 1.1rem;
-    }
-    
-    .vendas .contador {
-        padding: 4px 10px;
-        font-size: 0.9rem;
-    }
-    
-    .vendas .ver-mais {
-        padding: 6px 16px;
-        font-size: 0.9rem;
-    }
-}
-
-
-/*Cadasrar Pedidos*/
-
-
-.login form.div1 {
-    background-color: rgb(236, 236, 236);
-    width: 90%;
-    max-width: 500px; /* era 360px */
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-img {
-    width: 100px;
-    margin-bottom: 30px;
-}
-
-
-.div2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-
-.fechar {
-    padding: 6px 12px;
-    font-size: 12px;
-    background-color: rgb(161, 161, 161);
-    border: 1px solid black;
-    border-radius: 5px;
-}
-/*Tirar margens, deixar mais baixinho*/
-h1, h2, h3, h6 {
-    font-weight: normal;
-    margin: 5px 0;
-}
-
-
-input, select {
-    /*Os botãozin*/
-    width: 100%;
-    padding: 5px;
-    margin: 5px 0;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-        /*Tamanho do campo do preenchimento não aumenta*/
-    box-sizing: border-box;
-}
-
-
-.btnAceitar {
-/*Os boãozin de aceitar e ver mais do marmitas*/
-    font-size: 14px;
-    border: none;
-    background-color: rgb(161, 161, 161);
-    color: black;
-    border-radius: 8px;
-}
-
-
-.caixa {
-    /*Para as divs mães*/
-    background-color: rgb(236, 236, 236);
-    padding: 10px;
-    margin: 10px auto;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-
-.tell_data {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: nowwrap;
-}
-
-.div9caixa {
-    background-color: rgb(236, 236, 236);
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-
-}
-
-.div10 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    /*aLINHAR EM TELAS MENORES*/
-    flex-wrap: wrap;
-    margin-top: 10px;
-}
-
-.div11 select[name="comida"] {
-    flex: 2;
-    min-width: 350px;
-}
-.div11 {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-/*Para os botaozin de quantia e tamanho*/
-.select-pequeno {
-    width: 50px;
-    border-radius: 0;
-}
-.cadastro_pedidos{
-    padding: 1vh 2vw;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-}
-
-.botao-aceitar {
-    width: 100%;
-    background-color: #ccc;
-    color: black;
-    margin-top: 15px;
-}
-
-.marmitas-vendidas {
-    background-color: #e0e0e0;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    width: 90%;
-    max-width: 360px;
-    text-align: center;
-}
-
-/*Se adaptar a telas a*/
-@media (max-width: 400px) {
-.tell_data {
-    flex-direction: column;
-}
-
 }
