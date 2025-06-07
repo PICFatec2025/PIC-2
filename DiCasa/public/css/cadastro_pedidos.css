@@ -11,20 +11,32 @@ body {
     font-family: 'Inter', sans-serif;
     background: var(--btn);
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
-
     align-content: flex-start;
+    flex-direction: column;
 }
-.cabecalho{
+.conteudo{
+   width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.tm-barra {
+    width: 100%;
+    padding: 0 1vw;
+    padding-top: 1vh;
+}
+.cabecalho {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     height: 6.5vh;
-    margin-bottom: 3vw;
-    
+    width: 100%;
+    margin-bottom: 2vw;
 }
 .container {
  background-color: #fff;
@@ -121,10 +133,12 @@ input, select {
 .entrega .endereco input{
   width: 80%;
   height: 4vh;
+  border-radius: 5px;
 }
 .entrega .linha input{
   height: 4vh;
   width: 10vw;
+  border-radius: 5px;
 }
 .entrega .linha input[type="datetime-local"]{
   width: 12vw;
@@ -178,7 +192,7 @@ input, select {
 }
 .linha2 select{
   margin-left: 2vw;
-  width: 3vw; 
+  width: 4vw; 
    height: 4vh;
    border-radius: 6px;
 }
@@ -309,7 +323,8 @@ tbody{
 hr{
     color: #ccc;
     width: 90%;
-    margin-top: 3vh;
+    margin: 3vh;
+    margin-bottom: 1vh !important;
 }
 .linha5{
   display: flex;

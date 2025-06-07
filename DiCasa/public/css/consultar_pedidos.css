@@ -14,7 +14,27 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+.conteudo{
+   width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.tm-barra {
+    width: 100%;
+    padding: 0 1vw;
+    padding-top: 1vh;
+}
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 6.5vh;
+    width: 100%;
+    margin-bottom: 2vw;
+}
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;

@@ -6,16 +6,20 @@
 }
 
 .barra_navegador{
-    display: flex;
+   display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     height: 6.5vh;
     width: 100%;
-    margin-bottom: 3vw;
+    margin-bottom: 2vw;
 
 }
-
+.tm-barra {
+    width: 100%;
+    padding: 0 1vw;
+    padding-top: 1vh;
+}
 body {
     background: linear-gradient(90deg,rgba(254, 183,51,1)100%,rgba(255, 204, 109, 1) 0%);
     position: relative;

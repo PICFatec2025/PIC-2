@@ -8,61 +8,68 @@
     <link rel="stylesheet" href="{{ asset('css/consultar_pedidos.css') }}">
 </head>
 <body>
-    <div class="main-box">
-        <div class="header">  
-            <h1>Pedidos</h1>
-            <button class="close" onclick="window.location.href='{{ route('telaprincipal') }}'">sair</button>
+    <div class="conteudo">
+        <div class="cabecalho">
+            @include('layouts.navigation')
         </div>
+        <div class="main-box">
+            <div class="header">  
+                <h1>Pedidos</h1>
+                <button class="close" onclick="window.location.href='{{ route('telaprincipal') }}'">sair</button>
+            </div>
 
-        <div class="order-table">
-            <div class="titles">
-                <div>Nome</div>
-                <div>Pedido</div>
-                <div>Hora</div>
-                <div>Entrega/Retirada</div>
-                <div>Produzindo</div>
-                <div>Pronto</div>
-                <div>Entregue</div>
-                <div></div>
-            </div>
-    
-            @foreach($pedidos as $pedido)
-            <div class="orders" data-id="{{ $pedido->id }}">
-                <div>{{ $pedido->nome_cliente }}</div>
-                <div>{{ $pedido->pedido }}</div>
-                <div>{{ $pedido->hora }}</div>
-                <div>{{ $pedido->tipo }}</div>
-                <div class="checkbox-container">
-                    <input type="checkbox" name="produzindo" class="produzindo-checkbox" 
-                           {{ $pedido->produzindo ? 'checked' : '' }}>
+            <div class="order-table">
+                <div class="titles">
+                    <div>Nome</div>
+                    <div>Pedido</div>
+                    <div>Hora</div>
+                    <div>Entrega/Retirada</div>
+                    <div>Produzindo</div>
+                    <div>Pronto</div>
+                    <div>Entregue</div>
+                    <div></div>
                 </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" name="pronto" class="pronto-checkbox" 
-                           {{ $pedido->pronto ? 'checked' : '' }} 
-                           {{ !$pedido->produzindo ? 'disabled' : '' }}>
+        
+                @foreach($pedidos as $pedido)
+                <div class="orders" data-id="{{ $pedido->id }}">
+                    <div>{{ $pedido->nome_cliente }}</div>
+                    <div>{{ $pedido->pedido }}</div>
+                    <div>{{ $pedido->hora }}</div>
+                    <div>{{ $pedido->tipo }}</div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" name="produzindo" class="produzindo-checkbox" 
+                            {{ $pedido->produzindo ? 'checked' : '' }}>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" name="pronto" class="pronto-checkbox" 
+                            {{ $pedido->pronto ? 'checked' : '' }} 
+                            {{ !$pedido->produzindo ? 'disabled' : '' }}>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" name="entregue" class="entregue-checkbox" 
+                            {{ $pedido->entregue ? 'checked' : '' }} 
+                            {{ !$pedido->pronto ? 'disabled' : '' }}>
+                    </div>
+                    <div class="actions">
+                        <button title="cancelar pedido" onclick="abrirModal({{ $pedido->id }})" class="cancel-btn">🗑️</button>
+                    </div>
                 </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" name="entregue" class="entregue-checkbox" 
-                           {{ $pedido->entregue ? 'checked' : '' }} 
-                           {{ !$pedido->pronto ? 'disabled' : '' }}>
-                </div>
-                <div class="actions">
-                    <button title="cancelar pedido" onclick="abrirModal({{ $pedido->id }})" class="cancel-btn">🗑️</button>
-                </div>
-            </div>
-            @endforeach
-            
-            <div id="meuModal" class="modal">
-                <div class="modal-content">
-                    <p>Deseja excluir o pedido selecionado?</p>
-                    <div class="modal-buttons">
-                        <button id="confirmarExclusao" class="confirm-btn">Sim</button>
-                        <button onclick="fecharModal()" class="cancel-btn">Não</button>
+                @endforeach
+                
+                <div id="meuModal" class="modal">
+                    <div class="modal-content">
+                        <p>Deseja excluir o pedido selecionado?</p>
+                        <div class="modal-buttons">
+                            <button id="confirmarExclusao" class="confirm-btn">Sim</button>
+                            <button onclick="fecharModal()" class="cancel-btn">Não</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    
 
     <script>
         // Controle do Modal
