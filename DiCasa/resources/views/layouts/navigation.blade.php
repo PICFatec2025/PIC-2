@@ -59,7 +59,11 @@
                                 <x-dropdown-link :href="route('profile.edit')">
                                     {{ __('Profile') }}
                                 </x-dropdown-link>
-
+                                @can('acesso-adm')
+                                <x-dropdown-link :href="route('register')">
+                                    {{ __('Registrar Usuário') }}
+                                </x-dropdown-link>
+                                @endcan
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
