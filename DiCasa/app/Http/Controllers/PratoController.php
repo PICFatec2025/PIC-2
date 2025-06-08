@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\SalvaPratoRequest;
 use App\Models\Prato;
 use Illuminate\Http\Request;
 
@@ -29,5 +30,12 @@ class PratoController extends Controller
     }
     public function criarPrato(Request $request){
         return view('cadastrar_prato');
+    }
+    public function armazenarPrato(SalvaPratoRequest $request){
+        $prato = new Prato($request->validated());
+        $prato->user_id = auth()->id();
+        $prato->save();
+        $prato->estaDisponivel()->create($request->dias);
+        return redirect()->route('telaprincipal')->with('success','Prato adicionado com sucesso');
     }
 }

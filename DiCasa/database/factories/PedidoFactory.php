@@ -22,6 +22,7 @@ class PedidoFactory extends Factory
             "taxa_entrega"=> $this->faker->randomFloat(2,0,12),
             "observacao"=> $this->faker->realTextBetween(2,400),
             "forma_pagamento"=> $this->faker->randomElement(['credito', 'debito', 'pix', 'dinheiro']),
+            "modo_retirada"=>$this->faker->randomElement(['entrega','localmente']),
             "esta_produzindo"=> $this->faker->boolean(),
             "foi_entregue"=> $this->faker->boolean(),
             "foi_produzido"=> $this->faker->boolean(),

@@ -231,8 +231,7 @@ trait HasRelationships
      * @param  string|null  $ownerKey
      * @param  string|null  $relation
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<TRelatedModel, $this>
-     */
-    public function belongsTo($related, $foreignKey = null, $ownerKey = null, $relation = null)
+     */    public function belongsTo($related, $foreignKey = null, $ownerKey = null, $relation = null)
     {
         // If no relation name was given, we will use this debug backtrace to extract
         // the calling method's name and use that as the relationship name as most

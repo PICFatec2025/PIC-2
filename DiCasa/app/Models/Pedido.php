@@ -13,6 +13,8 @@ class Pedido extends Model
             'taxa_entrega',
             'observacao',
             'forma_pagamento',
+            'modo_retirada',
+            'esta_produzindo',
             'foi_produzido',
             'foi_entregue',
             'cliente_id'
