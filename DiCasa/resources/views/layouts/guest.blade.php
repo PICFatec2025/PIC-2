@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'DiCasa') }}</title>
+        <title>DiCasa</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -27,7 +27,7 @@
             /* Botões estilizados */
             .btn-action {
                 display: inline-block;
-                background-color: rgb(255, 203, 106);
+                background-color: rgb(245, 158, 19);
                 color: white !important;
                 border: none;
                 border-radius: 7px;
@@ -46,15 +46,15 @@
             .btn-action:hover {
                 transform: translateY(-3px);
                 box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-                background-color: rgb(255, 193, 86);
+                background-color: rgb(245, 158, 19);
             }
         </style>
     </head>
-    <body style="display: flex; height: 100vh; width: 100vw; background-color: #FBAB16;">
+    <body style="display: flex; height: 100vh; width: 100vw; background-color: #F59E13;">
         <!-- Coluna Esquerda (70%) -->
         <div style="width: 60%; height: 100%; display: flex; justify-content: center; align-items: center;">
             <div style="text-align: center; padding: 20px;">
-                <img src="{{ asset('build/assets/logo.jpeg') }}" alt="LOGO DO SITE" style="max-width: 100%; max-height: 80vh; height: auto;" />
+                <img src="{{ asset('build/assets/Logo.jpg') }}" alt="LOGO DO SITE" style="max-width: 100%; max-height: 80vh; height: auto;" />
             </div>
         </div>
 
