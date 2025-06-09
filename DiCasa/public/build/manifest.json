@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-GuAwFZIc.css",
+    "file": "assets/app-BOYLOHyx.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -8,6 +8,12 @@
     "file": "assets/app-Bf4POITK.js",
     "name": "app",
     "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/filtroPratos.js": {
+    "file": "assets/filtroPratos-l0sNRNKZ.js",
+    "name": "filtroPratos",
+    "src": "resources/js/filtroPratos.js",
     "isEntry": true
   }
 }

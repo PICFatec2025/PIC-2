@@ -1,4 +1,4 @@
-    :root {
+:root {
   --btn: linear-gradient(90deg,rgba(255, 204, 109, 1) 0%, rgba(254, 183, 51, 1) 100%);
   --white: #ffffff;
   --gray-border: #9ca3af;
@@ -27,7 +27,6 @@ body {
     min-height: 20vh;
 }
 
-/* Novas classes para substituir o Tailwind */
 .btn-adicionar {
     background: var(--btn);
     color: black;
@@ -43,73 +42,10 @@ body {
     opacity: 0.9;
 }
 
-.btn-confirmar {
-    padding: 0.5vh 1vw;
-    border-radius: 3px;
-    font-size: 0.8vw;
-    border: none;
-    cursor: pointer;
-    transition: opacity 0.3s;
-}
-
-.btn-confirmar:hover {
-    opacity: 0.9;
-}
-
-.input-padrao {
-    border: 1px solid var(--gray-border);
-    padding: 0.5vh 0.8vw;
-    border-radius: 3px;
-    font-size: 0.8vw;
-    outline: none;
-}
-#inputPrato-segunda, #inputPrato-terca, #inputPrato-quarta, 
-#inputPrato-quinta, #inputPrato-sexta, #inputPrato-sabado, 
-#inputPrato-domingo{
-    height: 4vh;
-    width: 32%;
-    font-size: 0.8vw;
-    margin-left: 1vw;
-    border-radius: 5px 0 0 5px;
-    border-right: none;
-}
-#inputPrato-segunda, #inputPrato-terca, #inputPrato-quarta, 
-#inputPrato-quinta, #inputPrato-sexta, #inputPrato-sabado, 
-#inputPrato-domingo  p{
-        width: 40%;
-}
-
-.input-padrao:focus {
-    outline: none;
-}
-
-.input-padrao:focus {
-    border-color: var(--btn);
-}
-
-/* Restante do seu CSS existente permanece igual */
-.route-telaprincipal {
-    background: var(--btn);
-}
-.route-profile {
-    background: var(--btn);
-}
-.nav-link-dicasa {
-    width: 8vw !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-button {
-    border-radius: 3px;
-    font-weight: 300;
-    border: none;
-    cursor: pointer;
-}
 html {
     height: 100%;
 } 
 
-/*MAIN*/
 .main {
     width: 100vw;
     height: 100vh;
@@ -127,32 +63,27 @@ html {
     width: 100%;
     margin-bottom: 2vw;
 }
-.selecionadoBtn{
-    background:none !important;
-    border: solid 0.5px var(--gray-border);
-    margin-left: -0.1vw;
-    border-radius: 0 5px 5px 0 ;
-}
 
-.full {
-    width:100vw !important;
-}
 .cabecalho h1 {
     align-self: center;
 }
+
 .cabecalho .logo {
     display: flex;
     justify-content: center;
     width: 80%;
     margin-left: 10vw;
 }
+
 .cabecalho .logo h1 {
     font-size: 4.5vw;
 }
+
 .cabecalho .btnSair {
     justify-self: flex-end;
     margin-left: -10vw;
 }
+
 .cabecalho .btnSair button {
     color: var(--btn);
     padding: 1vh 1vw;
@@ -168,6 +99,7 @@ html {
     align-items: flex-start;
     width: 100%;
 }
+
 .corpo .pedidos {
     display: flex;
     flex-direction: column;
@@ -179,6 +111,7 @@ html {
     background-color: #ffffff;
     padding: 1vh 0 1vw 0; 
 }
+
 .corpo .pedidos .btnVerMais {
     width: 100%;
     display: flex;
@@ -186,6 +119,7 @@ html {
     justify-content: flex-end;
     margin: 2vh 0;
 }
+
 .corpo .pedidos .btnVerMais button {
     padding: 0.4vh 1vw;
     cursor: pointer;
@@ -193,12 +127,14 @@ html {
     background: var(--btn);
     margin-right: 2vw;
 }
+
 .corpo .pedidos .addPedido {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     margin-bottom: 1vh;
 }
+
 .corpo .pedidos .addPedido button {
     padding: 0.5vh 1vw;
     border-radius: 5px;
@@ -207,11 +143,13 @@ html {
     background: var(--btn);
     margin-right: 2vw;
 }
+
 .corpo .pedidos h3 {
     font-size: 1.5rem;
     font-weight: 400;
     margin: 2vh 0;
 }
+
 .corpo .pedidos .lista {
     display: flex;
     flex-direction: column;
@@ -225,6 +163,7 @@ html {
     background: linear-gradient(180deg,#ffffff 0%, #f5f5f5 100%);
     overflow-y: scroll;
 }
+
 .corpo .pedidos .lista .item {
     display: flex;
     align-items: center;
@@ -236,15 +175,18 @@ html {
     margin: 0.3vh 0vw;
     background-color: #fff;
 }
+
 .corpo .pedidos .lista .item .pedido {
     font-size: 0.8vw;
     width: 46%;
 }
+
 .corpo .pedidos .lista .item .nome {
     font-size: 1vw;
     width:20%;
     margin-left: 3vw;   
 }
+
 .corpo .pedidos .lista .item .horario {
     width: 18%;
     color:#7E7E7E;
@@ -252,24 +194,17 @@ html {
     display: flex;
     justify-content: flex-end;
 }
-.corpo .pedidos .lista .item .btnAceitar button {
-    background-color: #D9D9D9;
-    border-radius: 3px;
-    color:#595959;
-    font-weight: 300;
-    padding: 0.4vw;
-    font-size: 0.8vw;
-    cursor: pointer;
-    border: none;
-}
+
 .cardapio {
     display: flex;
 }
+
 .cardapio .container {
     display: flex;
     justify-content: center;
-  
+    height: 55vh;
 }
+
 .corpo .cardapio .semanal {
     margin-top: -1vh;
     width: 90%;
@@ -278,179 +213,98 @@ html {
     align-items: center;
 }
 
-.corpo  h5 {
+.corpo .cardapio .semanal .selecao {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-start;
+    justify-content: flex-end;
     width: 100%;
 }
+
+.corpo .cardapio .semanal .selecao select {
+    height: 4.5vh;
+    border-radius: 5px;
+    font-size: 0.9vw;
+    padding: 1vh 1vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    width: 20%;
+    margin-top: 1vh;
+}
+
 .corpo .cardapio h3 {
     margin: 2vh 0;
 }
+
 .corpo .cardapio .semanal .listaSemanal {
-    margin-left: 2vw;
     font-size: 0.8vw;
     margin-top: 1vh;
-    width: 85%;
-}
-#edit-segunda, #edit-terca, #edit-quarta, 
-#edit-quinta, #edit-sexta, #edit-sabado, 
-#edit-domingo {
-    transition: all 0.3s ease;
-    padding: 0.5vw;
-    display: none;
+    width: 90%;
+    border: 1px solid #918a8a;
+    height: 70%;
+    padding: 1vh 1vw;
+    overflow-y: scroll;
+    border-radius: 5px;
 }
 
 .corpo .cardapio .semanal .listaSemanal .diaSemana {
     display: flex;
     flex-direction: row;
     border: 0.5px solid #878787;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 0.5vh;
     border-radius: 7px;
     background: linear-gradient(90deg,rgba(255, 255, 255, 1) 50%, rgba(245, 245, 245, 1) 100%);
     transition: all 1s ease;
-}
-.diaDaSemana {
-    opacity: 1;
-    height: auto;
-    transform: translateY(0);
-    transition: all 1s ease;
-    padding: 0.8vh;
-}
-.oculto {
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
-    transition: all 1s ease;
-    transform: translateY(-10px);
+    height: 5vh;
 }
 .tm-barra {
     width: 100%;
     padding: 0 1vw;
     padding-top: 1vh;
 }
-.cadPadrao {
-    display: flex;
-}
 .corpo .cardapio .semanal .listaSemanal .diaSemana .nome {
-    font-weight: 500;
+    display: flex;
+    text-align: start;
+    overflow-x: hidden;
     width: 6vw;
-    display: flex;
-    justify-content: flex-start;
-    margin: 0;
+    flex-wrap: nowrap;
+    margin-left: 0.5vw;
 }
-.listaPratos {
-    height: 4vh;
-    border: 1px gray solid;
-    width: 50%;
-    margin-left: 1vw;
-    border-radius: 5px;
-}
-#inputPrato {
-    width: 30%;
-    height: 4vh;
-    margin-left: 1.5vh;
-    border-right: none;
-    border-radius: 5px 0 0 5px;
-    font-size: 0.8vw;
-}
-#btnAddPrato {
-    height: 4vh;
-    border-radius: 0 5px 5px 0;
-    margin: 0;
-    border: 0.5px solid gray;
-}
-#btnOk-segunda, #btnOk-terca, #btnOk-quarta, 
-#btnOk-quinta, #btnOk-sexta, #btnOk-sabado, 
-#btnOk-domingo  {
-    display: inline-block;
-    height: 4vh;
-    margin-left: 1vw;
-    width: 2.5vw;
-}
-#edit {
-    display: flex;
-    flex-direction: column !important; 
+.corpo .cardapio .semanal .listaSemanal .diaSemana .nome h4{
+   font-weight: 500;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden; 
 }
 
-   
-.container {
-    display: flex;
-    flex-direction: row;
-}
-.hr {
-    width: 100%;
-    height: 0.32vh;
-    background-color: #cbc5c5;
-}
-.corpo .cardapio .semanal .listaSemanal .diaSemana h4 {
-    margin-bottom: 1vh;
-}
 .corpo .cardapio .semanal .listaSemanal .diaSemana p {
     font-weight: 400;
     font-size: 0.8vw;
-    width: 15vw;
+    width: 20vw;
     padding: 1vh 1vw;
+    white-space: nowrap;
+    overflow: hidden;
 }
+
 .corpo .cardapio .semanal .listaSemanal .diaSemana button {
     padding: 0.2vh 0.5vw;
     font-size: 0.8vw;
     margin-bottom: 0.2vh;
-    background: var(--btn);
     color: black;
+    height: 100%;
+    margin-left: 0.5vw;
 }
-.corpo .cardapio .especial {
-    width: 90%;
-    margin-top: 1vh;
+
+.addPratos {
+    background-color: var(--btn);
 }
-.corpo .cardapio .especial .listaEspecial {
-    margin-left: 2vw;
-    font-size: 0.8vw;
-}
-.corpo .cardapio .especial .listaEspecial .item {
-    display: flex;
-    flex-direction: row;
-    border: 0.5px solid #878787;
-    padding: 0.8vh;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 5px;
-    /* margin-bottom: 1vh; */
-}
-.especial hr {
-    margin-bottom: 1vh;
-}
-.corpo .cardapio .especial .listaEspecial .item .nome {
-    font-weight: 500;
-    width: 6vw;
-    display: flex;
-    justify-content: flex-start;
-}
-.corpo .cardapio .especial .listaEspecial .item p {
-    margin-left: -5vh;
-    font-weight: 400;
-    font-size: 0.8vw;
-    width: 22vw;
-}
-.corpo .cardapio .especial .listaEspecial .item button {
-    padding: 0.2vh 0.5vw;
-    font-size: 0.9vw;
-    background: var(--btn);;
-}
-.addEspecial {
+
+.hr {
     width: 100%;
-    margin-top: 2vh;
-    display: flex;
-    justify-content: center;
-    height: 4vh;
-}
-.addEspecial button {
-    padding: 0.8vh 1.5vw; 
-    background: var(--btn);
-    font-size: 1vw;
+    height: 0.32vh;
+    background-color: #cbc5c5;
 }
 
 .main .rodape {
@@ -460,6 +314,7 @@ html {
     height: 15vh;
     align-items: center;
 }
+
 .main .rodape .vendas {
     display: flex;
     flex-direction: row;
@@ -472,9 +327,20 @@ html {
     font-size: 1.2vw;
     background-color: #f5f5f5;
 }
+
 .main .rodape .vendas button {
     padding: 0.3vh 1vw;
     font-size: 1vw;
     background: var(--btn);
+    border-radius: 5px;
+}
+
+.cadPadrao {
+    display: flex;
+}
+.adicao button{
+    background: var(--btn);
+    padding: 0.5vh 1vw;
+    margin-top: 2vh;
     border-radius: 5px;
 }

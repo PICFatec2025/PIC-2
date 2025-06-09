@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Di Casa</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <style>
-        .oculto {
-            display: none;
-        }
-    </style>
+    @vite(['resources/js/filtroPratos.js'])
 </head>
 <body>
+    
 <div class="main">
     <div class="cabecalho">
         @include('layouts.navigation')
@@ -40,59 +37,52 @@
             <h3>Cardápio</h3>
             <div class="container">
                 <div class="semanal">
-                    <h5>Semanal</h5>
-                    <hr class="hr">
-                    <div class="listaSemanal">
-                        @php
-                            $dias = [
-                                'segunda' => 'Segunda-Feira',
-                                'terca' => 'Terça-Feira',
-                                'quarta' => 'Quarta-Feira',
-                                'quinta' => 'Quinta-Feira',
-                                'sexta' => 'Sexta-Feira',
-                                'sabado' => 'Sábado',
-                                'domingo' => 'Domingo',
-                            ];
-                        @endphp
+                    
+                    <div class="selecao">
+                        <p>indisponiveis</p>
+                        <select name="diaDaSemana" id="seletorDia" onchange="mudarDia(this.value)">
+                            <option value="terca_feira" {{ $diaAtual == 'terca_feira' ? 'selected' : '' }}>Terça-feira</option>
+                            <option value="quarta_feira" {{ $diaAtual == 'quarta_feira' ? 'selected' : '' }}>Quarta-feira</option>
+                            <option value="quinta_feira" {{ $diaAtual == 'quinta_feira' ? 'selected' : '' }}>Quinta-feira</option>
+                            <option value="sexta_feira" {{ $diaAtual == 'sexta_feira' ? 'selected' : '' }}>Sexta-feira</option>
+                            <option value="sabado" {{ $diaAtual == 'sabado' ? 'selected' : '' }}>Sábado</option>
+                            <option value="domingo" {{ $diaAtual == 'domingo' ? 'selected' : '' }}>Domingo</option>
+                        </select>
 
-                        @foreach ($dias as $diaId => $diaNome)
-                            <div id="edit-{{ $diaId }}" class="diaDaSemana diaSemana oculto">
-                                <h4>{{ $diaNome }}</h4>
-                                <div class="container">
-                                    <p id="listaPratos-{{ $diaId }}" class="listaPratos"></p>
-                                    <input type="text" id="inputPrato-{{ $diaId }}" class="input-padrao selecionadoInp" placeholder="Digite o nome do prato...">
-                                    <button type="button" onclick="adicionarPrato('{{ $diaId }}')" class="btn-adicionar selecionadoBtn" title="Adicionar prato">+</button>
 
-                                    <form method="POST" action="{{ route('pratos.store') }}" style="display: inline;">
-                                        @csrf
-                                        <input type="hidden" name="pratos[{{ $diaId }}]" id="pratosInput-{{ $diaId }}">
-                                        <button type="submit" id="btnOk-{{ $diaId }}" style="display: none;" class="btn-confirmar">Ok</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div id="padrao-{{ $diaId }}" class="diaSemana cadPadrao">
-                                <h4 class="nome">{{ $diaNome }}</h4>
-                                <p>Comida boa 1, macarrão, etc.</p>
-                                <button type="button" onclick="mostrarEdicao('{{ $diaId }}')" id="btnEditar-{{ $diaId }}" class="btn-adicionar">Editar</button>
-                            </div>
-                        @endforeach
                     </div>
+                    <div class="listaSemanal" id="listaPratos">
+                          @forelse ($pratos as $prato)
+                                <div class="diaSemana cadPadrao" style="display: flex;">
+                                    <div class="nome">
+                                        <h4>{{ $prato->nome_prato }}</h4>
+                                    </div>
+                                    <p>{{ $prato->descricao }}</p>
+                                   <a href="{{ route('criarprato', $prato->id) }}">
+                                        <button>
+                                            <img width="15vw" src="/imgs/iconEditar.png" alt="Editar">
+                                        </button>
+                                    </a>                      
+                                    <form method="POST" action="{{ route('prato.toggleDisponibilidade', $prato->id) }}" style="display:inline;">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn-remover" title="Tornar indisponível neste dia">
+                                            <img width="15vw" src="/imgs/iconRemover.png" alt="Remover">
+                                        </button>
+                                    </form>
 
-                    <div class="especial">
-                        <h5>Especial</h5>
-                        <hr class="hr">
-                        <div class="listaEspecial">
-                            <div class="item">
-                                <h4 class="nome">Festa Junina</h4>
-                                <p>Comida boa 1, macarrão, etc.</p>
-                                <button type="button" class="btn-adicionar">Editar</button>
-                            </div>
-                        </div>
+                                </div>
+                            @empty
+                                <div class="semPratos">
+                                    <p>Nenhum prato cadastrado para este dia.</p>
+                                </div>
+                            @endforelse
+                    </div>
+                  
+                    <div class="adicao">
+                        <button onclick="window.location.href='{{ route('criarprato') }}'" class="addPratos">Adicionar Prato</button>
                     </div>
                 </div>
-            </div>
-            <div class="addEspecial">
-                <button type="button" class="btn-adicionar">Adicionar</button>
             </div>
         </div>
     </div>
@@ -104,53 +94,9 @@
 </div>
 
 <script>
-    const pratosPorDia = {};
-
-    function adicionarPrato(diaId) {
-        const input = document.getElementById(`inputPrato-${diaId}`);
-        const nome = input.value.trim();
-        if (!pratosPorDia[diaId]) pratosPorDia[diaId] = [];
-
-        if (nome !== "") {
-            pratosPorDia[diaId].push(nome);
-            atualizarVisualizacao(diaId);
-            input.value = "";
-        }
-    }
-
-    function atualizarVisualizacao(diaId) {
-        const p = document.getElementById(`listaPratos-${diaId}`);
-        const hiddenInput = document.getElementById(`pratosInput-${diaId}`);
-        p.textContent = pratosPorDia[diaId].join(', ');
-        hiddenInput.value = JSON.stringify(pratosPorDia[diaId]);
-    }
-
-    function mostrarEdicao(diaId) {
-        document.getElementById(`edit-${diaId}`).classList.remove('oculto');
-        document.getElementById(`edit-${diaId}`).style.display = 'inline-block';
-        document.getElementById(`padrao-${diaId}`).classList.add('oculto');
-        document.getElementById(`btnEditar-${diaId}`).style.display = 'none';
-        document.getElementById(`edit-${diaId}`).style.flexDirection  = "column";
-        document.getElementById(`btnOk-${diaId}`).style.display = 'inline-block';
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // Botão "Ok" de todos os dias esconde edição
-        const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'];
-        dias.forEach(dia => {
-            const btnOk = document.getElementById(`btnOk-${dia}`);
-            if (btnOk) {
-                btnOk.addEventListener('click', () => {
-                    document.getElementById(`edit-${dia}`).classList.add('oculto');
-                    document.getElementById(`edit-${diaId}`).style.display = 'inline-block';
-                    document.getElementById(`padrao-${dia}`).classList.remove('oculto');
-                    document.getElementById(`btnEditar-${dia}`).style.display = 'inline-block';
-                    btnOk.style.display = 'none';
-                });
-            }
-        });
-    });
+    function mudarDia(dia) {
+    window.location.href = '?dia=' + dia;
+}
 </script>
-
 </body>
 </html>

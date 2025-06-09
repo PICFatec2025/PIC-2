@@ -1,38 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\SalvaPratoRequest;
 use App\Models\Prato;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PratoController extends Controller
 {
-    //use App\Models\Prato;
-    
 
-    public function store(Request $request)
+
+    public function criarPrato($id = null)
     {
-        $nomes = json_decode($request->input('pratos'));
+        $prato = null;
 
-            Prato::create([
-                'nome_prato' => 'nome',
-                'descricao' => 'descricao',
-                'preco_p' => null,
-                'preco_m' => null,
-                'preco_g' => null,
-                'cliente_id' => null
-            ]);
-            
-        dd($request->input('pratos'));
+        if ($id !== null) {
+            $prato = Prato::findOrFail($id);
+        }
 
-
-        return redirect()->back()->with('message', 'Pratos adicionados com sucesso!');
+        return view('cadastrar_prato', compact('prato'));
     }
-    public function criarPrato(Request $request){
-        return view('cadastrar_prato');
+
+    public function atualizarPrato(SalvaPratoRequest $request, $id)
+    {
+        $prato = Prato::findOrFail($id);
+        $prato->update($request->validated());
+
+        if ($prato->disponibilidade) {
+            $prato->disponibilidade->update($request->dias);
+        } else {
+            $prato->disponibilidade()->create($request->dias);
+        }
+
+        return redirect()->route('telaprincipal')->with('success', 'Prato atualizado com sucesso');
     }
+
     public function armazenarPrato(SalvaPratoRequest $request){
-        //cria um prato novo
         $prato = new Prato($request->validated());
         //busca o id do usuario atual
         $prato->user_id = auth()->id();
