@@ -16,7 +16,8 @@ class Prato extends Model
         'preco_p',
         'preco_m',
         'preco_g',
-        'cliente_id'
+        'cliente_id',
+        'disponivel'
     ];
 
     protected $with = ['disponibilidade'];
@@ -80,4 +81,5 @@ class Prato extends Model
             $query->where($dia, true);
         })->get();
     }
+
 }

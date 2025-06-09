@@ -37,7 +37,9 @@
             <h3>Cardápio</h3>
             <div class="container">
                 <div class="semanal">
+                    
                     <div class="selecao">
+                        <p>indisponiveis</p>
                         <select name="diaDaSemana" id="seletorDia" onchange="mudarDia(this.value)">
                             <option value="terca_feira" {{ $diaAtual == 'terca_feira' ? 'selected' : '' }}>Terça-feira</option>
                             <option value="quarta_feira" {{ $diaAtual == 'quarta_feira' ? 'selected' : '' }}>Quarta-feira</option>
@@ -56,10 +58,19 @@
                                         <h4>{{ $prato->nome_prato }}</h4>
                                     </div>
                                     <p>{{ $prato->descricao }}</p>
-                                    <button onclick="editarPrato({{ $prato->id }})"><img width="15vw" src="/imgs/iconEditar.png" alt=""></button>
-                                    <button class="btn-remover" data-prato-id="{{ $prato->id }}" title="Tornar indisponível neste dia">
-                                        <img width="15vw" src="/imgs/iconRemover.png" alt="Remover">
-                                    </button>
+                                   <a href="{{ route('criarprato', $prato->id) }}">
+                                        <button>
+                                            <img width="15vw" src="/imgs/iconEditar.png" alt="Editar">
+                                        </button>
+                                    </a>                      
+                                    <form method="POST" action="{{ route('prato.toggleDisponibilidade', $prato->id) }}" style="display:inline;">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn-remover" title="Tornar indisponível neste dia">
+                                            <img width="15vw" src="/imgs/iconRemover.png" alt="Remover">
+                                        </button>
+                                    </form>
+
                                 </div>
                             @empty
                                 <div class="semPratos">
