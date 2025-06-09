@@ -58,7 +58,7 @@
                                         <h4>{{ $prato->nome_prato }}</h4>
                                     </div>
                                     <p>{{ $prato->descricao }}</p>
-                                   <a href="{{ route('criarprato', $prato->id) }}">
+                                   <a href="{{ route('editar_prato', $prato->id) }}">
                                         <button>
                                             <img width="15vw" src="/imgs/iconEditar.png" alt="Editar">
                                         </button>
