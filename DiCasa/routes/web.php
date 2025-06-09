@@ -33,7 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/consultar-vendas',[PedidosController::class,'consultarVendas'])->name('consultarvendas');
     Route::get('/cadastrar-prato',[PratoController::class,'criarPrato'])->name('criarprato');
     Route::post('/armazenar-prato',[PratoController::class,'armazenarPrato'])->name('armazenarprato');
-    
+    Route::get('/editar-prato/{id}',[PratoController::class,'editarPrato'])->name('editar_prato');
+    Route::put('/alterar-prato/{id}', [PratoController::class,'alterarPrato'])->name('alterar_prato');
     Route::delete('/pedidos/{id}', [PedidosController::class, 'destroy'])->name('pedidos.destroy');
     Route::patch('/pedidos/{id}/status', [PedidosController::class, 'updateStatus'])->name('pedidos.updateStatus');
 });

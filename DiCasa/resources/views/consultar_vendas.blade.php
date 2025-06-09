@@ -1,9 +1,7 @@
 @extends('layouts.consultar_vendas')
 @section('titulo', 'Vendas')
 @section('conteudo')
-    <div class="barra_navegador">
-        @include('layouts.navigation')
-    </div>
+    
     <div class="caixa-principal">
         <div class="caixa-topo">
             <h1 class="titulo-texto">Vendas</h1>
