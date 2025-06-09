@@ -6,9 +6,39 @@ use App\Models\Pedido;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Log;
+use App\Models\PedidoPrato;
+use App\Models\Prato;
 
 class PedidosController extends Controller
-{
+{       public function create() {
+            $pratos = Prato::all();
+           
+            return view('cadastrar_pedidos', compact('pratos'));
+        }
+        public function store(Request $request)
+        {
+          
+            // Criação do pedido
+            $pedido = new Pedido();
+            $pedido->nome = $request->nome;
+            $pedido->obs = $request->obs;
+            $pedido->save();
+
+            // Decodifica os pratos
+            $pratos = json_decode($request->input('pratos_json'), true);
+
+            // Cria relação dos pratos com o pedido
+            foreach ($pratos as $prato) {
+                $pedidoPrato = new PedidoPrato();
+                $pedidoPrato->pedido_id = $pedido->id;
+                $pedidoPrato->prato_id = $prato['prato_id'];
+                $pedidoPrato->quantidade = $prato['quantidade'];
+                $pedidoPrato->tamanho = $prato['tamanho'];
+                $pedidoPrato->save();
+            }
+
+            return redirect()->route('pedidos.index');
+        }
     public function index()
     {
         $pedidos = Pedido::

@@ -17,9 +17,10 @@ Route::get('/TelaPrincipal', [TelaPrincipalController::class, 'index'])
     ->name('telaprincipal');
 
 
-Route::get('/CadastrarPedidos', function () {
-    return view('cadastrar_pedidos');
-})->middleware(['auth', 'verified'])->name('cadastrarpedidos');
+Route::get('/CadastrarPedidos', [PedidosController::class, 'create'])
+    ->middleware(['auth', 'verified'])
+    ->name('cadastrarpedidos');
+
 
 Route::get('/ConsultarPedidos', function () {
     return view('consultar_pedidos');
@@ -28,6 +29,8 @@ Route::get('/ConsultarPedidos', function () {
 
 Route::middleware('auth')->group(function () {
 
+    Route::get('/pedidos/create', [PedidosController::class, 'create']);
+    Route::post('/pedidos', [PedidosController::class, 'store'])->name('pedidos.store');
     Route::patch('/prato/{id}/toggle-disponibilidade', [PratoController::class, 'toggleDisponibilidade'])->name('prato.toggleDisponibilidade');
     Route::patch('/prato/{id}/indisponivel-hoje', [PratoController::class, 'tornarIndisponivelHoje'])->name('prato.indisponivelHoje');
     Route::get('/ConsultarPedidos', [PedidosController::class, 'index'])->name('consultarpedidos');

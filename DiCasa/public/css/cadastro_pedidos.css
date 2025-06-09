@@ -165,13 +165,13 @@ input, select {
 
 .linha1{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
     margin-bottom: 2vh;
 }
 .linha1 input{
   width: 85%;
-  margin-left: 2vw;
+  margin-left: 3vw;
   height: 4vh;
   border-radius: 6px;
 }

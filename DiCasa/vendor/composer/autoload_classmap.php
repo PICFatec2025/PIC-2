@@ -19,6 +19,7 @@ return array(
     'App\\Http\\Controllers\\PedidosController' => $baseDir . '/app/Http/Controllers/PedidosController.php',
     'App\\Http\\Controllers\\PratoController' => $baseDir . '/app/Http/Controllers/PratoController.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
+    'App\\Http\\Controllers\\TelaPrincipalController' => $baseDir . '/app/Http/Controllers/TelaPrincipalController.php',
     'App\\Http\\Requests\\Auth\\LoginRequest' => $baseDir . '/app/Http/Requests/Auth/LoginRequest.php',
     'App\\Http\\Requests\\ProfileUpdateRequest' => $baseDir . '/app/Http/Requests/ProfileUpdateRequest.php',
     'App\\Http\\Requests\\SalvaPratoRequest' => $baseDir . '/app/Http/Requests/SalvaPratoRequest.php',
