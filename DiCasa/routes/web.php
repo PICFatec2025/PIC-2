@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\TelaPrincipalController;
@@ -36,7 +37,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/consultar-vendas', [PedidosController::class, 'consultarVendas'])->name('consultarvendas');
     Route::delete('/pedidos/{id}', [PedidosController::class, 'destroy'])->name('pedidos.destroy');
     Route::patch('/pedidos/{id}/status', [PedidosController::class, 'updateStatus'])->name('pedidos.updateStatus');
-
+    Route::get('/clientes',[ClienteController::class,'index'])->name('consultarclientes');
+    Route::get('/clientes/criar',[ClienteController::class,'criarCliente'])->name('criarcliente');
+    //eu vou usar a rota que eu fiz anteriormente
+    // Route::get('/cadastrar-prato/{id?}', [PratoController::class, 'criarPrato'])->name('criarprato'); // criação e edição
+    // Route::post('/armazenar-prato', [PratoController::class, 'armazenarPrato'])->name('armazenarprato'); // salvar novo prato
+    // Route::put('/prato/{id}', [PratoController::class, 'atualizarPrato'])->name('atualizarprato'); // atualizar prato existente
     Route::delete('/prato/{id}', [PratoController::class, 'destroy'])->name('pratos.destroy');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -19,9 +19,9 @@ class RegisteredUserController extends Controller
     {
         return view('auth.register');
     }
-
-      @throws \Illuminate\Validation\ValidationException
-     
+/**
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
