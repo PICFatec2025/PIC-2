@@ -16,9 +16,10 @@ Route::get('/TelaPrincipal', [TelaPrincipalController::class, 'index'])
     ->name('telaprincipal');
 
 
-Route::get('/CadastrarPedidos', function () {
-    return view('cadastrar_pedidos');
-})->middleware(['auth', 'verified'])->name('cadastrarpedidos');
+Route::get('/CadastrarPedidos', [PedidosController::class, 'create'])
+    ->middleware(['auth', 'verified'])
+    ->name('cadastrarpedidos');
+
 
 Route::get('/ConsultarPedidos', function () {
     return view('consultar_pedidos');
@@ -27,6 +28,8 @@ Route::get('/ConsultarPedidos', function () {
 
 Route::middleware('auth')->group(function () {
 
+    Route::get('/pedidos/create', [PedidosController::class, 'create']);
+    Route::post('/pedidos', [PedidosController::class, 'store'])->name('pedidos.store');
     Route::patch('/prato/{id}/toggle-disponibilidade', [PratoController::class, 'toggleDisponibilidade'])->name('prato.toggleDisponibilidade');
     Route::patch('/prato/{id}/indisponivel-hoje', [PratoController::class, 'tornarIndisponivelHoje'])->name('prato.indisponivelHoje');
     Route::get('/ConsultarPedidos', [PedidosController::class, 'index'])->name('consultarpedidos');
@@ -34,10 +37,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/pedidos/{id}', [PedidosController::class, 'destroy'])->name('pedidos.destroy');
     Route::patch('/pedidos/{id}/status', [PedidosController::class, 'updateStatus'])->name('pedidos.updateStatus');
 
-    //eu vou usar a rota que eu fiz anteriormente
-    // Route::get('/cadastrar-prato/{id?}', [PratoController::class, 'criarPrato'])->name('criarprato'); // criação e edição
-    // Route::post('/armazenar-prato', [PratoController::class, 'armazenarPrato'])->name('armazenarprato'); // salvar novo prato
-    // Route::put('/prato/{id}', [PratoController::class, 'atualizarPrato'])->name('atualizarprato'); // atualizar prato existente
     Route::delete('/prato/{id}', [PratoController::class, 'destroy'])->name('pratos.destroy');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

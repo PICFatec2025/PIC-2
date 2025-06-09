@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SalvaPratoRequest;
 use App\Models\Prato;
 use Carbon\Carbon;
+use App\Models\PedidoPrato;
 
 class PratoController extends Controller
 {
