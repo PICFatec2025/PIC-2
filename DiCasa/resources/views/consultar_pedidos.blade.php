@@ -32,23 +32,23 @@
         
                 @foreach($pedidos as $pedido)
                 <div class="orders" data-id="{{ $pedido->id }}">
-                    <div>{{ $pedido->nome_cliente }}</div>
-                    <div>{{ $pedido->pedido }}</div>
-                    <div>{{ $pedido->hora }}</div>
-                    <div>{{ $pedido->tipo }}</div>
+                    <div>{{ $pedido->cliente->nome }}</div>
+                    <div>{{ $pedido->pedidoPrato->pluck('prato.nome_prato')->filter()->join(' - ') ?? 'sem prato' }}</div>
+                    <div>{{ $pedido->created_at->format('H:i')}}</div>
+                    <div>{{ $pedido->modo_retirada}}</div>
                     <div class="checkbox-container">
-                        <input type="checkbox" name="produzindo" class="produzindo-checkbox" 
-                            {{ $pedido->produzindo ? 'checked' : '' }}>
+                        <input type="checkbox" name='esta_produzindo' class="produzindo-checkbox" 
+                            {{ $pedido->esta_produzindo ? 'checked' : '' }}>
                     </div>
                     <div class="checkbox-container">
-                        <input type="checkbox" name="pronto" class="pronto-checkbox" 
-                            {{ $pedido->pronto ? 'checked' : '' }} 
-                            {{ !$pedido->produzindo ? 'disabled' : '' }}>
+                        <input type="checkbox" name="foi_produzido" class="pronto-checkbox" 
+                            {{ $pedido->foi_produzido ? 'checked' : '' }} 
+                            {{ !$pedido->esta_produzindo ? 'disabled' : '' }}>
                     </div>
                     <div class="checkbox-container">
-                        <input type="checkbox" name="entregue" class="entregue-checkbox" 
-                            {{ $pedido->entregue ? 'checked' : '' }} 
-                            {{ !$pedido->pronto ? 'disabled' : '' }}>
+                        <input type="checkbox" name="foi_entregue" class="entregue-checkbox" 
+                            {{ $pedido->foi_entregue ? 'checked' : '' }} 
+                            {{ !$pedido->foi_produzido ? 'disabled' : '' }}>
                     </div>
                     <div class="actions">
                         <button title="cancelar pedido" onclick="abrirModal({{ $pedido->id }})" class="cancel-btn">🗑️</button>

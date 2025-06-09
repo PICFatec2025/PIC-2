@@ -39,8 +39,6 @@ Route::middleware('auth')->group(function () {
     // Route::post('/armazenar-prato', [PratoController::class, 'armazenarPrato'])->name('armazenarprato'); // salvar novo prato
     // Route::put('/prato/{id}', [PratoController::class, 'atualizarPrato'])->name('atualizarprato'); // atualizar prato existente
     Route::delete('/prato/{id}', [PratoController::class, 'destroy'])->name('pratos.destroy');
-
-   
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
