@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/pedidos/{id}', [PedidosController::class, 'destroy'])->name('pedidos.destroy');
     Route::patch('/pedidos/{id}/status', [PedidosController::class, 'updateStatus'])->name('pedidos.updateStatus');
     Route::get('/clientes',[ClienteController::class,'index'])->name('consultarclientes');
+    Route::get('/clientes/criar',[ClienteController::class,'criarCliente'])->name('criarcliente');
     //eu vou usar a rota que eu fiz anteriormente
     // Route::get('/cadastrar-prato/{id?}', [PratoController::class, 'criarPrato'])->name('criarprato'); // criação e edição
     // Route::post('/armazenar-prato', [PratoController::class, 'armazenarPrato'])->name('armazenarprato'); // salvar novo prato

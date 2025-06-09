@@ -23,7 +23,7 @@
                     @foreach($clientes as $cliente)
                         <tr class="item-venda">
                             <td class="textos-tabela">{{$cliente->nome}}</td>
-                            {{-- busca todas os endereços daquele cliente e faz a juncao --}}
+                            {{-- busca todas os enderecos daquele cliente e faz a juncao --}}
                             <td class="textos-tabela">{{$cliente->enderecos()->pluck('logradouro')->join(' | ')}}</td>
                             <td class="textos-tabela">{{$cliente->enderecos()->pluck('bairro')->join(' | ')}}</td>
                             <td class="textos-tabela">{{$cliente->enderecos()->pluck('complemento')->join(' | ')}}</td>

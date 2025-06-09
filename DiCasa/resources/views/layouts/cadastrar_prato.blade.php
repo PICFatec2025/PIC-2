@@ -12,6 +12,7 @@
     <div class="conteudo">
         <div class="cabecalho">@include('layouts.navigation')</div>
         @yield('conteudo')
+        @yield('scripts')
     </div>
 </body>
     

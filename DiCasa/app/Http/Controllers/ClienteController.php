@@ -11,4 +11,7 @@ class ClienteController extends Controller
         $clientes = Cliente::with('telefones')->with('enderecos')->paginate(15);
         return view('consultar_clientes',compact('clientes'));
     }
+    public function criarCliente(){
+        return view('cadastrar_clientes');
+    }
 }
