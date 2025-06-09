@@ -35,7 +35,6 @@
                     @endif
                     {!! __('num total de') !!}
                     <span class="font-medium">{{ $paginator->total() }}</span>
-                    {!! __('vendas') !!}
                 </p>
             </div>
 
