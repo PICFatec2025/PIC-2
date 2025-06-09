@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PedidosController;
+use App\Http\Controllers\TelaPrincipalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PratoController;
 
@@ -10,10 +11,10 @@ Route::post('/pratos', [PratoController::class, 'store'])->name('pratos.store');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/TelaPrincipal', [TelaPrincipalController::class, 'index'])
+     ->middleware(['auth', 'verified'])
+     ->name('telaprincipal');
 
-Route::get('/TelaPrincipal', function () {
-    return view('TelaPrincipal');
-})->middleware(['auth', 'verified'])->name('telaprincipal');
 
 Route::get('/CadastrarPedidos', function () {
     return view('cadastrar_pedidos');

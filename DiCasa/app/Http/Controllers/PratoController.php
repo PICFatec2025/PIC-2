@@ -35,7 +35,7 @@ class PratoController extends Controller
         $prato = new Prato($request->validated());
         $prato->user_id = auth()->id();
         $prato->save();
-        $prato->estaDisponivel()->create($request->dias);
+        $prato->disponibilidade()->create($request->dias);
         return redirect()->route('telaprincipal')->with('success','Prato adicionado com sucesso');
     }
 }

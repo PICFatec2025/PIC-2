@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Prato extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'nome_prato',
         'descricao',
@@ -17,34 +18,66 @@ class Prato extends Model
         'preco_g',
         'cliente_id'
     ];
-    public function user(){
+
+    protected $with = ['disponibilidade'];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-     public function pedidoPrato(){
+
+    public function pedidoPrato()
+    {
         return $this->hasMany(PedidoPrato::class);
     }
-    public function estaDisponivel(){
+
+    public function disponibilidade()
+    {
         return $this->hasOne(EstaDisponivel::class);
     }
-    public static function disponiveisHoje()
-{
-    $dia = match (Carbon::now()->locale('pt_BR')->dayName) {
-        'segunda-feira' => null, // não tem no banco
-        'terça-feira'   => 'terca_feira',
-        'quarta-feira'  => 'quarta_feira',
-        'quinta-feira'  => 'quinta_feira',
-        'sexta-feira'   => 'sexta_feira',
-        'sábado'        => 'sabado',
-        'domingo'       => 'domingo',
-        default         => null,
-    };
 
-    if (!$dia) {
-        return collect(); // retorna vazio caso seja segunda-feira ou erro
+    public function getDiasDisponiveisAttribute()
+    {
+        if (!$this->disponibilidade) {
+            return [
+                'terca_feira' => false,
+                'quarta_feira' => false,
+                'quinta_feira' => false,
+                'sexta_feira' => false,
+                'sabado' => false,
+                'domingo' => false,
+            ];
+        }
+
+        return [
+            'terca_feira' => (bool) $this->disponibilidade->terca_feira,
+            'quarta_feira' => (bool) $this->disponibilidade->quarta_feira,
+            'quinta_feira' => (bool) $this->disponibilidade->quinta_feira,
+            'sexta_feira' => (bool) $this->disponibilidade->sexta_feira,
+            'sabado' => (bool) $this->disponibilidade->sabado,
+            'domingo' => (bool) $this->disponibilidade->domingo,
+        ];
     }
 
-    return self::whereHas('disponibilidade', function ($query) use ($dia) {
-        $query->where($dia, true);
-    })->get();
-}
+    public static function disponiveisHoje()
+    {
+        $dia = match (Carbon::now()->locale('pt_BR')->dayName) {
+            'segunda-feira' => null,
+            'terça-feira' => 'terca_feira',
+            'quarta-feira' => 'quarta_feira',
+            'quinta-feira' => 'quinta_feira',
+            'sexta-feira' => 'sexta_feira',
+            'sábado' => 'sabado',
+            'domingo' => 'domingo',
+            default => null,
+        };
+
+        if (!$dia) {
+            return collect();
+        }
+
+        return self::whereHas('disponibilidade', function ($query) use ($dia) {
+            $query->where($dia, true);
+        })->get();
+    }
 }
