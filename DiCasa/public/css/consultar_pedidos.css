@@ -48,6 +48,9 @@ body {
 
 .main-box {
   background-color: #fff;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -84,11 +87,14 @@ body {
 }
 
 .order-table {
+  max-height: 70vh; /* Ajuste este valor */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
   width: 100%;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  overflow: hidden;
   border: 1px solid var(--dark-gray);
 }
 
@@ -96,6 +102,9 @@ body {
   display: flex;
   width: 100%;
   background: var(--primary-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .titles > div {
@@ -195,7 +204,23 @@ body {
 .modal button.cancel-btn {
   background: var(--medium-gray);
 }
-
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: var(--light-gray);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+  }
+.tabela-paginacao {
+    margin-top: 1.5rem; /* mt-6 => 6 * 0.25rem = 1.5rem */
+    display: flex; /* flex */
+    justify-content: center; /* justify-center */
+}
 @keyframes disintegrate {
   0% {
     opacity: 1;

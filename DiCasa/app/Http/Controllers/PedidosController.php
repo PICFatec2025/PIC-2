@@ -108,7 +108,7 @@ class PedidosController extends Controller
         $pedidos = Pedido::with(['pedidoPrato.prato', 'cliente'])
             ->where('foi_entregue', 0)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(10);
 
         return view('consultar_pedidos', compact('pedidos'));
     }

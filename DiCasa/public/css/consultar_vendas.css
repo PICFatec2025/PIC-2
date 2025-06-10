@@ -126,17 +126,33 @@ body {
 }
 /* ajustes para o campo do pedido não ficar enorme */
 .texto-tabela-pedido{
-    display: -webkit-box;
-    -webkit-line-clamp: 2;  /* limita o texto em 2 linhas */
-    -webkit-box-orient: vertical; 
-    overflow: hidden; /* o texto eh escondido*/
-    text-overflow: ellipsis; /* o texto eh escondido com ...*/
-    max-width: 300px; 
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+        display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-line-clamp: 2;
+    -moz-line-clamp: 2;
+    -ms-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    padding: 8px 16px;
     text-align: left;
+    
+    /* Garante compatibilidade com navegadores modernos */
+    @supports (line-clamp: 2) {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    line-height: 1.2em; /* Ajuste conforme sua fonte */
+    max-height: 3em;
 }
 
 .tabela-paginacao {

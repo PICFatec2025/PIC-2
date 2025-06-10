@@ -37,12 +37,13 @@ class TelaPrincipalController extends Controller
     private function getDiaAtual()
     {
         return match (strtolower(now()->locale('pt_BR')->dayName)) {
-            'terça-feira' => 'terça_feira',
+            'segunda-feira' => 'segunda_feira',
+            'terça-feira' => 'terca_feira',
             'quarta-feira' => 'quarta_feira',
             'quinta-feira' => 'quinta_feira',
             'sexta-feira' => 'sexta_feira',
-            'sábado' => 'sabado_feira',
-            'domingo' => 'domingo_feira',
+            'sábado' => 'sabado',
+            'domingo' => 'domingo',
             default => 'terca_feira'
         };
     }

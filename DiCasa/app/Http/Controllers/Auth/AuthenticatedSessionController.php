@@ -24,7 +24,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $credentials = $request->only('email', 'password');
+
+        if (!Auth::attempt($credentials, $request->boolean('remember'))) {
+            return back()->withErrors([
+                'email' => 'As credenciais fornecidas não correspondem aos nossos registros.',
+            ])->onlyInput('email');
+        }
+
+        if (Auth::user()->is_blocked) {  // Exemplo de verificação adicional
+            Auth::logout();
+            return back()->withErrors([
+                'email' => 'Sua conta está temporariamente desativada.',
+            ]);
+        }
 
         $request->session()->regenerate();
 

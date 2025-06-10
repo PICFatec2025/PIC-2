@@ -66,6 +66,9 @@
                     </div>
                 </div>
             </div>
+            <div class="tabela-paginacao">
+                {{$pedidos->links()}}
+            </div>
         </div>
     </div>
     
