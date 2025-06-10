@@ -269,7 +269,7 @@ html {
     display: flex;
     text-align: start;
     overflow-x: hidden;
-    width: 6vw;
+    width: 9vw;
     flex-wrap: nowrap;
     margin-left: 0.5vw;
 }
@@ -283,7 +283,7 @@ html {
 .corpo .cardapio .semanal .listaSemanal .diaSemana p {
     font-weight: 400;
     font-size: 0.8vw;
-    width: 20vw;
+    width: 21vw;
     padding: 1vh 1vw;
     white-space: nowrap;
     overflow: hidden;

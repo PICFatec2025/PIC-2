@@ -62,14 +62,6 @@
                                             <img width="15vw" src="/imgs/iconEditar.png" alt="Editar">
                                         </button>
                                     </a>                      
-                                    <form method="POST" action="{{ route('prato.toggleDisponibilidade', $prato->id) }}" style="display:inline;">
-                                        @csrf
-                                        @method('PATCH')
-                                        <button type="submit" class="btn-remover" title="Tornar indisponível neste dia">
-                                            <img width="15vw" src="/imgs/iconRemover.png" alt="Remover">
-                                        </button>
-                                    </form>
-
                                 </div>
                             @empty
                                 <div class="semPratos">

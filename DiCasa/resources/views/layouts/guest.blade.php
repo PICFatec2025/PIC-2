@@ -54,7 +54,7 @@
         <!-- Coluna Esquerda (70%) -->
         <div style="width: 60%; height: 100%; display: flex; justify-content: center; align-items: center;">
             <div style="text-align: center; padding: 20px;">
-                <img src="{{ asset('build/assets/logo.png') }}" alt="LOGO DO SITE" style="max-width: 100%; max-height: 80vh; height: auto;" />
+                <img src="{{ asset('imgs/logo.png') }}" alt="LOGO DO SITE" style="max-width: 100%; max-height: 80vh; height: auto;" />
             </div>
         </div>
 
