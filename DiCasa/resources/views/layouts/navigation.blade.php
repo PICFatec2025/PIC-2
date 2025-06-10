@@ -1,49 +1,51 @@
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+<nav x-data="{ open: false }" class="bg-white text-black tm-barra">
+    <!-- Primary Navigation Menu -->
+    {{-- fiz uma alteracao na margem, alterei o width no style de 98vw para 100vw, para que ele ocupe a tela toda --}}
+    <div class=" mx-auto px-4 sm:px-6 lg:px-8 " style=" padding:0;">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <nav x-data="{ open: false }" class="bg-white text-black tm-barra">
-        <!-- Primary Navigation Menu -->
-        {{-- fiz uma alteracao na margem, alterei o width no style de 98vw para 100vw, para que ele ocupe a tela toda --}}
-        <div class=" mx-auto px-4 sm:px-6 lg:px-8 " style=" padding:0;">
-        
-            <div class="flex justify-between h-16">
-                <div class="shrink-0 flex items-center">
-                        <a href="{{ route('telaprincipal') }}">
-                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                        </a>
-                </div>
-                <div class="flex flex-row">
-            
-                    <div  class="flex ">
-                        <!-- Navigation Links -->
-                        <div  class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+        <div class="flex justify-between h-16">
+            <div class="shrink-0 flex items-center">
+                <a href="{{ route('telaprincipal') }}">
+                    <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                </a>
+            </div>
+            <div class="flex flex-row">
+
+                <div class="flex ">
+                    <!-- Navigation Links -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link href="{{ route('telaprincipal') }}" :active="request()->routeIs('telaprincipal')">
-                                {{ __('Inicio') }}
-                            </x-nav-link>
-                
-                            <x-nav-link href="{{ route('consultarvendas') }}" :active="request()->routeIs('consultarvendas')">
-                                {{ __('Vendas') }}
-                            </x-nav-link>
-                             <x-nav-link href="{{ route('criarprato') }}" :active="request()->routeIs('criarprato')">
-                                {{ __('Cadastrar Prato') }}
-                            </x-nav-link>
+                            {{ __('Inicio') }}
+                        </x-nav-link>
+
+                        @can('acesso-adm')
+                        <x-nav-link href="{{ route('consultarvendas') }}" :active="request()->routeIs('consultarvendas')">
+                            {{ __('Vendas') }}
+                        </x-nav-link>
+                        @endcan
+
+                        <x-nav-link href="{{ route('criarprato') }}" :active="request()->routeIs('criarprato')">
+                            {{ __('Cadastrar Prato') }}
+                        </x-nav-link>
 
                         <div class="relative group inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none transition duration-150 ease-in-out">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     <button class="cursor-pointer">
-                                    <span class="inline-flex text-black  items-center">
-                                        Pedidos
-                                    </span></button>
+                                        <span class="inline-flex text-black  items-center">
+                                            Pedidos
+                                        </span></button>
                                 </x-slot>
-        
-                                <x-slot name="content" >
+
+                                <x-slot name="content">
                                     <x-dropdown-link :href="route('cadastrarpedidos')">
                                         {{ __('Cadastrar') }}
                                     </x-dropdown-link>
                                     <x-dropdown-link :href="route('consultarpedidos')">
-                                                {{ __('Consultar') }}
+                                        {{ __('Consultar') }}
                                     </x-dropdown-link>
-                        
+
                                 </x-slot>
                             </x-dropdown>
                         </div>
@@ -51,28 +53,30 @@
 
                     <!-- Settings Dropdown -->
                     <div class="hidden sm:flex sm:items-center sm:ms-6">
-                        <x-dropdown align="right" width="48" >
-                            <x-slot name="trigger" >
-                                <button  class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md  bg-white  focus:outline-none transition ease-in-out duration-150">
+                        <x-dropdown align="right" width="48">
+                            <x-slot name="trigger">
+                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md  bg-white  focus:outline-none transition ease-in-out duration-150">
                                     <div>Perfil</div>
                                 </button>
                             </x-slot>
-                        
-                            <x-slot name="content" >
+
+                            <x-slot name="content">
                                 <x-dropdown-link :href="route('profile.edit')">
                                     {{ __('Profile') }}
                                 </x-dropdown-link>
+
                                 @can('acesso-adm')
                                 <x-dropdown-link :href="route('register')">
                                     {{ __('Registrar Usuário') }}
                                 </x-dropdown-link>
                                 @endcan
+
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 
                                     <x-dropdown-link :href="route('logout')"
-                                            onclick="event.preventDefault();
+                                        onclick="event.preventDefault();
                                                         this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
@@ -118,7 +122,7 @@
                         @csrf
 
                         <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
+                            onclick="event.preventDefault();
                                             this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
@@ -126,4 +130,4 @@
                 </div>
             </div>
         </div>
-    </nav>
+</nav>
