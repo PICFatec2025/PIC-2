@@ -20,13 +20,13 @@
                 <button type="button" onclick="window.location.href='{{ route('cadastrarpedidos') }}'">Adicionar pedido</button>
             </div>
             <div class="lista">
-                @for ($i = 0; $i < 10; $i++)
+                @foreach($pedidos as $pedido)
                     <div class="item">
-                        <p class="nome">Nome</p>
-                        <p class="pedido">Pedido......</p>
-                        <div class="horario">00:00</div>
+                        <p class="nome">{{ $pedido->cliente->nome }}</p>
+                        <p class="pedido">{{ $pedido->pedidoPrato->pluck('prato.nome_prato')->filter()->join(' - ') ?? "Sem pedido"}}</p>
+                        <div class="horario">{{ $pedido->created_at->format('d/m H:i') }}</div>
                     </div>
-                @endfor
+                @endforeach
             </div>
             <div class="btnVerMais">
                 <button type="button" onclick="window.location.href='{{ route('consultarpedidos') }}'">Ver mais</button>
@@ -39,7 +39,6 @@
                 <div class="semanal">
                     
                     <div class="selecao">
-                        <p>indisponiveis</p>
                         <select name="diaDaSemana" id="seletorDia" onchange="mudarDia(this.value)">
                             <option value="terca_feira" {{ $diaAtual == 'terca_feira' ? 'selected' : '' }}>Terça-feira</option>
                             <option value="quarta_feira" {{ $diaAtual == 'quarta_feira' ? 'selected' : '' }}>Quarta-feira</option>
@@ -88,7 +87,7 @@
     </div>
     <div class="rodape">
         <div class="vendas">
-            <h4>Marmitas vendidas:</h4><h4>0</h4><button type='button' onclick="window.location.href='{{ route('consultarvendas') }}'" class="btn-adicionar">Ver mais</button>
+            <h4>Marmitas vendidas hoje:</h4><h4>{{ $contagemDeMarmitas }}</h4><button type='button' onclick="window.location.href='{{ route('consultarvendas') }}'" class="btn-adicionar">Ver mais</button>
         </div>
     </div>
 </div>
