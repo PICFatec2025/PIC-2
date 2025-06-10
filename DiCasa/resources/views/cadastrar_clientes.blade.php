@@ -8,7 +8,7 @@
                 @csrf
                 @include('partials.form_cliente', [
                     'values' => [
-                        'nome_cliente' => old('nome'),
+                        'nome' => old('nome'),
                         'logradouro_cliente' => old('enderecos[0][logradouro]'),
                         'bairro_cliente' => old('enderecos[0][bairro]'),
                         'complemento_cliente' => old('enderecos[0][complemento]'),
