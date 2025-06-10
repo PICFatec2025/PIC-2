@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table(
             'pedidos',
             function (Blueprint $table) {
-                $table->enum('modo_retirada',['entrega','localmente'])->default('localmente')->after('forma_pagamento');
+                $table->enum('modo_retirada',['Entrega','Retirada'])->default('localmente')->after('forma_pagamento');
             }
         );
     }

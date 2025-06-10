@@ -126,6 +126,7 @@ html {
     font-size: 1vw;
     background: var(--btn);
     margin-right: 2vw;
+    border-radius: 5px;
 }
 
 .corpo .pedidos .addPedido {

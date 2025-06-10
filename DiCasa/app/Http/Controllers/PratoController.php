@@ -75,4 +75,14 @@ class PratoController extends Controller
         //volta para a tela principal com mensagem de sucesso
         return redirect()->route('telaprincipal')->with('message','Prato alterado com sucesso');
     }
+    // Adicionar este método ao PratoController existente
+    public function getPrecos($id)
+    {
+        $prato = Prato::findOrFail($id);
+        return response()->json([
+            'p' => $prato->preco_p,
+            'm' => $prato->preco_m,
+            'g' => $prato->preco_g
+        ]);
+    }
 }

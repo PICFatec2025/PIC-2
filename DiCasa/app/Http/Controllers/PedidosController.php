@@ -2,83 +2,132 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use App\Models\Pedido;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Log;
 use App\Models\PedidoPrato;
 use App\Models\Prato;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class PedidosController extends Controller
-{       public function create() {
-            $pratos = Prato::all();
-           
-            return view('cadastrar_pedidos', compact('pratos'));
+{
+    public function create()
+    {
+        $pratos = Prato::where('disponivel', true)->get();
+        return view('cadastrar_pedidos', compact('pratos'));
+    }
+
+    public function store(Request $request)
+    {
+        // Validação dos dados
+        $validated = $request->validate([
+            'nome' => 'required|string|max:50',
+            'obs' => 'nullable|string|max:500',
+            'modo_retirada' => 'required|in:Entrega,Retirada',
+            'pratos_json' => 'required|json',
+            'formPag' => 'required|in:PIX,CartaoDebito,CartaoCredito,Dinheiro',
+            'tEntrega' => 'nullable|numeric|min:0',
+            'endereco' => 'nullable|string|max:150',
+            'telefone' => 'nullable|string|max:14',
+        ]);
+
+        // Criar ou encontrar o cliente
+        $cliente = Cliente::firstOrCreate(
+            ['nome' => $request->nome],
+            ['user_id' => auth()->id()]
+        );
+
+      
+
+        // Criar o pedido
+        $pedido = new Pedido();
+        $pedido->modo_retirada = $validated['modo_retirada']; 
+        $pedido->total_preco = 0; // Será calculado abaixo
+        $pedido->taxa_entrega = $request->tEntrega ?? 0;
+        $pedido->observacao = $request->obs;
+        $pedido->forma_pagamento = $this->formatarFormaPagamento($request->formPag);
+        $pedido->esta_produzindo = false;
+        $pedido->modo_retirada = $validated['modo_retirada'];
+        $pedido->foi_produzido = false;
+        $pedido->foi_entregue = false;
+        $pedido->cliente_id = $cliente->id;
+        
+        // Salvar o pedido para obter o ID
+        $pedido->save();
+
+        // Processar itens do pedido
+        $pratos = json_decode($request->pratos_json, true);
+        $totalPedido = 0;
+
+        foreach ($pratos as $pratoData) {
+            $prato = Prato::find($pratoData['prato_id']);
+            $preco = $this->getPrecoPorTamanho($prato, $pratoData['tamanho']);
+            $subtotal = $preco * $pratoData['quantidade'];
+            $totalPedido += $subtotal;
+
+            PedidoPrato::create([
+                'pedido_id' => $pedido->id,
+                'prato_id' => $pratoData['prato_id'],
+                'quantidade' => $pratoData['quantidade'],
+                'tamanho' => strtoupper(substr($pratoData['tamanho'], 0, 1)),
+                'preco' => $preco
+            ]);
         }
-        public function store(Request $request)
-        {
-          
-            // Criação do pedido
-            $pedido = new Pedido();
-            $pedido->nome = $request->nome;
-            $pedido->obs = $request->obs;
-            $pedido->save();
 
-            // Decodifica os pratos
-            $pratos = json_decode($request->input('pratos_json'), true);
+        // Atualizar total do pedido (incluindo taxa de entrega)
+        $pedido->total_preco = $totalPedido + $pedido->taxa_entrega;
+        $pedido->save();
 
-            // Cria relação dos pratos com o pedido
-            foreach ($pratos as $prato) {
-                $pedidoPrato = new PedidoPrato();
-                $pedidoPrato->pedido_id = $pedido->id;
-                $pedidoPrato->prato_id = $prato['prato_id'];
-                $pedidoPrato->quantidade = $prato['quantidade'];
-                $pedidoPrato->tamanho = $prato['tamanho'];
-                $pedidoPrato->save();
-            }
-
-            return redirect()->route('pedidos.index');
+        // Atualizar informações do cliente se for entrega
+        if ($request->endereco) {
+            $cliente->enderecos()->updateOrCreate(
+                ['logradouro' => $request->endereco],
+                ['logradouro' => $request->endereco]
+            );
         }
+
+        if ($request->telefone) {
+            $cliente->telefones()->updateOrCreate(
+                ['telefone' => $request->telefone],
+                ['telefone' => $request->telefone]
+            );
+        }
+
+        return redirect()->route('consultarpedidos')->with('success', 'Pedido cadastrado com sucesso!');
+    }
+
     public function index()
     {
-        $pedidos = Pedido::
-            with('pedidoPrato.prato')->
-            where('foi_entregue', 0)->
-            orderBy('created_at', 'desc')->get();
+        $pedidos = Pedido::with(['pedidoPrato.prato', 'cliente'])
+            ->where('foi_entregue', 0)
+            ->orderBy('created_at', 'desc')
+            ->get();
+            
         return view('consultar_pedidos', compact('pedidos'));
-
     }
 
     public function consultarVendas(Request $request)
     {
-        // dd(precoConvertidoEmReais(1234.56));
-        // Buscar o Pedido que ja foi entregue e virou venda
-        //with para facilitat a busca dos pratos
-        $query = Pedido::with('pedidoPrato.prato')
+        $query = Pedido::with(['pedidoPrato.prato', 'cliente'])
             ->where('foi_entregue', 1);
-        //a partir da url da pagina
+
         if ($request->vendas === 'mensal') {
-            // faz a busca de vendas mensal
             $query->whereMonth('created_at', now()->month)
                 ->whereYear('created_at', now()->year);
-
         } elseif ($request->vendas === 'diarias') {
-            // faz a busca das venda de hoje
             $query->whereDate('created_at', now());
-
         } elseif ($request->has(['data_inicio', 'data_fim'])) {
-            // faz as buscas das venddas endas entre datas personalizadas
             $query->whereBetween('created_at', [
                 Carbon::parse($request->data_inicio)->startOfDay(),
                 Carbon::parse($request->data_fim)->endOfDay()
             ]);
         }
-        //junta a busca com a query e coloca o paginate
-        $vendas = $query
-            ->orderBy('created_at', 'desc')
+
+        $vendas = $query->orderBy('created_at', 'desc')
             ->paginate(15)
             ->appends($request->query());
-        //retorna a tela com as venads
+
         return view('consultar_vendas', compact('vendas'));
     }
 
@@ -128,14 +177,35 @@ class PedidosController extends Controller
 
             $pedido->save();
 
-            // Retorna "finalizado: true" se o pedido chegou até entregue
             return response()->json([
                 'success' => true,
                 'finalizado' => $pedido->foi_entregue
             ]);
         } catch (\Exception $e) {
-            \Log::error("Erro ao atualizar status do pedido ID $id: " . $e->getMessage());
+            Log::error("Erro ao atualizar status do pedido ID $id: " . $e->getMessage());
             return response()->json(['error' => 'Erro ao atualizar o status do pedido'], 500);
+        }
+    }
+
+    private function formatarFormaPagamento($formaPagamento)
+    {
+        $formatos = [
+            'PIX' => 'pix',
+            'CartaoDebito' => 'debito',
+            'CartaoCredito' => 'credito',
+            'Dinheiro' => 'dinheiro'
+        ];
+        
+        return $formatos[$formaPagamento] ?? $formaPagamento;
+    }
+
+    private function getPrecoPorTamanho($prato, $tamanho)
+    {
+        switch($tamanho) {
+            case 'pequena': return $prato->preco_p;
+            case 'media': return $prato->preco_m;
+            case 'grande': return $prato->preco_g;
+            default: return 0;
         }
     }
 }

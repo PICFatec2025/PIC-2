@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8" />
     <title>Pedido</title>
-    <link rel="stylesheet" href="{{ asset('css\cadastro_pedidos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cadastro_pedidos.css') }}">
 </head>
-
 <body>
     <div class="conteudo">
         <div class="cabecalho">@include('layouts.navigation')</div>
@@ -16,8 +14,8 @@
 
                 <div class="corpo">
                     <div class="linha1">
-                        <label for="nome">Nome</label>
-                        <input type="text" name="nome" id="nomeCliente">
+                        <label for="nome">Nome do Cliente</label>
+                        <input type="text" name="nome" id="nomeCliente" required>
                     </div>
                     <div class="linha2">
                         <label for="nome">Item</label>
@@ -73,12 +71,7 @@
                     </div>
                     <div class="CEntrega">
                         <label for="tEntrega" class="taxaEntrega">Taxa de entrega</label>
-                        <select name="tEntrega" class="itens" id="taxaEntrega">
-                            <option value="Perto">Perto</option>
-                            <option value="Proximo">Próximo</option>
-                            <option value="Longe">Longe</option>
-                            <option value="Rural">Rural</option>
-                        </select>
+                        <input type="number" name="tEntrega" id="taxaEntrega" value="0" style="padding: 0; width: 5vw; border-radius:5px;" min="0" step="0.01">
                     </div>
                 </div>
 
@@ -95,12 +88,10 @@
                     <div class="linha">
                         <label for="telefone">Telefone</label>
                         <input type="tel" name="telefone" placeholder="Telefone" id="telefoneInput">
-                        <label id="dt" for="datahora">Data Hora</label>
-                        <input type="datetime-local" id="dataHoraInput">
                     </div>
                 </div>
                 <div class="total">
-                    <h3>Total: <span id="totalPedido">00,00</span> R$</h3>
+                    <h3>Total: <span id="totalPedido">0.00</span> R$</h3>
                 </div>
                 <form method="POST" action="{{ route('pedidos.store') }}" id="formPedido">
                     @csrf
@@ -112,20 +103,16 @@
                     <input type="hidden" name="tEntrega" id="hiddenTaxaEntrega">
                     <input type="hidden" name="endereco" id="hiddenEndereco">
                     <input type="hidden" name="telefone" id="hiddenTelefone">
-                
+                    <input type="hidden" name="modo_retirada" id="hiddenModoRetirada">
                 </form>
-
             </div>
         </div>
     </div>
 
-    <!-- Formulário oculto para envio -->
-   
     <script>
         const pratosSelecionados = [];
         let alternar = 1;
 
-        // Toggle da seção de entrega
         document.getElementById('toggleEntrega').addEventListener('click', () => {
             const entrega = document.querySelector('.entrega');
             const imagem = document.querySelector('.setaImg');
@@ -141,8 +128,7 @@
             }
         });
 
-        // Adicionar prato à tabela
-        document.querySelector('.adicionarPrato').addEventListener('click', function() {
+        document.querySelector('.adicionarPrato').addEventListener('click', async function () {
             const pratoSelect = document.querySelector('.itens');
             const tamanhoSelect = document.querySelector('.tamanho');
             const quantidadeInput = document.querySelector('.quantidade');
@@ -152,20 +138,28 @@
             const tamanho = tamanhoSelect.value;
             const quantidade = quantidadeInput.value;
 
-            // Adiciona ao array de pratos
+            const response = await fetch(`/prato/${pratoId}/precos`);
+            const precos = await response.json();
+
+            let preco = 0;
+            switch (tamanho) {
+                case 'pequena': preco = precos.p; break;
+                case 'media': preco = precos.m; break;
+                case 'grande': preco = precos.g; break;
+            }
+
             pratosSelecionados.push({
                 prato_id: pratoId,
                 nome: pratoNome,
                 tamanho: tamanho,
-                quantidade: quantidade
+                quantidade: quantidade,
+                preco: preco
             });
 
-            // Atualiza a tabela
             atualizarTabela();
-            atualizarTotal();
+            await atualizarTotal();
         });
 
-        // Atualiza a tabela de itens
         function atualizarTabela() {
             const tbody = document.getElementById('itens-tbody');
             tbody.innerHTML = '';
@@ -176,7 +170,7 @@
                     <td class="qtdT2">${item.quantidade}x</td>
                     <td class="pratoT2">${item.nome}</td>
                     <td class="tamanhoT2">${item.tamanho}</td>
-                    <td><button onclick="removerItem(${index})">Remover</button></td>
+                    <td><button type="button" onclick="removerItem(${index})">Remover</button></td>
                 `;
                 tbody.appendChild(novaLinha);
             });
@@ -184,14 +178,12 @@
             ajustarAlturaTbody();
         }
 
-        // Remove item da tabela
-        function removerItem(index) {
+        async function removerItem(index) {
             pratosSelecionados.splice(index, 1);
             atualizarTabela();
-            atualizarTotal();
+            await atualizarTotal();
         }
 
-        // Ajusta altura da tabela
         function ajustarAlturaTbody() {
             const tbody = document.querySelector('tbody');
             const linhas = tbody.querySelectorAll('tr').length;
@@ -205,28 +197,43 @@
             }
         }
 
-        // Envia o formulário
-        document.getElementById('formPedido').addEventListener('submit', function(e) {
+        async function atualizarTotal() {
+            let total = 0;
+            for (const item of pratosSelecionados) {
+                total += item.preco * item.quantidade;
+            }
+
+            const taxaEntrega = parseFloat(document.getElementById('taxaEntrega').value) || 0;
+            total += taxaEntrega;
+
+            document.getElementById('totalPedido').textContent = total.toFixed(2);
+        }
+
+        document.getElementById('taxaEntrega').addEventListener('change', atualizarTotal);
+
+        document.getElementById('formPedido').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Preenche os campos ocultos
-            document.getElementById('hiddenNome').value = document.getElementById('nomeCliente').value;
-            document.getElementById('hiddenObs').value = document.getElementById('observacoesTextarea').value;
+            const nome = document.getElementById('nomeCliente').value;
+            const obs = document.getElementById('observacoesTextarea').value;
+            const formPag = document.getElementById('formaPagamento').value;
+            const taxaEntrega = document.getElementById('taxaEntrega').value;
+            const endereco = document.getElementById('enderecoInput').value.trim();
+            const telefone = document.getElementById('telefoneInput').value;
+
+            const modoRetirada = endereco !== '' ? 'Entrega' : 'Retirada';
+
+            document.getElementById('hiddenNome').value = nome;
+            document.getElementById('hiddenObs').value = obs;
             document.getElementById('hiddenPratos').value = JSON.stringify(pratosSelecionados);
-            document.getElementById('hiddenFormPag').value = document.getElementById('formaPagamento').value;
-            document.getElementById('hiddenTaxaEntrega').value = document.getElementById('taxaEntrega').value;
-            document.getElementById('hiddenEndereco').value = document.getElementById('enderecoInput').value;
-            document.getElementById('hiddenTelefone').value = document.getElementById('telefoneInput').value;
+            document.getElementById('hiddenFormPag').value = formPag;
+            document.getElementById('hiddenTaxaEntrega').value = taxaEntrega;
+            document.getElementById('hiddenEndereco').value = endereco;
+            document.getElementById('hiddenTelefone').value = telefone;
+            document.getElementById('hiddenModoRetirada').value = modoRetirada;
 
             this.submit();
         });
-
-
-        function atualizarTotal() {
-  
-            const total = pratosSelecionados.reduce((sum, item) => sum + (item.quantidade * 10), 0);
-            document.getElementById('totalPedido').textContent = total.toFixed(2);
-        }
     </script>
 </body>
 </html>

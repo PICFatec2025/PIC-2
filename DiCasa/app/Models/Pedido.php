@@ -8,22 +8,31 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     use HasFactory;
-    protected $fillable =[
-            'total_preco',
-            'taxa_entrega',
-            'observacao',
-            'forma_pagamento',
-            'modo_retirada',
-            'esta_produzindo',
-            'foi_produzido',
-            'foi_entregue',
-            'cliente_id'
+    
+    protected $fillable = [
+        'total_preco',
+        'taxa_entrega',
+        'observacao',
+        'forma_pagamento',
+        'modo_retirada',
+        'esta_produzindo',
+        'foi_produzido',
+        'foi_entregue',
+        'cliente_id'
     ];
-    public function cliente(){
+    
+    protected $casts = [
+        'total_preco' => 'decimal:2',
+        'taxa_entrega' => 'decimal:2',
+    ];
+
+    public function cliente()
+    {
         return $this->belongsTo(Cliente::class);
     }
-    public function pedidoPrato(){
+
+    public function pedidoPrato()
+    {
         return $this->hasMany(PedidoPrato::class);
     }
 }
-

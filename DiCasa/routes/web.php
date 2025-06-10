@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfileController;
@@ -17,9 +17,6 @@ Route::get('/TelaPrincipal', [TelaPrincipalController::class, 'index'])
     ->name('telaprincipal');
 
 
-Route::get('/CadastrarPedidos', [PedidosController::class, 'create'])
-    ->middleware(['auth', 'verified'])
-    ->name('cadastrarpedidos');
 
 
 Route::get('/ConsultarPedidos', function () {
@@ -28,9 +25,11 @@ Route::get('/ConsultarPedidos', function () {
 
 
 Route::middleware('auth')->group(function () {
-
+    
+    Route::get('/cadastrar-pedidos', [PedidosController::class, 'create'])->name('cadastrarpedidos');
     Route::get('/pedidos/create', [PedidosController::class, 'create']);
     Route::post('/pedidos', [PedidosController::class, 'store'])->name('pedidos.store');
+    Route::get('/prato/{id}/precos', [PratoController::class, 'getPrecos'])->name('prato.precos');
     Route::patch('/prato/{id}/toggle-disponibilidade', [PratoController::class, 'toggleDisponibilidade'])->name('prato.toggleDisponibilidade');
     Route::patch('/prato/{id}/indisponivel-hoje', [PratoController::class, 'tornarIndisponivelHoje'])->name('prato.indisponivelHoje');
     Route::get('/ConsultarPedidos', [PedidosController::class, 'index'])->name('consultarpedidos');
@@ -39,10 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/pedidos/{id}/status', [PedidosController::class, 'updateStatus'])->name('pedidos.updateStatus');
     Route::get('/clientes',[ClienteController::class,'index'])->name('consultarclientes');
     Route::get('/clientes/criar',[ClienteController::class,'criarCliente'])->name('criarcliente');
-    //eu vou usar a rota que eu fiz anteriormente
-    // Route::get('/cadastrar-prato/{id?}', [PratoController::class, 'criarPrato'])->name('criarprato'); // criação e edição
-    // Route::post('/armazenar-prato', [PratoController::class, 'armazenarPrato'])->name('armazenarprato'); // salvar novo prato
-    // Route::put('/prato/{id}', [PratoController::class, 'atualizarPrato'])->name('atualizarprato'); // atualizar prato existente
     Route::delete('/prato/{id}', [PratoController::class, 'destroy'])->name('pratos.destroy');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
