@@ -63,10 +63,10 @@
                     <div class="CPagamento">
                         <label for="formPag" class="formPag">Forma de pagamento</label>
                         <select name="formPag" class="itens" id="formaPagamento">
-                            <option value="PIX">PIX</option>
-                            <option value="CartaoDebito">Cartão débito</option>
-                            <option value="CartaoCredito">Cartão crédito</option>
-                            <option value="Dinheiro">Dinheiro</option>
+                            <option value="pix">PIX</option>
+                            <option value="debito">Cartão débito</option>
+                            <option value="credito">Cartão crédito</option>
+                            <option value="dinheiro">Dinheiro</option>
                         </select>
                     </div>
                     <div class="CEntrega">
@@ -221,7 +221,7 @@
             const endereco = document.getElementById('enderecoInput').value.trim();
             const telefone = document.getElementById('telefoneInput').value;
 
-            const modoRetirada = endereco !== '' ? 'Entrega' : 'Retirada';
+            const modoRetirada = endereco !== '' ? 'entrega' : 'localmente';
 
             document.getElementById('hiddenNome').value = nome;
             document.getElementById('hiddenObs').value = obs;

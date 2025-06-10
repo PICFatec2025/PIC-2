@@ -20,81 +20,87 @@ class PedidosController extends Controller
 
     public function store(Request $request)
     {
-        // Validação dos dados
-        $validated = $request->validate([
-            'nome' => 'required|string|max:50',
-            'obs' => 'nullable|string|max:500',
-            'modo_retirada' => 'required|in:Entrega,Retirada',
-            'pratos_json' => 'required|json',
-            'formPag' => 'required|in:PIX,CartaoDebito,CartaoCredito,Dinheiro',
-            'tEntrega' => 'nullable|numeric|min:0',
-            'endereco' => 'nullable|string|max:150',
-            'telefone' => 'nullable|string|max:14',
-        ]);
-
-        // Criar ou encontrar o cliente
-        $cliente = Cliente::firstOrCreate(
-            ['nome' => $request->nome],
-            ['user_id' => auth()->id()]
-        );
-
-      
-
-        // Criar o pedido
-        $pedido = new Pedido();
-        $pedido->modo_retirada = $validated['modo_retirada']; 
-        $pedido->total_preco = 0; // Será calculado abaixo
-        $pedido->taxa_entrega = $request->tEntrega ?? 0;
-        $pedido->observacao = $request->obs;
-        $pedido->forma_pagamento = $this->formatarFormaPagamento($request->formPag);
-        $pedido->esta_produzindo = false;
-        $pedido->modo_retirada = $validated['modo_retirada'];
-        $pedido->foi_produzido = false;
-        $pedido->foi_entregue = false;
-        $pedido->cliente_id = $cliente->id;
-        
-        // Salvar o pedido para obter o ID
-        $pedido->save();
-
-        // Processar itens do pedido
-        $pratos = json_decode($request->pratos_json, true);
-        $totalPedido = 0;
-
-        foreach ($pratos as $pratoData) {
-            $prato = Prato::find($pratoData['prato_id']);
-            $preco = $this->getPrecoPorTamanho($prato, $pratoData['tamanho']);
-            $subtotal = $preco * $pratoData['quantidade'];
-            $totalPedido += $subtotal;
-
-            PedidoPrato::create([
-                'pedido_id' => $pedido->id,
-                'prato_id' => $pratoData['prato_id'],
-                'quantidade' => $pratoData['quantidade'],
-                'tamanho' => strtoupper(substr($pratoData['tamanho'], 0, 1)),
-                'preco' => $preco
+        try {
+            $validated = $request->validate([
+                'nome' => 'required|string|max:50',
+                'obs' => 'nullable|string|max:500',
+                'modo_retirada' => 'required|in:entrega,localmente',
+                'pratos_json' => 'required|json',
+                'formPag' => 'required|in:credito,debito,pix,dinheiro',
+                'tEntrega' => 'nullable|numeric|min:0',
+                'endereco' => 'nullable|string|max:150',
+                'telefone' => 'nullable|string|max:14',
             ]);
-        }
 
-        // Atualizar total do pedido (incluindo taxa de entrega)
-        $pedido->total_preco = $totalPedido + $pedido->taxa_entrega;
-        $pedido->save();
-
-        // Atualizar informações do cliente se for entrega
-        if ($request->endereco) {
-            $cliente->enderecos()->updateOrCreate(
-                ['logradouro' => $request->endereco],
-                ['logradouro' => $request->endereco]
+            // Criar ou encontrar o cliente
+            $cliente = Cliente::firstOrCreate(
+                ['nome' => $request->nome],
+                ['user_id' => auth()->id()]
             );
+
+
+
+            // Criar o pedido
+            $pedido = new Pedido();
+            $pedido->modo_retirada = $validated['modo_retirada'];
+            $pedido->total_preco = 0; // Será calculado abaixo
+            $pedido->taxa_entrega = $request->tEntrega ?? 0;
+            $pedido->observacao = $request->obs;
+            $pedido->forma_pagamento = $this->formatarFormaPagamento($request->formPag);
+            $pedido->esta_produzindo = false;
+            $pedido->modo_retirada = $validated['modo_retirada'];
+            $pedido->foi_produzido = false;
+            $pedido->foi_entregue = false;
+            $pedido->cliente_id = $cliente->id;
+
+            // Salvar o pedido para obter o ID
+            $pedido->save();
+
+            // Processar itens do pedido
+            $pratos = json_decode($request->pratos_json, true);
+            $totalPedido = 0;
+
+            foreach ($pratos as $pratoData) {
+                $prato = Prato::find($pratoData['prato_id']);
+                $preco = $this->getPrecoPorTamanho($prato, $pratoData['tamanho']);
+                $subtotal = $preco * $pratoData['quantidade'];
+                $totalPedido += $subtotal;
+
+                PedidoPrato::create([
+                    'pedido_id' => $pedido->id,
+                    'prato_id' => $pratoData['prato_id'],
+                    'quantidade' => $pratoData['quantidade'],
+                    'tamanho' => strtoupper(substr($pratoData['tamanho'], 0, 1)),
+                    'preco' => $preco
+                ]);
+            }
+
+            // Atualizar total do pedido (incluindo taxa de entrega)
+            $pedido->total_preco = $totalPedido + $pedido->taxa_entrega;
+            $pedido->save();
+
+            // Atualizar informações do cliente se for entrega
+            if ($request->endereco) {
+                $cliente->enderecos()->updateOrCreate(
+                    ['logradouro' => $request->endereco],
+                    ['logradouro' => $request->endereco]
+                );
+            }
+
+            if ($request->telefone) {
+                $cliente->telefones()->updateOrCreate(
+                    ['telefone' => $request->telefone],
+                    ['telefone' => $request->telefone]
+                );
+            }
+
+            return redirect()->route('consultarpedidos')->with('success', 'Pedido cadastrado com sucesso!');
+        } catch (\Exception $e) {
+            Log::error('Erro ao processar pedido: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Ocorreu um erro: ' . $e->getMessage());
+
         }
 
-        if ($request->telefone) {
-            $cliente->telefones()->updateOrCreate(
-                ['telefone' => $request->telefone],
-                ['telefone' => $request->telefone]
-            );
-        }
-
-        return redirect()->route('consultarpedidos')->with('success', 'Pedido cadastrado com sucesso!');
     }
 
     public function index()
@@ -103,7 +109,7 @@ class PedidosController extends Controller
             ->where('foi_entregue', 0)
             ->orderBy('created_at', 'desc')
             ->get();
-            
+
         return view('consultar_pedidos', compact('pedidos'));
     }
 
@@ -190,22 +196,26 @@ class PedidosController extends Controller
     private function formatarFormaPagamento($formaPagamento)
     {
         $formatos = [
-            'PIX' => 'pix',
-            'CartaoDebito' => 'debito',
-            'CartaoCredito' => 'credito',
-            'Dinheiro' => 'dinheiro'
+            'pix' => 'pix',
+            'debito' => 'debito',
+            'Ccredito' => 'credito',
+            'dinheiro' => 'dinheiro'
         ];
-        
-        return $formatos[$formaPagamento] ?? $formaPagamento;
+
+        return strtolower($formaPagamento);
     }
 
     private function getPrecoPorTamanho($prato, $tamanho)
     {
-        switch($tamanho) {
-            case 'pequena': return $prato->preco_p;
-            case 'media': return $prato->preco_m;
-            case 'grande': return $prato->preco_g;
-            default: return 0;
+        switch ($tamanho) {
+            case 'pequena':
+                return $prato->preco_p;
+            case 'media':
+                return $prato->preco_m;
+            case 'grande':
+                return $prato->preco_g;
+            default:
+                return 0;
         }
     }
 }
