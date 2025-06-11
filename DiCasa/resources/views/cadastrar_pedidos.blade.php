@@ -25,7 +25,7 @@
                             @endforeach
                         </select>
 
-                        <select name="Tamanho" class="tamanho">
+                        <select name="Tamanho" style="width:4.5vw;height:5vh;"class="tamanho">
                             <option value="pequena">P</option>
                             <option value="media">M</option>
                             <option value="grande">G</option>
