@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Di Casa</title>
-    @import './style.css';
-    {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
-    @vite(['resources/js/filtroPratos.js'])
+    @vite(['resources/js/filtroPratos.js','resources/css/style.css','resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     

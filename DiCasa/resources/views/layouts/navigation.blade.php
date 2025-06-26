@@ -1,4 +1,5 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
+<script>console.log('NAVIGATION VIVA');</script>
 <nav x-data="{ open: false }" class="bg-white text-black tm-barra">
     <!-- Primary Navigation Menu -->
     {{-- fiz uma alteracao na margem, alterei o width no style de 98vw para 100vw, para que ele ocupe a tela toda --}}

@@ -9,13 +9,12 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/filtroPratos.js'])
-    <body class="font-sans antialiased">
+    <body style="font-family: 'Inter', sans-serif">
         <div class="min-h-screen" style="background-color: #FBAB16;">
             @include('layouts.navigation')
 

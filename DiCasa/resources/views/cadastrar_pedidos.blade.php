@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>Pedido</title>
-    <link rel="stylesheet" href="{{ asset('css/cadastro_pedidos.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/cadastro_pedidos.css') }}"> --}}
+     @vite(['resources/css/cadastro_pedidos.css','resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     <div class="conteudo">

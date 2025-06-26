@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root{
+  --btn: linear-gradient(90deg,rgba(255, 204, 109, 1) 0%, rgba(254, 183, 51, 1) 99%);
+}
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body {
+ margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--btn);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    align-content: flex-start;
+    flex-direction: column;
+}
+.conteudo{
+   width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.tm-barra {
+    width: 100%;
+    padding: 0 1vw;
+    padding-top: 1vh;
+}
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 6.5vh;
+    width: 100%;
+    margin-bottom: 2vw;
+}
+.container {
+ background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    height: auto;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3vh;
+}
+
+input{
+  border-radius: 6px;
+}
+input, select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.itens {
+  display: flex;
+  gap: 5px;
+  padding: 0 0 0 0.5vw;
+  border-radius: 6px;
+}
+
+.itens select {
+  flex: 1;
+  
+}
+
+.botao {
+  background: #f8b439;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 20px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.resumo {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+
+.total {
+  justify-content: flex-end;
+  font-weight: bold;
+}
+
+.entrega {
+  opacity: 0;
+  transform: translateY(-10px);
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+}
+
+.entrega.mostrar {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 100vh;
+  margin-bottom: 2vh;
+}
+.entrega .endereco{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+.entrega .endereco label{
+  margin-right: 50px;
+}
+
+ #dt{
+  margin-right: 0.5vw;
+  margin-left: 3.5vw;
+}
+.entrega .endereco input{
+  width: 80%;
+  height: 4vh;
+  border-radius: 5px;
+}
+.entrega .linha input{
+  height: 4vh;
+  width: 10vw;
+  border-radius: 5px;
+}
+.entrega .linha input[type="datetime-local"]{
+  width: 12vw;
+}
+
+.cliente {
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.remover-cliente {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.linha1{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 2vh;
+}
+.linha1 input{
+  width: 85%;
+  margin-left: 3vw;
+  height: 4vh;
+  border-radius: 6px;
+}
+.corpo{
+  margin-top: 2vh;
+  width: 90%;
+}
+.linha2{
+  display: flex;
+  margin-bottom: 2vh;
+  width: 100%;
+  justify-content: space-between;
+  border-radius: 6px;
+}
+.linha2 .itens{
+   margin-left: 3.5vw;
+   width: 18vw; 
+}
+.linha2 select{
+  margin-left: 2vw;
+  width: 4vw; 
+   height: 4vh;
+   border-radius: 6px;
+}
+.linha2 .quantidade{
+   width: 3vw;
+    margin-left: 2vw; 
+    padding: 0 0 0 0.5vw;
+    border-radius: 5px;
+}
+.linha2 .adicionarPrato{
+    width: 8vw;
+    background: var(--btn);
+    border-radius: 5px;
+    border: none;
+    margin-left: 2.5vw;
+    cursor: pointer;
+    font-size: 0.9vw;
+
+}
+.linha3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.linha3 .pedidos {
+  width: 90%;
+}
+.linha3 .pedidos table{
+   border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+}
+
+.linha3 .pedidos th {
+      background: #f5a623; /* Laranja */
+      color: #000;
+      padding: 1vh 12px;
+      text-align: center;
+      font-weight: bold;
+    }
+.linha4  label{
+  margin: 0;
+}
+.linha4{
+      margin-bottom: 1vh;
+}
+table{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+thead{
+  display: flex;
+  width: 100%;
+
+}
+thead tr{
+  width: 100%;
+  display: flex;
+  background: #f5a623;
+ 
+}
+thead tr th{
+  width: 30%;
+     padding: 1vh ;
+  
+}
+td{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+tbody tr{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: solid black 1px;
+  padding: 0.5vw;
+}
+tbody{
+ overflow-y:scroll;
+ height: 18vh;
+}
+.qtdT{
+  width: 3vw;
+}
+.pratoT{
+  width: 26vw;
+}
+
+.qtdT2{
+  width: 4vw;
+
+}
+.pratoT2{
+  width: 29vw;
+}
+.tamanhoT2{
+  width: 5vw;
+  margin-right: 9vw;
+}
+.linha4{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.linha4 label{
+  align-self: flex-start;
+}
+.linha4 textarea{
+  border-radius: 5px;
+  resize: none;
+  height: 7vh;
+  margin-top: 1vh;
+  width: 100%;
+  border: #ccc solid 1px;
+}
+.container h3{
+  margin: 0 0 1vh 0 ;
+}
+.container h1{
+   margin: 1vh;
+}
+hr{
+    color: #ccc;
+    width: 90%;
+    margin: 3vh;
+    margin-bottom: 1vh !important;
+}
+.linha5{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 90%;
+  margin: 2vh 0;
+}
+.linha5 .CPagamento{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+   width: 60%;
+}
+.linha5 .CPagamento label{
+  margin-right: 1vw;
+}
+.linha5 .CPagamento select{
+  width: 9vw;
+}
+.linha5 label{
+  
+  font-size: 1vw;
+}
+.entrega .linha label{
+  margin-right: 50px;
+}
+.linha5 .CEntrega{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+   width: 60%;
+   margin-right: -5vw;
+}
+.linha5 .CEntrega label{
+  margin-right: 1vw;
+}
+.linha5 .CEntrega select{
+  width: 9vw;
+}
+.btnEntrega{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1vh;
+}
+.btnEntrega hr{
+  margin: 0;
+  width: 20vw;
+}
+.botaoEntrega{
+  border: none;
+  cursor: pointer;
+  background-color: #00000000;
+}
+.botaoAceitar{
+  margin:3vh 0 1vh 0;
+  padding: 1vh 2vw  ;
+  background: var(--btn);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1vw;
+  font-weight: 500;
+}
