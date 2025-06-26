@@ -1,0 +1,347 @@
+:root {
+  --btn: linear-gradient(90deg,rgba(255, 204, 109, 1) 0%, rgba(254, 183, 51, 1) 100%);
+  --white: #ffffff;
+  --gray-border: #9ca3af;
+  --gray-light: #878787;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+body {
+    margin: 0px;
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-family: Inter, sans-serif;
+    align-items: center;
+    background: var(--btn);
+    min-height: 20vh;
+}
+
+.btn-adicionar {
+    background: var(--btn);
+    color: black;
+    padding: 0.5vh 0.8vw;
+    border-radius: 3px;
+    font-size: 0.8vw;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-adicionar:hover {
+    opacity: 0.9;
+}
+
+html {
+    height: 100%;
+} 
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 6.5vh;
+    width: 100%;
+    margin-bottom: 2vw;
+}
+
+.cabecalho h1 {
+    align-self: center;
+}
+
+.cabecalho .logo {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin-left: 10vw;
+}
+
+.cabecalho .logo h1 {
+    font-size: 4.5vw;
+}
+
+.cabecalho .btnSair {
+    justify-self: flex-end;
+    margin-left: -10vw;
+}
+
+.cabecalho .btnSair button {
+    color: var(--btn);
+    padding: 1vh 1vw;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1vw;
+}
+
+.corpo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.corpo .pedidos {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: solid 0.5px #8E8E8E;
+    border-radius: 29px;
+    width: 45vw;
+    background-color: #ffffff;
+    padding: 1vh 0 1vw 0; 
+}
+
+.corpo .pedidos .btnVerMais {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 2vh 0;
+}
+
+.corpo .pedidos .btnVerMais button {
+    padding: 0.4vh 1vw;
+    cursor: pointer;
+    font-size: 1vw;
+    background: var(--btn);
+    margin-right: 2vw;
+    border-radius: 5px;
+}
+
+.corpo .pedidos .addPedido {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1vh;
+}
+
+.corpo .pedidos .addPedido button {
+    padding: 0.5vh 1vw;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1vw;
+    background: var(--btn);
+    margin-right: 2vw;
+}
+
+.corpo .pedidos h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 2vh 0;
+}
+
+.corpo .pedidos .lista {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    height: 42vh;
+    border: 1px solid #707070;
+    padding: 1vh;
+    border-radius: 5px;
+    background: linear-gradient(180deg,#ffffff 0%, #f5f5f5 100%);
+    overflow-y: scroll;
+}
+
+.corpo .pedidos .lista .item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    border-bottom:solid 0.5px #878787;
+    padding: 1vh 0 0.5vh 0;
+    font-size: 1vw;
+    margin: 0.3vh 0vw;
+    background-color: #fff;
+}
+
+.corpo .pedidos .lista .item .pedido {
+    font-size: 0.8vw;
+    width: 46%;
+}
+
+.corpo .pedidos .lista .item .nome {
+    font-size: 1vw;
+    width:20%;
+    margin-left: 3vw;   
+}
+
+.corpo .pedidos .lista .item .horario {
+    width: 18%;
+    color:#7E7E7E;
+    font-weight: 300;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cardapio {
+    display: flex;
+}
+
+.cardapio .container {
+    display: flex;
+    justify-content: center;
+    height: 55vh;
+}
+
+.corpo .cardapio .semanal {
+    margin-top: -1vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.corpo .cardapio .semanal .selecao {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.corpo .cardapio .semanal .selecao select {
+    height: 4.5vh;
+    border-radius: 5px;
+    font-size: 0.9vw;
+    padding: 1vh 1vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    width: 20%;
+    margin-top: 1vh;
+}
+
+.corpo .cardapio h3 {
+    margin: 2vh 0;
+}
+
+.corpo .cardapio .semanal .listaSemanal {
+    font-size: 0.8vw;
+    margin-top: 1vh;
+    width: 90%;
+    border: 1px solid #918a8a;
+    height: 70%;
+    padding: 1vh 1vw;
+    overflow-y: scroll;
+    border-radius: 5px;
+}
+
+.corpo .cardapio .semanal .listaSemanal .diaSemana {
+    display: flex;
+    flex-direction: row;
+    border: 0.5px solid #878787;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0.5vh;
+    border-radius: 7px;
+    background: linear-gradient(90deg,rgba(255, 255, 255, 1) 50%, rgba(245, 245, 245, 1) 100%);
+    transition: all 1s ease;
+    height: 5vh;
+}
+.tm-barra {
+    width: 100%;
+    padding: 0 1vw;
+    padding-top: 1vh;
+}
+.corpo .cardapio .semanal .listaSemanal .diaSemana .nome {
+    display: flex;
+    text-align: start;
+    overflow-x: hidden;
+    width: 9vw;
+    flex-wrap: nowrap;
+    margin-left: 0.5vw;
+}
+.corpo .cardapio .semanal .listaSemanal .diaSemana .nome h4{
+   font-weight: 500;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden; 
+}
+
+.corpo .cardapio .semanal .listaSemanal .diaSemana p {
+    font-weight: 400;
+    font-size: 0.8vw;
+    width: 21vw;
+    padding: 1vh 1vw;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.corpo .cardapio .semanal .listaSemanal .diaSemana button {
+    padding: 0.2vh 0.5vw;
+    font-size: 0.8vw;
+    margin-bottom: 0.2vh;
+    color: black;
+    height: 100%;
+    margin-left: 0.5vw;
+}
+
+.addPratos {
+    background-color: var(--btn);
+}
+
+.hr {
+    width: 100%;
+    height: 0.32vh;
+    background-color: #cbc5c5;
+}
+
+.main .rodape {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 15vh;
+    align-items: center;
+}
+
+.main .rodape .vendas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: solid 1px #8E8E8E;
+    border-radius: 15px;
+    height: 4vw;
+    width: 27vw;
+    font-size: 1.2vw;
+    background-color: #f5f5f5;
+}
+
+.main .rodape .vendas button {
+    padding: 0.3vh 1vw;
+    font-size: 1vw;
+    background: var(--btn);
+    border-radius: 5px;
+}
+
+.cadPadrao {
+    display: flex;
+}
+.adicao button{
+    background: var(--btn);
+    padding: 0.5vh 1vw;
+    margin-top: 2vh;
+    border-radius: 5px;
+}

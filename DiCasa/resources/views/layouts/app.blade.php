@@ -12,8 +12,9 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
     </head>
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/filtroPratos.js'])
     <body class="font-sans antialiased">
         <div class="min-h-screen" style="background-color: #FBAB16;">
             @include('layouts.navigation')

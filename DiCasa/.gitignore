@@ -20,3 +20,53 @@ yarn-error.log
 /storage/*.log
 /storage/logs/*.log
 /database/database.sqlite
+
+# Docker
+/.dockerignore
+/docker-compose.yml
+/docker-compose.*.yml
+docker-compose.override.yml
+
+# Arquivos específicos do Docker
+/.env.docker
+/.env.local
+
+# Arquivos de desenvolvimento
+/.env
+/.env.testing
+
+# Arquivos de IDE
+/.vscode
+/.idea
+/.phpstorm.meta.php
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de cache
+.phpunit.cache
+.phpunit.result.cache
+
+# Logs
+*.log
+/storage/logs/*
+!storage/logs/.gitkeep
+
+# SQLite
+/database/*.sqlite
+/database/*.sqlite-journal
+
+# Node/npm
+/node_modules
+/public/css
+/public/js
+/public/mix-manifest.json
+/public/hot
+
+# Composer
+/vendor
+composer.lock
+
+# Build frontend
+/public/build
