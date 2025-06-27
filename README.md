@@ -6,7 +6,7 @@
 
 Esse projeto foi criado como um Projeto Integrador do 2º semestre da Fatec de Indaiatuba. Feito por um grupo de 5 amigos, [ Filipe Puerta](https://github.com/FilipePuerta), [Lucas Brito](https://github.com/LucasBrito616), [Murilo Bioni Caruso](https://github.com/MuriTG25), [Willian Junges](https://github.com/WillianJunges) e [Yuri Matheus Lago Philomeno](https://github.com/ymlp).
 
-Este projeto utiliza PHP com Laravel, além de HTML, CSS e Tailwind.
+Este projeto utiliza PHP com Laravel, além de HTML, CSS, Blade Tailwind.
 
 ### O projeto
 
