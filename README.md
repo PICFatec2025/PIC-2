@@ -30,14 +30,14 @@ Ele serve para automatizar o processo de registro de pedidos, agilizar o atendim
 
 Ao abrir um projeto novo, para poder ter um usuário administrador e poder acessar o sistema completo é necessário que realize o comando para que se crie esse usuário:
 ```
-  php artisan db:seed
+php artisan db:seed
 ```
 Ele gera um usuário padrão, no qual o email é:
 ```
-  adm@dicasa.com
+adm@dicasa.com
 ```
 E a senha é:
 ```
-  adm123123
+adm123123
 ```
 
